@@ -1,0 +1,1338 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NusantaraLand | Dashboard Budaya</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800&family=Young+Serif&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --primary: #176b57;
+    --primary-dark: #103f3c;
+    --background: #f3f7f5;
+    --text: #203b3b;
+    --muted: #718581;
+    --white: #ffffff;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: var(--background);
+    color: var(--text);
+    font-family: "Nunito Sans", sans-serif;
+}
+
+button, input {
+    font: inherit;
+}
+
+a {
+    color: inherit;
+}
+
+.topbar {
+    background: var(--primary-dark);
+    color: white;
+    padding: 17px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 18px;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 800;
+    font-size: 1.15rem;
+}
+
+.brand-icon {
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    background: #ffffff1c;
+    border: 1px solid #ffffff38;
+    border-radius: 13px;
+    font-size: 1.5rem;
+}
+
+.topbar small {
+    color: #c5dcd5;
+}
+
+.topbar-link {
+    color: white;
+    text-decoration: none;
+    border: 1px solid #ffffff50;
+    border-radius: 10px;
+    padding: 10px 15px;
+    font-weight: 700;
+}
+
+.topbar-link:hover {
+    background: #ffffff18;
+}
+
+.container {
+    max-width: 1400px;
+    margin: auto;
+    padding: 30px 24px 55px;
+}
+
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 34px;
+    color: white;
+    border-radius: 24px;
+    background: linear-gradient(120deg, #103f3c, #187c62);
+    box-shadow: 0 14px 35px #173b4314;
+}
+
+.eyebrow {
+    margin: 0 0 10px;
+    color: #d6bd71;
+    font-size: .75rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.hero h1 {
+    margin: 0 0 12px;
+    font-family: "Young Serif", Georgia, serif;
+    font-weight: 400;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+}
+
+.hero p:not(.eyebrow) {
+    max-width: 650px;
+    margin: 0;
+    color: #dcece6;
+    line-height: 1.8;
+}
+
+.hero-badge {
+    flex-shrink: 0;
+    padding: 15px 18px;
+    border: 1px solid #ffffff40;
+    background: #ffffff12;
+    border-radius: 16px;
+    font-weight: 800;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+    margin: 24px 0 30px;
+}
+
+.stat-card {
+    background: white;
+    padding: 22px;
+    border: 1px solid #e5ece8;
+    border-radius: 18px;
+    box-shadow: 0 6px 20px #173b4308;
+    transition: transform .2s, box-shadow .2s;
+}
+
+.stat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 25px #173b4315;
+}
+
+.stat-icon {
+    width: 46px;
+    height: 46px;
+    display: grid;
+    place-items: center;
+    border-radius: 14px;
+    background: #e5f3eb;
+    font-size: 1.5rem;
+    margin-bottom: 14px;
+}
+
+.stat-label {
+    margin: 0 0 5px;
+    color: var(--muted);
+    font-size: .88rem;
+}
+
+.stat-value {
+    margin: 0 0 5px;
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--primary);
+}
+
+.stat-note {
+    color: var(--muted);
+    font-size: .78rem;
+}
+
+.content-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.7fr) minmax(280px, .8fr);
+    align-items: start;
+    gap: 24px;
+}
+
+.card {
+    min-width: 0;
+    background: white;
+    padding: 24px;
+    border: 1px solid #e4ece7;
+    border-radius: 22px;
+    box-shadow: 0 8px 25px #173b4308;
+}
+
+.section-label {
+    margin: 0 0 7px;
+    color: var(--primary);
+    font-size: .73rem;
+    font-weight: 800;
+    letter-spacing: 1.6px;
+}
+
+.section-title {
+    margin: 0 0 8px;
+    font-family: "Young Serif", Georgia, serif;
+    font-size: 1.6rem;
+    font-weight: 400;
+}
+
+.section-desc {
+    margin: 0 0 20px;
+    color: var(--muted);
+    font-size: .92rem;
+    line-height: 1.7;
+}
+
+.map-legend {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 14px;
+    color: var(--muted);
+    font-size: .8rem;
+}
+
+.legend-dot {
+    width: 10px;
+    height: 10px;
+    background: #77ae81;
+    border-radius: 50%;
+}
+
+  .laut {
+    position: relative;
+    border-radius: 16px;
+    padding: 12px;
+    background:
+      radial-gradient(rgba(255,255,255,.07) 1px, transparent 1.5px) 0 0 / 26px 26px,
+      radial-gradient(ellipse at 35% 45%, #1c5d73 0%, #0f3b4c 55%, #0a2a37 100%);
+  }
+  svg { display: block; width: 100%; height: auto; }
+
+  .provinsi { cursor: pointer; outline: none; }
+  .provinsi use {
+    fill: var(--warna);
+    stroke: rgba(10, 42, 55, .55);
+    stroke-width: .6;
+    stroke-linejoin: round;
+    transition: filter .15s;
+  }
+  .provinsi:hover use, .provinsi:focus-visible use { filter: brightness(1.18); }
+
+  #sorot use {
+    fill: none; stroke: #fff; stroke-width: 1.8; stroke-linejoin: round;
+    filter: drop-shadow(0 0 3px rgba(255,255,255,.85));
+    pointer-events: none;
+  }
+
+  .tip {
+    position: absolute; pointer-events: none; white-space: nowrap;
+    background: #0a2a37; color: #fff; font-weight: 600; font-size: .9rem;
+    padding: 4px 10px; border-radius: 8px; border: 1px solid rgba(255,255,255,.25);
+    transform: translate(14px, -38px); opacity: 0; transition: opacity .1s;
+  }
+  .tip.on { opacity: 1; }
+
+.map-status {
+    margin: 15px 0 0;
+    padding: 13px 15px;
+    background: #edf6ef;
+    border-radius: 12px;
+    color: #315d48;
+    line-height: 1.7;
+    font-size: .9rem;
+}
+
+.culture-panel {
+    margin-top: 24px;
+    padding: 23px;
+    border: 1px solid #e5ece8;
+    background: linear-gradient(145deg, #ffffff, #f3f8f5);
+    border-radius: 18px;
+}
+
+.culture-panel h3 {
+    margin: 0 0 8px;
+    font-family: "Young Serif", Georgia, serif;
+    font-size: 1.55rem;
+    font-weight: 400;
+}
+
+.culture-description {
+    margin: 0 0 18px;
+    color: var(--muted);
+    line-height: 1.8;
+}
+
+.culture-details {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.detail-item {
+    padding: 14px;
+    background: white;
+    border: 1px solid #e6eee9;
+    border-radius: 13px;
+    min-width: 0;
+}
+
+.detail-item span {
+    display: block;
+    margin-bottom: 7px;
+    color: var(--muted);
+    font-size: .8rem;
+}
+
+.detail-item strong {
+    display: block;
+    overflow-wrap: anywhere;
+    font-size: .92rem;
+}
+
+.list-card {
+    margin-top: 24px;
+}
+
+.search-box {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #d9e5df;
+    border-radius: 12px;
+    outline: none;
+    margin-bottom: 16px;
+    background: #fbfdfb;
+}
+
+.search-box:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px #176b5715;
+}
+
+.region-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 9px;
+}
+
+.region-link {
+    display: block;
+    width: 100%;
+    padding: 10px 12px;
+    text-align: left;
+    background: #f5f8f6;
+    border: 1px solid #e7eee9;
+    border-radius: 10px;
+    color: var(--text);
+    cursor: pointer;
+    transition: .15s;
+}
+
+.region-link:hover,
+.region-link.terpilih {
+    background: #e2f2e8;
+    border-color: #85b99b;
+    color: #145a42;
+}
+
+.region-link[hidden] {
+    display: none;
+}
+
+.region-heading {
+    grid-column: 1 / -1;
+    margin: 15px 0 2px;
+    padding-bottom: 7px;
+    border-bottom: 1px solid #e4ece7;
+    font-size: .85rem;
+    font-weight: 800;
+    color: var(--primary);
+}
+
+.region-heading:first-child {
+    margin-top: 0;
+}
+
+.sidebar .card + .card {
+    margin-top: 20px;
+}
+
+.welcome-box {
+    padding: 20px;
+    border-radius: 16px;
+    background: #edf6ef;
+    margin-bottom: 20px;
+}
+
+.welcome-box .emoji {
+    font-size: 2rem;
+}
+
+.welcome-box h3 {
+    margin: 10px 0 6px;
+}
+
+.welcome-box p {
+    margin: 0;
+    color: var(--muted);
+    font-size: .88rem;
+    line-height: 1.7;
+}
+
+.quick-facts {
+    display: grid;
+    gap: 12px;
+}
+
+.quick-fact {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 13px;
+    border: 1px solid #e7eee9;
+    border-radius: 13px;
+}
+
+.quick-fact-icon {
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    flex-shrink: 0;
+    background: #f0f6f2;
+    border-radius: 12px;
+    font-size: 1.3rem;
+}
+
+.quick-fact strong {
+    display: block;
+    font-size: .9rem;
+}
+
+.quick-fact small {
+    color: var(--muted);
+    font-size: .78rem;
+}
+
+.tip {
+    padding: 16px;
+    border-radius: 14px;
+    background: #fff5db;
+    color: #76571b;
+    font-size: .87rem;
+    line-height: 1.7;
+}
+
+footer {
+    padding: 25px 20px;
+    text-align: center;
+    color: var(--muted);
+    font-size: .82rem;
+}
+
+@media (max-width: 1050px) {
+    .content-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+    }
+
+    .sidebar .card + .card {
+        margin-top: 0;
+    }
+}
+
+@media (max-width: 750px) {
+    .stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .hero {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 24px;
+    }
+
+    .container {
+        padding: 22px 14px 35px;
+    }
+
+    .card {
+        padding: 17px;
+    }
+
+    .sidebar {
+        grid-template-columns: 1fr;
+    }
+
+    .topbar {
+        padding: 14px 18px;
+    }
+
+    .topbar small {
+        display: none;
+    }
+}
+
+@media (max-width: 420px) {
+    .stats {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .stat-card {
+        padding: 15px;
+    }
+
+    .stat-value {
+        font-size: 1.4rem;
+    }
+
+    .culture-details,
+    .region-list {
+        grid-template-columns: 1fr;
+    }
+
+    .region-heading {
+        grid-column: 1;
+    }
+
+    .topbar-link {
+        padding: 8px 10px;
+        font-size: .8rem;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<nav class="topbar">
+    <div class="brand">
+        <div class="brand-icon">🏝️</div>
+        <div>
+            <div>NusantaraLand</div>
+            <small>Jelajah budaya Indonesia</small>
+        </div>
+    </div>
+    <a class="topbar-link" href="{{ route('dashboard') }}">← Kembali ke Beranda</a>
+</nav>
+
+<main class="container">
+
+    <section class="hero">
+        <div>
+            <p class="eyebrow">DASHBOARD BUDAYA INDONESIA</p>
+            <h1>Jelajahi Kekayaan Nusantara 🇮🇩</h1>
+            <p>
+                Kenali keunikan rumah adat, tarian, makanan khas, pakaian adat,
+                dan tradisi dari berbagai daerah di Indonesia.
+            </p>
+        </div>
+        <div class="hero-badge">🌿 Beragam Budaya, Satu Indonesia</div>
+    </section>
+
+    <section class="stats">
+        <article class="stat-card">
+            <div class="stat-icon">🗺️</div>
+            <p class="stat-label">Provinsi di Indonesia</p>
+            <p class="stat-value">38</p>
+            <span class="stat-note">Dari Aceh hingga Papua</span>
+        </article>
+
+        <article class="stat-card">
+            <div class="stat-icon">🏡</div>
+            <p class="stat-label">Rumah Adat</p>
+            <p class="stat-value">Beragam</p>
+            <span class="stat-note">Arsitektur khas daerah</span>
+        </article>
+
+        <article class="stat-card">
+            <div class="stat-icon">💃</div>
+            <p class="stat-label">Seni dan Tarian</p>
+            <p class="stat-value">Kaya</p>
+            <span class="stat-note">Warisan budaya Nusantara</span>
+        </article>
+
+        <article class="stat-card">
+            <div class="stat-icon">🍜</div>
+            <p class="stat-label">Kuliner Daerah</p>
+            <p class="stat-value">Unik</p>
+            <span class="stat-note">Cita rasa setiap wilayah</span>
+        </article>
+    </section>
+
+    <div class="content-grid">
+
+        <div class="main-column">
+
+            <section class="card">
+                <p class="section-label">INTERACTIVE EXPLORER</p>
+                <h2 class="section-title">🧭 Peta Budaya Nusantara</h2>
+                <p class="section-desc">
+                    Klik salah satu provinsi pada peta. Informasi budaya akan
+                    ditampilkan di bawah peta tanpa membuka halaman baru.
+                </p>
+
+                <div class="map-legend">
+                    <span class="legend-dot"></span>
+                    <span>Pilih provinsi untuk melihat informasi budaya</span>
+                </div>
+
+                <div class="laut">
+                   <svg viewBox="0 0 1040 380" role="group" aria-label="Peta provinsi Indonesia, pilih provinsi" xmlns:c2pa="http://c2pa.org/manifest"><metadata><c2pa:manifest>AAAWgmp1bWIAAAAeanVtZGMycGEAEQAQgAAAqgA4m3EDYzJwYQAAABZcanVtYgAAAEdqdW1kYzJtYQARABCAAACqADibcQN1cm46YzJwYTpiZmZlMDhkNi01MDM5LTQ2MjAtYWJlNC00MzQ4NWUzMjdiZWEAAAADl2p1bWIAAAApanVtZGMyYXMAEQAQgAAAqgA4m3EDYzJwYS5hc3NlcnRpb25zAAAAALxqdW1iAAAARGp1bWRjYm9yABEAEIAAAKoAOJtxE2MycGEuaW5ncmVkaWVudC52MwAAAAAYYzJzaEjZ2/x5v5u4JbWuNU0hxd8AAABwY2JvcqNpZGM6Zm9ybWF0bWltYWdlL3N2Zyt4bWxqaW5zdGFuY2VJRHgseG1wOmlpZDplYTczOTMxMS05YTI5LTQ0MzUtYjRjNi1kNTJhNjlkZjkyODhscmVsYXRpb25zaGlwaHBhcmVudE9mAAAB4mp1bWIAAABBanVtZGNib3IAEQAQgAAAqgA4m3ETYzJwYS5hY3Rpb25zLnYyAAAAABhjMnNoF8gw6Udq1wesxkPA0dDrXAAAAZljYm9yomdhY3Rpb25zgqJmYWN0aW9ua2MycGEub3BlbmVkanBhcmFtZXRlcnOha2luZ3JlZGllbnRzgaJjdXJseC1zZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmluZ3JlZGllbnQudjNkaGFzaFggLV11DHCba4L9eKq72T3DEqCuUL6ieA9CHuqcz+5tzFekZmFjdGlvbngdY29tLmFudGhyb3BpYy5jbGF1ZGUucHJvdmlkZWRqcGFyYW1ldGVyc6F4H2NvbS5hbnRocm9waWMub3JpZ2luLWNvbmZpZGVuY2VndW5rbm93bmtkZXNjcmlwdGlvbnhmQ2xhdWRlIHByb3ZpZGVkIHRoaXMgZmlsZSBhdCB0aGUgcmVxdWVzdCBvZiBhIHVzZXIgYW5kIG1heSBoYXZlIGNyZWF0ZWQgb3IgbW9kaWZpZWQgdGhlIGZpbGUgY29udGVudHMubXNvZnR3YXJlQWdlbnShZG5hbWVmQ2xhdWRlcmFsbEFjdGlvbnNJbmNsdWRlZPUAAADIanVtYgAAAEBqdW1kY2JvcgARABCAAACqADibcRNjMnBhLmhhc2guZGF0YQAAAAAYYzJzaFsP7+BMjaaaYAhsG9omhWoAAACAY2JvcqVjYWxnZnNoYTI1NmNwYWRNAAAAAAAAAAAAAAAAAGRoYXNoWCA6eERXRpzwWKxM4rrhkjjgzM/rvLKSY1Ld5QLVxYwdxGRuYW1lbmp1bWJmIG1hbmlmZXN0amV4Y2x1c2lvbnOBomVzdGFydBidZmxlbmd0aBkeBAAAAj5qdW1iAAAAJ2p1bWRjMmNsABEAEIAAAKoAOJtxA2MycGEuY2xhaW0udjIAAAACD2Nib3KlY2FsZ2ZzaGEyNTZpc2lnbmF0dXJleE1zZWxmI2p1bWJmPS9jMnBhL3VybjpjMnBhOmJmZmUwOGQ2LTUwMzktNDYyMC1hYmU0LTQzNDg1ZTMyN2JlYS9jMnBhLnNpZ25hdHVyZWppbnN0YW5jZUlEeCx4bXA6aWlkOjdjNmVlMjhlLTBjMWMtNDA0Ny1hYzZlLWFhNjFjZThlNWU1M3JjcmVhdGVkX2Fzc2VydGlvbnODomN1cmx4LXNlbGYjanVtYmY9YzJwYS5hc3NlcnRpb25zL2MycGEuaW5ncmVkaWVudC52M2RoYXNoWCAtXXUMcJtrgv14qrvZPcMSoK5QvqJ4D0Ie6pzP7m3MV6JjdXJseCpzZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmFjdGlvbnMudjJkaGFzaFggsBnpEf1OYF4rXeX6IziP6rG3G6M50QMyI1ORxGf7NXWiY3VybHgpc2VsZiNqdW1iZj1jMnBhLmFzc2VydGlvbnMvYzJwYS5oYXNoLmRhdGFkaGFzaFggqs7iyOYHpUS5bXV7g9d/G7iJobqQIOEmuWsLL3p9R290Y2xhaW1fZ2VuZXJhdG9yX2luZm+jZG5hbWVvQW50aHJvcGljIEZpbGVzZ3ZlcnNpb25lMS4wLjBrc3BlY1ZlcnNpb25lMi40LjAAABA4anVtYgAAAChqdW1kYzJjcwARABCAAACqADibcQNjMnBhLnNpZ25hdHVyZQAAABAIY2JvctKEWQISogEmGCFZAgowggIGMIIBjaADAgECAhRA5aAK7sI50L64g/oGQgU9Z1UTADAKBggqhkjOPQQDAzBJMRcwFQYDVQQKEw5BbnRocm9waWMsIFBCQzEuMCwGA1UEAxMlQW50aHJvcGljIENvbnRlbnQgQ3JlZGVudGlhbHMgUm9vdCBDQTAeFw0yNjA4MDcxODQzNTZaFw0yODA4MDYxOTQzNTZaMEQxFzAVBgNVBAoTDkFudGhyb3BpYywgUEJDMSkwJwYDVQQDEyBBbnRocm9waWMgQ2xhdWRlIENvbnRlbnQgU2lnbmluZzBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABJh6CmvLUBgFFNU0vUKlOVtE6djd17L5SuwX0LemFisBM3dkd/3cyjxFA3Qo5S46fX0/ihY0VZ7mfb9KF703t5OjWDBWMA4GA1UdDwEB/wQEAwIHgDAVBgNVHSUEDjAMBgorBgEEAYPoXgIBMAwGA1UdEwEB/wQCMAAwHwYDVR0jBBgwFoAUzlHiBIFOZFsj+OPEz5o+nMHXXMIwCgYIKoZIzj0EAwMDZwAwZAIwMXMdFJ4BetLLVY7ORuE9noqbbAZOZn/aArXyTwFAZfKrPzxF2vPoJNf1+UCdg1XGAjBwX1zd9WGqYkqmL5SFqw1QySjr1zJfpJM9+1rdDwSPLMOPOjKuiXjoU/pUUeG9RwmhY3BhZFkNngAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPZYQDkz+XkXBOQb4kZsFpSmAyWMI6bOdJoHZyOPKydUjxaCchN9ZKtx5NdNkw5Y8FszOcUNrzaDOPgnHtwdJprDK/Q=</c2pa:manifest></metadata>
+        <defs>
+      <filter id="timbul" filterUnits="userSpaceOnUse" x="-20" y="-20" width="1100" height="420" color-interpolation-filters="sRGB">
+        <feGaussianBlur in="SourceAlpha" stdDeviation="2.2" result="b"/>
+        <feComposite in="SourceAlpha" in2="b" operator="out" result="tepi"/>
+        <feFlood flood-color="#ffffff" flood-opacity=".38"/>
+        <feComposite in2="tepi" operator="in" result="rim"/>
+        <feOffset in="SourceAlpha" dy="3" result="o"/>
+        <feGaussianBlur in="o" stdDeviation="2.5" result="sb"/>
+        <feFlood flood-color="#03121a" flood-opacity=".5"/>
+        <feComposite in2="sb" operator="in" result="bayang"/>
+        <feMerge><feMergeNode in="bayang"/><feMergeNode in="SourceGraphic"/><feMergeNode in="rim"/></feMerge>
+      </filter>
+      <filter id="kabur" filterUnits="userSpaceOnUse" x="-20" y="-20" width="1100" height="420">
+        <feGaussianBlur stdDeviation="3.5"/>
+      </filter>
+      <!-- bentuk pulau (sudah dihaluskan), dipakai ulang lewat <use> -->
+      <path id="b1" d="M17.6,8.8 C18.6,8.2 21.5,11.3 23.6,12.4 C25.7,13.4 27.8,14.7 30.0,15.2 C32.3,15.7 34.7,15.3 37.0,15.3 C39.3,15.4 41.8,15.3 44.0,15.4 C46.2,15.5 48.2,15.6 50.2,16.2 C52.2,16.8 53.9,18.5 55.9,18.9 C57.9,19.4 60.0,19.1 62.1,18.8 C64.2,18.6 66.5,17.0 68.2,17.6 C69.9,18.2 71.3,20.8 72.3,22.7 C73.3,24.6 73.1,27.1 74.3,28.9 C75.4,30.7 77.9,31.6 79.1,33.4 C80.3,35.2 81.5,38.0 81.4,39.6 C81.3,41.2 79.5,42.0 78.5,43.1 C77.4,44.2 75.9,45.0 75.2,46.3 C74.4,47.5 74.6,49.2 74.1,50.7 C73.7,52.2 72.9,53.6 72.6,55.0 C72.3,56.4 72.2,57.6 72.2,58.9 C72.2,60.3 72.7,61.5 72.7,62.9 C72.7,64.2 72.7,65.6 72.3,66.9 C71.9,68.1 71.2,70.3 70.4,70.4 C69.6,70.5 68.6,68.5 67.6,67.7 C66.6,66.8 65.4,66.2 64.6,65.2 C63.7,64.2 63.6,62.7 62.7,61.7 C61.8,60.7 60.5,60.5 59.4,59.4 C58.3,58.3 57.3,56.7 56.2,55.3 C55.2,54.0 54.4,52.3 53.1,51.2 C51.8,50.1 49.9,49.8 48.4,48.9 C46.9,48.1 45.4,47.2 44.0,46.2 C42.6,45.2 41.2,44.2 40.0,43.0 C38.8,41.9 37.9,40.3 36.6,39.2 C35.3,38.2 33.3,38.0 32.0,36.9 C30.6,35.9 30.1,34.3 28.6,33.0 C27.1,31.7 24.2,30.7 22.7,29.0 C21.1,27.2 20.2,24.8 19.4,22.6 C18.5,20.4 17.9,18.1 17.6,15.8 C17.4,13.5 16.6,9.4 17.6,8.8Z"/>
+      <path id="b2" d="M28.6,68.2 C29.1,68.1 30.2,70.2 31.3,70.9 C32.3,71.6 33.5,72.1 34.7,72.5 C35.9,72.9 37.1,73.0 38.3,73.4 C39.5,73.8 41.6,74.2 41.8,74.8 C42.0,75.4 40.4,76.3 39.6,77.0 C38.9,77.8 38.1,79.2 37.4,79.2 C36.7,79.2 36.4,77.8 35.7,77.2 C35.1,76.7 34.3,76.2 33.5,76.0 C32.7,75.7 31.8,76.1 30.9,75.9 C30.1,75.7 29.0,75.5 28.6,74.8 C28.2,74.1 28.5,72.6 28.5,71.5 C28.5,70.4 28.1,68.3 28.6,68.2Z"/>
+      <path id="b3" d="M81.4,39.6 C82.3,39.5 83.2,41.5 84.0,42.5 C84.8,43.6 85.4,44.8 86.3,45.7 C87.2,46.7 88.4,47.3 89.4,48.1 C90.4,48.9 90.9,49.2 92.4,50.6 C93.9,52.0 96.3,54.8 98.4,56.8 C100.4,58.7 102.7,60.5 105.0,62.2 C107.2,64.0 110.0,65.3 111.9,67.4 C113.9,69.5 115.2,73.5 116.6,74.8 C118.0,76.1 119.0,75.0 120.1,75.3 C121.2,75.6 122.2,76.2 123.3,76.6 C124.4,77.1 125.6,77.3 126.6,77.7 C127.7,78.1 129.5,77.8 129.8,79.2 C130.1,80.6 128.8,83.8 128.4,86.1 C128.0,88.5 128.5,91.1 127.7,93.2 C126.8,95.2 124.2,96.6 123.1,98.7 C122.0,100.8 122.2,104.1 121.0,105.6 C119.8,107.1 117.4,106.7 115.7,107.6 C114.1,108.4 112.7,109.7 111.1,110.7 C109.5,111.8 107.5,112.5 106.2,113.8 C105.0,115.2 103.9,119.0 103.4,118.8 C102.9,118.6 103.5,114.7 103.0,112.7 C102.6,110.8 101.4,109.0 100.5,107.2 C99.6,105.4 98.6,103.7 97.6,102.0 C96.7,100.2 95.7,98.2 94.6,96.8 C93.5,95.4 92.5,94.7 91.3,93.8 C90.1,92.9 88.4,92.6 87.5,91.5 C86.7,90.4 86.9,88.5 86.2,87.2 C85.6,85.9 84.7,84.6 83.6,83.6 C82.5,82.6 80.8,82.0 79.4,81.2 C78.0,80.4 76.2,79.9 75.2,78.8 C74.1,77.7 73.9,75.9 73.1,74.5 C72.3,73.1 70.5,71.7 70.4,70.4 C70.3,69.1 71.9,68.1 72.3,66.9 C72.7,65.6 72.7,64.2 72.7,62.9 C72.7,61.5 72.2,60.3 72.2,58.9 C72.2,57.6 72.3,56.4 72.6,55.0 C72.9,53.6 73.7,52.2 74.1,50.7 C74.6,49.2 74.4,47.5 75.2,46.3 C75.9,45.0 77.4,44.2 78.5,43.1 C79.5,42.0 80.5,39.7 81.4,39.6Z"/>
+      <path id="b4" d="M63.8,105.6 C64.5,105.5 65.8,106.4 66.6,107.0 C67.4,107.7 67.8,109.0 68.7,109.4 C69.5,109.8 70.7,109.4 71.7,109.5 C72.8,109.6 74.4,109.4 74.8,110.0 C75.2,110.6 74.5,112.0 74.1,112.9 C73.8,113.9 72.9,114.6 72.5,115.4 C72.0,116.3 71.6,117.2 71.3,118.2 C70.9,119.1 70.8,121.0 70.4,121.0 C70.0,121.0 69.3,118.9 68.6,118.1 C67.8,117.3 66.8,116.6 65.8,116.2 C64.8,115.7 63.6,115.8 62.6,115.5 C61.5,115.2 59.8,115.0 59.4,114.4 C59.0,113.8 59.7,112.7 60.0,112.0 C60.3,111.2 61.1,110.7 61.4,109.9 C61.8,109.2 61.8,108.2 62.2,107.5 C62.6,106.8 63.1,105.7 63.8,105.6Z"/>
+      <path id="b5" d="M121.0,105.6 C119.4,104.9 117.4,106.7 115.7,107.6 C114.1,108.4 112.7,109.7 111.1,110.7 C109.5,111.8 107.5,112.5 106.2,113.8 C105.0,115.2 103.3,117.3 103.4,118.8 C103.5,120.3 106.0,121.3 106.8,122.8 C107.6,124.4 107.5,126.4 108.5,127.9 C109.4,129.3 111.5,130.0 112.5,131.4 C113.5,132.8 113.3,134.9 114.4,136.4 C115.5,137.9 117.4,139.4 119.1,140.4 C120.8,141.5 123.2,141.6 124.8,142.9 C126.3,144.1 127.7,146.0 128.6,147.9 C129.4,149.7 129.1,152.2 129.8,154.0 C130.5,155.8 131.4,157.4 132.7,158.6 C133.9,159.9 136.1,160.3 137.2,161.6 C138.4,162.9 138.8,164.8 139.4,166.5 C140.0,168.1 140.3,170.2 140.8,171.6 C141.3,173.0 142.0,173.8 142.5,174.9 C143.1,176.0 143.5,178.0 144.1,178.2 C144.7,178.4 145.4,176.6 146.0,175.8 C146.7,175.0 147.3,174.0 148.1,173.5 C149.0,173.0 150.1,172.9 151.1,172.6 C152.0,172.2 153.7,172.7 154.0,171.6 C154.3,170.5 153.3,167.8 153.1,165.8 C152.9,163.9 152.9,162.0 152.7,160.0 C152.4,158.1 152.2,155.9 151.3,154.2 C150.4,152.4 148.6,151.1 147.4,149.6 C146.2,148.1 144.8,146.8 144.0,145.1 C143.1,143.5 143.1,141.3 142.1,139.8 C141.2,138.3 139.5,137.2 138.2,135.9 C136.8,134.6 135.4,133.8 134.2,132.0 C133.0,130.2 131.5,127.6 130.8,125.2 C130.1,122.8 130.9,119.9 130.0,117.6 C129.1,115.4 126.9,113.7 125.4,111.7 C123.9,109.7 122.6,106.3 121.0,105.6Z"/>
+      <path id="b6" d="M90.2,158.4 C90.6,158.5 92.5,160.1 93.3,161.1 C94.2,162.2 94.5,163.9 95.6,164.6 C96.6,165.4 98.2,165.4 99.5,165.8 C100.8,166.3 102.8,166.6 103.4,167.2 C104.0,167.8 103.2,168.9 102.8,169.7 C102.5,170.4 102.0,171.5 101.2,171.6 C100.4,171.7 98.8,171.0 97.8,170.4 C96.7,169.9 95.7,169.1 94.9,168.2 C94.1,167.3 93.6,166.1 92.8,165.2 C92.1,164.3 90.6,163.6 90.2,162.8 C89.8,162.0 90.7,161.3 90.7,160.6 C90.7,159.9 89.8,158.3 90.2,158.4Z"/>
+      <path id="b7" d="M118.8,189.2 C119.4,188.9 120.6,190.3 121.4,191.0 C122.2,191.7 122.8,192.6 123.4,193.4 C124.0,194.3 124.3,195.4 125.0,196.1 C125.7,196.9 127.5,197.3 127.6,198.0 C127.7,198.7 126.1,200.1 125.4,200.2 C124.7,200.3 123.8,199.5 123.1,198.9 C122.5,198.3 122.3,197.2 121.6,196.8 C120.9,196.4 119.9,196.7 119.1,196.6 C118.2,196.4 116.8,196.5 116.6,195.8 C116.4,195.1 117.4,193.6 117.7,192.5 C118.1,191.4 118.2,189.5 118.8,189.2Z"/>
+      <path id="b8" d="M129.8,79.2 C130.4,78.4 131.2,80.7 132.1,81.3 C132.9,81.8 134.0,82.1 134.9,82.3 C135.9,82.4 137.1,82.0 138.0,82.2 C139.0,82.4 139.8,83.1 140.8,83.6 C141.8,84.1 143.0,84.6 144.0,85.3 C145.0,86.0 145.7,87.3 146.7,87.8 C147.8,88.3 149.1,88.3 150.4,88.3 C151.6,88.3 152.5,87.8 154.0,88.0 C155.5,88.2 157.6,88.6 159.1,89.4 C160.7,90.2 162.1,91.5 163.3,92.8 C164.4,94.1 164.9,95.9 166.0,97.3 C167.0,98.7 168.1,99.9 169.4,101.2 C170.7,102.5 172.2,103.9 173.7,105.1 C175.3,106.4 176.9,107.4 178.5,108.5 C180.1,109.6 182.1,110.5 183.5,111.8 C184.9,113.1 185.8,115.3 187.0,116.6 C188.2,117.9 189.6,118.3 190.5,119.5 C191.4,120.7 191.3,122.7 192.3,123.6 C193.3,124.5 195.3,124.2 196.6,124.9 C197.9,125.6 199.7,126.4 200.2,127.6 C200.7,128.8 200.3,130.8 199.9,132.2 C199.4,133.6 197.9,134.8 197.6,136.2 C197.2,137.6 197.7,139.2 197.8,140.7 C197.9,142.2 197.3,144.0 198.0,145.2 C198.7,146.4 200.4,147.2 201.8,147.7 C203.2,148.3 204.9,148.0 206.3,148.5 C207.7,149.0 209.1,149.8 210.3,150.7 C211.5,151.6 214.5,153.5 213.4,154.0 C212.3,154.5 206.9,154.5 203.8,154.0 C200.7,153.4 197.9,151.2 194.8,150.6 C191.8,150.1 188.5,150.5 185.4,150.7 C182.2,150.9 178.6,152.3 176.0,151.8 C173.4,151.3 171.9,148.5 169.6,147.7 C167.2,146.8 164.5,146.7 162.0,146.6 C159.5,146.5 157.0,146.7 154.5,147.2 C152.1,147.7 149.2,149.9 147.4,149.6 C145.6,149.3 144.8,146.8 144.0,145.1 C143.1,143.5 143.1,141.3 142.1,139.8 C141.2,138.3 139.5,137.2 138.2,135.9 C136.8,134.6 135.4,133.8 134.2,132.0 C133.0,130.2 131.5,127.6 130.8,125.2 C130.1,122.8 130.9,119.9 130.0,117.6 C129.1,115.4 126.9,113.7 125.4,111.7 C123.9,109.7 121.4,107.8 121.0,105.6 C120.6,103.4 122.0,100.8 123.1,98.7 C124.2,96.6 126.8,95.2 127.7,93.2 C128.5,91.1 128.0,88.5 128.4,86.1 C128.8,83.8 129.2,80.0 129.8,79.2Z"/>
+      <path id="b9" d="M198.0,105.6 C198.4,105.2 200.9,105.9 202.4,106.1 C203.9,106.3 205.4,106.3 206.8,106.7 C208.2,107.0 209.6,108.1 211.1,108.3 C212.5,108.5 214.5,107.8 215.6,107.8 C216.7,107.8 217.1,108.1 217.8,108.2 C218.6,108.4 219.3,108.5 220.1,108.6 C220.8,108.7 221.7,108.5 222.4,108.8 C223.1,109.0 224.4,109.6 224.4,110.0 C224.4,110.4 223.1,110.6 222.6,111.1 C222.1,111.6 221.9,112.2 221.5,112.8 C221.2,113.4 220.8,114.0 220.5,114.6 C220.3,115.3 220.7,116.3 220.0,116.6 C219.3,116.9 217.7,116.3 216.6,116.3 C215.5,116.3 214.3,116.8 213.2,116.6 C212.1,116.5 211.1,115.9 210.0,115.5 C208.9,115.1 207.8,114.9 206.8,114.4 C205.8,113.9 205.2,113.0 204.3,112.4 C203.4,111.8 202.2,111.6 201.4,111.0 C200.7,110.3 200.4,109.1 199.8,108.2 C199.2,107.3 197.6,106.0 198.0,105.6Z"/>
+      <path id="b10" d="M217.8,134.2 C218.3,133.6 219.3,134.2 220.1,134.3 C220.9,134.3 221.7,134.2 222.4,134.4 C223.2,134.5 223.9,134.8 224.6,135.1 C225.3,135.5 226.4,135.9 226.6,136.4 C226.8,136.9 226.1,137.7 225.6,138.2 C225.2,138.7 224.3,138.9 224.0,139.4 C223.6,139.9 223.7,140.8 223.4,141.4 C223.1,142.0 222.9,143.0 222.2,143.0 C221.5,143.0 220.1,142.0 219.0,141.6 C217.9,141.2 215.9,141.5 215.6,140.8 C215.3,140.1 216.6,138.7 216.9,137.6 C217.3,136.5 217.3,134.8 217.8,134.2Z"/>
+      <path id="b11" d="M294.8,46.2 C295.1,45.7 296.3,46.4 297.0,46.7 C297.8,46.9 298.4,47.4 299.1,47.7 C299.8,47.9 300.6,47.9 301.4,48.1 C302.1,48.2 303.1,47.8 303.6,48.4 C304.1,49.0 304.1,50.7 304.1,51.8 C304.1,52.9 303.8,54.0 303.7,55.2 C303.5,56.3 303.6,57.6 303.3,58.7 C302.9,59.7 302.3,61.1 301.4,61.6 C300.5,62.1 298.9,61.7 297.8,61.4 C296.7,61.0 295.2,60.3 294.8,59.4 C294.4,58.5 295.5,57.3 295.7,56.2 C295.8,55.1 295.6,53.9 295.5,52.8 C295.4,51.7 295.1,50.6 295.0,49.5 C294.9,48.4 294.5,46.7 294.8,46.2Z"/>
+      <path id="b12" d="M257.4,61.6 C257.9,61.0 259.0,61.5 259.7,61.6 C260.5,61.6 261.3,61.6 262.0,61.7 C262.8,61.8 263.6,62.0 264.3,62.4 C265.0,62.7 266.1,63.2 266.2,63.8 C266.3,64.4 265.5,65.3 265.1,66.0 C264.7,66.7 264.7,67.7 264.0,68.2 C263.3,68.7 261.8,68.9 260.7,68.9 C259.6,68.9 258.0,68.9 257.4,68.2 C256.8,67.5 256.9,66.0 256.9,64.9 C256.9,63.8 256.9,62.2 257.4,61.6Z"/>
+      <path id="b13" d="M213.4,154.0 C214.8,154.7 212.8,157.0 212.4,158.4 C212.0,159.8 211.1,161.2 210.8,162.6 C210.4,164.1 210.2,165.6 210.3,167.1 C210.3,168.6 211.6,169.9 211.2,171.6 C210.8,173.3 209.0,175.6 207.7,177.5 C206.4,179.4 205.4,181.6 203.6,183.0 C201.9,184.4 199.4,184.8 197.4,185.8 C195.3,186.9 193.6,188.5 191.4,189.2 C189.2,189.9 186.6,189.2 184.4,189.8 C182.2,190.5 180.4,192.6 178.2,193.0 C176.0,193.4 173.5,192.7 171.3,192.1 C169.1,191.5 166.5,190.5 165.0,189.2 C163.5,187.9 163.6,185.9 162.5,184.5 C161.4,183.2 159.5,182.4 158.6,181.0 C157.6,179.6 157.6,177.6 156.8,176.0 C156.1,174.5 154.6,173.3 154.0,171.6 C153.4,169.9 153.3,167.8 153.1,165.8 C152.9,163.9 152.9,162.0 152.7,160.0 C152.4,158.1 152.2,155.9 151.3,154.2 C150.4,152.4 146.9,150.8 147.4,149.6 C147.9,148.4 152.1,147.7 154.5,147.2 C157.0,146.7 159.5,146.5 162.0,146.6 C164.5,146.7 167.2,146.8 169.6,147.7 C171.9,148.5 173.4,151.3 176.0,151.8 C178.6,152.3 182.2,150.9 185.4,150.7 C188.5,150.5 191.8,150.1 194.8,150.6 C197.9,151.2 200.7,153.4 203.8,154.0 C206.9,154.5 212.0,153.3 213.4,154.0Z"/>
+      <path id="b14" d="M252.8,220.0 C253.8,219.4 253.4,218.6 253.4,217.8 C253.5,217.1 253.5,216.7 253.0,215.6 C252.5,214.5 250.9,213.0 250.4,211.5 C249.9,210.0 250.3,208.2 250.0,206.7 C249.7,205.1 249.3,203.6 248.7,202.1 C248.1,200.7 247.5,199.4 246.4,198.0 C245.3,196.6 243.5,195.4 242.1,194.0 C240.8,192.6 239.6,191.0 238.3,189.5 C237.0,188.1 235.7,186.4 234.1,185.3 C232.5,184.1 230.5,183.3 228.8,182.6 C227.1,181.9 225.4,181.5 223.8,180.9 C222.2,180.2 220.3,179.8 219.0,178.7 C217.6,177.6 217.0,175.7 215.7,174.5 C214.4,173.3 212.5,171.1 211.2,171.6 C209.9,172.1 209.0,175.6 207.7,177.5 C206.4,179.4 205.4,181.6 203.6,183.0 C201.9,184.4 199.4,184.8 197.4,185.8 C195.3,186.9 193.6,188.5 191.4,189.2 C189.2,189.9 186.6,189.2 184.4,189.8 C182.2,190.5 180.4,192.6 178.2,193.0 C176.0,193.4 173.5,192.7 171.3,192.1 C169.1,191.5 165.3,188.7 165.0,189.2 C164.7,189.7 168.4,193.1 169.6,195.3 C170.8,197.5 171.0,200.4 172.4,202.5 C173.8,204.5 175.9,206.3 177.9,207.8 C180.0,209.2 183.2,209.8 184.8,211.2 C186.4,212.6 186.5,214.5 187.2,216.1 C188.0,217.8 188.5,219.7 189.5,221.1 C190.6,222.6 192.0,224.1 193.6,225.1 C195.2,226.0 197.8,226.7 199.1,226.6 C200.4,226.5 200.8,225.0 201.7,224.3 C202.6,223.6 203.6,222.9 204.6,222.4 C205.7,221.9 206.8,221.5 207.9,221.1 C209.0,220.7 209.8,219.9 211.2,220.0 C212.6,220.1 214.5,221.0 216.1,221.7 C217.7,222.3 219.1,223.5 220.7,224.0 C222.3,224.4 224.1,224.4 225.8,224.4 C227.6,224.5 229.3,224.8 231.0,224.4 C232.7,224.0 234.5,222.5 236.3,222.3 C238.2,222.0 240.2,223.0 242.0,222.9 C243.9,222.8 245.6,221.9 247.4,221.4 C249.2,220.9 251.8,220.6 252.8,220.0Z"/>
+      <path id="b15" d="M144.1,178.2 C144.1,179.1 145.4,180.3 146.1,181.3 C146.9,182.3 148.2,183.0 148.6,184.1 C149.0,185.2 148.6,186.6 148.8,187.8 C148.9,189.0 149.1,189.4 149.6,191.4 C150.1,193.4 150.6,197.3 152.1,199.7 C153.5,202.0 156.1,203.8 158.2,205.7 C160.3,207.6 162.4,209.4 164.6,211.0 C166.8,212.7 169.4,213.9 171.6,215.6 C173.8,217.3 175.6,219.3 177.7,221.1 C179.7,222.9 181.9,224.5 184.1,226.2 C186.3,227.8 188.8,229.2 190.7,231.1 C192.7,233.0 194.6,236.9 195.8,237.6 C197.0,238.3 197.4,236.3 197.9,235.4 C198.5,234.6 198.9,233.6 199.0,232.6 C199.2,231.6 198.6,230.6 198.6,229.6 C198.6,228.6 199.9,227.4 199.1,226.6 C198.3,225.8 195.2,226.0 193.6,225.1 C192.0,224.1 190.6,222.6 189.5,221.1 C188.5,219.7 188.0,217.8 187.2,216.1 C186.5,214.5 186.4,212.6 184.8,211.2 C183.2,209.8 180.0,209.2 177.9,207.8 C175.9,206.3 173.8,204.5 172.4,202.5 C171.0,200.4 170.8,197.5 169.6,195.3 C168.4,193.1 166.2,191.0 165.0,189.2 C163.8,187.4 163.6,185.9 162.5,184.5 C161.4,183.2 159.5,182.4 158.6,181.0 C157.6,179.6 157.6,177.6 156.8,176.0 C156.1,174.5 155.0,172.2 154.0,171.6 C153.0,171.0 152.0,172.2 151.1,172.6 C150.1,172.9 149.0,173.0 148.1,173.5 C147.3,174.0 146.7,175.0 146.0,175.8 C145.4,176.6 144.1,177.3 144.1,178.2Z"/>
+      <path id="b16" d="M195.8,237.6 C195.7,238.6 196.5,240.3 197.2,241.5 C197.8,242.6 198.8,243.7 199.9,244.5 C200.9,245.4 202.2,245.8 203.4,246.5 C204.5,247.2 205.5,248.0 206.8,248.6 C208.1,249.2 209.9,249.5 211.4,250.2 C212.9,250.8 214.2,251.7 215.6,252.6 C217.0,253.4 218.4,254.3 219.5,255.5 C220.6,256.7 221.2,258.9 222.2,259.6 C223.2,260.3 224.5,259.4 225.6,259.7 C226.7,259.9 227.7,260.8 228.8,261.0 C229.9,261.1 231.0,260.6 232.1,260.4 C233.2,260.2 234.4,259.5 235.4,259.6 C236.4,259.7 237.1,260.6 238.0,260.9 C238.9,261.2 239.8,261.3 240.8,261.4 C241.7,261.5 242.7,261.7 243.7,261.6 C244.6,261.5 246.1,261.6 246.4,260.7 C246.7,259.8 245.3,257.8 245.2,256.3 C245.2,254.8 245.7,253.2 246.1,251.8 C246.5,250.3 246.8,248.7 247.6,247.5 C248.4,246.2 250.3,245.8 250.8,244.2 C251.3,242.6 250.4,240.0 250.7,238.0 C251.0,236.0 252.4,234.2 252.5,232.2 C252.7,230.2 251.4,228.1 251.5,226.1 C251.5,224.0 253.5,220.8 252.8,220.0 C252.1,219.2 249.2,220.9 247.4,221.4 C245.6,221.9 243.9,222.8 242.0,222.9 C240.2,223.0 238.2,222.0 236.3,222.3 C234.5,222.5 232.7,224.0 231.0,224.4 C229.3,224.8 227.6,224.5 225.8,224.4 C224.1,224.4 222.3,224.4 220.7,224.0 C219.1,223.5 217.7,222.3 216.1,221.7 C214.5,221.0 212.6,220.1 211.2,220.0 C209.8,219.9 209.0,220.7 207.9,221.1 C206.8,221.5 205.7,221.9 204.6,222.4 C203.6,222.9 202.6,223.6 201.7,224.3 C200.8,225.0 199.6,225.7 199.1,226.6 C198.6,227.5 198.6,228.6 198.6,229.6 C198.6,230.6 199.2,231.6 199.0,232.6 C198.9,233.6 198.5,234.6 197.9,235.4 C197.4,236.3 195.9,236.6 195.8,237.6Z"/>
+      <path id="b17" d="M233.2,165.0 C234.2,164.3 236.6,164.1 238.1,163.3 C239.7,162.6 241.0,161.0 242.6,160.7 C244.2,160.3 246.1,161.4 247.8,161.4 C249.5,161.3 251.4,160.5 253.0,160.6 C254.6,160.7 256.1,161.3 257.6,161.7 C259.1,162.2 260.6,162.6 262.0,163.3 C263.4,164.0 264.6,165.3 266.0,165.9 C267.4,166.6 269.8,166.4 270.6,167.2 C271.4,168.0 270.8,169.4 271.0,170.5 C271.2,171.6 271.8,172.7 271.8,173.8 C271.7,174.9 270.8,175.9 270.6,177.0 C270.4,178.1 271.2,179.1 270.6,180.4 C270.0,181.7 267.8,183.0 266.9,184.5 C265.9,186.1 265.7,188.2 264.6,189.7 C263.5,191.1 261.4,191.8 260.2,193.2 C259.0,194.5 258.6,197.4 257.4,198.0 C256.2,198.6 254.2,197.3 252.8,196.5 C251.4,195.8 250.3,194.5 249.0,193.5 C247.7,192.5 246.2,191.8 245.1,190.7 C243.9,189.6 243.0,188.0 242.0,187.0 C241.0,186.0 239.9,185.7 239.1,184.8 C238.4,183.9 238.2,182.5 237.6,181.5 C237.0,180.5 236.1,179.7 235.4,178.8 C234.6,177.8 233.7,176.9 233.2,176.0 C232.7,175.1 232.7,174.2 232.5,173.3 C232.3,172.3 231.8,171.4 231.8,170.5 C231.8,169.6 232.1,168.6 232.3,167.7 C232.5,166.8 232.2,165.7 233.2,165.0Z"/>
+      <path id="b18" d="M286.0,189.2 C286.5,188.8 289.0,189.5 290.5,189.9 C291.9,190.3 293.2,191.5 294.6,191.7 C296.1,191.9 297.6,191.1 299.1,191.1 C300.6,191.0 303.1,190.8 303.6,191.4 C304.1,192.0 302.3,193.4 301.9,194.4 C301.4,195.5 300.7,196.6 300.7,197.7 C300.6,198.8 301.2,200.0 301.3,201.1 C301.5,202.3 302.0,204.0 301.4,204.6 C300.8,205.2 298.7,205.0 297.5,204.8 C296.2,204.7 294.9,204.0 293.7,203.7 C292.4,203.3 291.1,203.2 289.9,202.9 C288.6,202.7 286.5,203.1 286.0,202.4 C285.5,201.7 286.4,200.1 286.7,199.0 C287.1,197.9 287.8,196.9 287.9,195.8 C288.1,194.7 288.0,193.4 287.7,192.3 C287.3,191.2 285.5,189.6 286.0,189.2Z"/>
+      <path id="b19" d="M266.2,263.3 C266.5,262.9 267.9,263.1 268.7,263.1 C269.5,263.2 270.3,263.5 271.2,263.6 C272.0,263.6 272.8,263.2 273.7,263.3 C274.5,263.4 275.7,263.5 276.1,264.0 C276.5,264.5 275.9,265.5 275.8,266.2 C275.6,267.0 275.1,267.7 275.2,268.4 C275.2,269.1 275.9,269.8 276.1,270.5 C276.3,271.2 276.5,272.4 276.1,272.8 C275.7,273.2 274.4,272.6 273.6,272.7 C272.8,272.8 272.0,273.2 271.1,273.3 C270.3,273.4 269.5,273.4 268.7,273.3 C267.8,273.2 266.6,273.3 266.2,272.8 C265.8,272.3 266.1,271.2 266.1,270.4 C266.2,269.6 266.4,268.8 266.5,268.1 C266.6,267.3 266.8,266.4 266.7,265.7 C266.7,264.9 265.9,263.7 266.2,263.3Z"/>
+      <path id="b20" d="M235.4,266.2 C236.2,265.6 238.6,266.5 240.1,266.6 C241.7,266.7 243.5,267.3 244.9,266.8 C246.3,266.3 247.1,264.4 248.5,263.5 C249.8,262.7 251.7,262.0 253.0,261.8 C254.3,261.6 255.2,262.1 256.3,262.2 C257.4,262.4 258.5,262.4 259.6,262.5 C260.7,262.7 261.8,263.0 262.9,263.2 C264.0,263.3 265.6,262.9 266.2,263.3 C266.8,263.7 266.7,264.9 266.7,265.7 C266.8,266.4 266.6,267.3 266.5,268.1 C266.4,268.8 266.2,269.6 266.1,270.4 C266.1,271.2 266.2,271.9 266.2,272.8 C266.2,273.7 266.0,275.0 266.0,276.1 C266.0,277.2 266.2,278.2 266.2,279.4 C266.2,280.6 266.5,281.9 266.1,283.0 C265.7,284.1 264.9,285.9 264.0,286.0 C263.1,286.1 261.9,284.0 260.7,283.5 C259.5,282.9 258.0,282.5 256.6,282.5 C255.3,282.5 254.0,283.3 252.7,283.5 C251.3,283.8 249.8,283.7 248.6,283.8 C247.4,283.9 246.7,284.2 245.7,284.2 C244.8,284.3 243.7,284.3 242.8,284.1 C241.9,283.8 241.2,283.0 240.3,282.6 C239.5,282.2 238.4,282.3 237.6,281.6 C236.8,280.9 236.1,279.3 235.6,278.1 C235.1,276.9 234.7,275.5 234.6,274.2 C234.6,272.9 235.3,271.5 235.4,270.2 C235.5,268.9 234.6,266.8 235.4,266.2Z"/>
+      <path id="b21" d="M276.1,264.0 C276.8,263.8 278.7,264.8 280.0,264.8 C281.2,264.8 282.4,263.8 283.8,264.0 C285.2,264.2 286.9,265.6 288.6,266.2 C290.2,266.7 292.1,266.7 293.7,267.2 C295.4,267.6 297.0,268.3 298.7,268.9 C300.3,269.4 302.3,270.0 303.6,270.6 C304.9,271.2 305.5,271.6 306.3,272.3 C307.0,273.0 307.3,274.2 308.1,274.9 C308.8,275.7 309.9,276.0 310.7,276.8 C311.4,277.5 311.9,278.5 312.4,279.4 C312.9,280.3 313.0,281.3 313.4,282.2 C313.8,283.0 314.8,283.7 315.0,284.6 C315.2,285.5 314.7,286.5 314.7,287.5 C314.6,288.5 314.7,289.4 314.6,290.4 C314.5,291.4 314.2,292.4 314.0,293.3 C313.7,294.3 313.4,295.2 313.0,296.1 C312.5,297.0 311.9,297.8 311.4,298.7 C310.9,299.5 311.2,300.8 310.2,301.4 C309.2,302.0 307.1,301.8 305.6,302.3 C304.2,302.8 302.9,304.0 301.4,304.2 C299.9,304.4 298.3,303.8 296.8,303.3 C295.4,302.8 294.3,302.1 292.6,301.4 C290.9,300.7 288.8,299.5 286.9,299.2 C284.9,298.8 282.5,299.9 280.7,299.2 C279.0,298.5 278.0,296.0 276.3,294.9 C274.6,293.8 271.8,293.3 270.6,292.6 C269.4,291.9 269.5,291.4 268.9,290.9 C268.3,290.4 267.5,290.2 266.9,289.7 C266.2,289.3 265.6,288.7 265.1,288.1 C264.7,287.5 263.8,286.8 264.0,286.0 C264.2,285.2 265.7,284.1 266.1,283.0 C266.5,281.9 266.2,280.6 266.2,279.4 C266.2,278.2 266.0,277.2 266.0,276.1 C266.0,275.0 265.8,273.3 266.2,272.8 C266.6,272.3 267.8,273.2 268.7,273.3 C269.5,273.4 270.3,273.4 271.1,273.3 C272.0,273.2 272.8,272.8 273.6,272.7 C274.4,272.6 275.7,273.2 276.1,272.8 C276.5,272.4 276.3,271.2 276.1,270.5 C275.9,269.8 275.2,269.1 275.2,268.4 C275.1,267.7 275.6,267.0 275.8,266.2 C275.9,265.5 275.4,264.2 276.1,264.0Z"/>
+      <path id="b22" d="M312.4,279.4 C313.0,278.7 315.5,278.1 317.1,278.0 C318.7,277.9 320.3,278.5 321.9,279.0 C323.4,279.4 324.9,280.0 326.3,280.8 C327.6,281.6 328.6,283.4 330.0,283.8 C331.4,284.2 332.9,283.3 334.4,283.1 C335.9,282.8 337.4,282.2 338.8,282.3 C340.2,282.4 341.6,283.5 343.1,283.7 C344.6,284.0 346.4,284.0 347.6,283.8 C348.8,283.6 349.6,283.0 350.5,282.5 C351.4,281.9 352.2,281.1 352.9,280.3 C353.6,279.5 354.0,278.5 354.6,277.6 C355.2,276.7 355.4,275.3 356.4,275.0 C357.4,274.7 359.3,275.5 360.8,275.6 C362.3,275.8 363.8,275.7 365.2,275.8 C366.7,275.9 368.2,276.0 369.7,276.2 C371.1,276.5 372.8,276.8 374.0,277.2 C375.2,277.6 376.0,278.5 377.1,278.9 C378.2,279.3 380.4,278.7 380.6,279.4 C380.8,280.1 378.6,281.9 378.1,283.4 C377.7,284.8 378.3,286.6 377.8,288.0 C377.3,289.4 376.0,290.5 375.0,291.6 C374.0,292.7 372.5,293.4 371.8,294.8 C371.1,296.2 371.4,298.2 370.8,299.8 C370.2,301.3 368.8,302.5 368.1,304.0 C367.4,305.5 367.1,307.2 366.6,308.7 C366.1,310.3 366.0,312.9 365.2,313.5 C364.4,314.1 363.1,312.7 362.0,312.5 C360.9,312.3 358.9,312.9 358.6,312.4 C358.3,311.9 359.9,310.4 360.2,309.3 C360.6,308.2 361.1,306.7 360.8,305.8 C360.5,304.9 359.2,304.7 358.6,304.0 C358.0,303.3 357.8,302.2 357.1,301.5 C356.5,300.9 355.5,300.6 354.6,300.2 C353.8,299.8 352.9,299.1 352.0,299.2 C351.1,299.3 350.4,300.4 349.5,300.7 C348.6,301.0 347.6,300.9 346.6,300.9 C345.7,301.0 344.7,301.3 343.7,301.2 C342.8,301.1 341.6,300.1 341.0,300.3 C340.4,300.5 340.5,301.7 340.4,302.4 C340.3,303.1 340.6,303.8 340.7,304.5 C340.7,305.2 340.5,305.9 340.5,306.6 C340.6,307.3 341.5,308.6 341.0,308.7 C340.5,308.8 338.7,308.0 337.6,307.5 C336.6,307.0 335.6,306.2 334.6,305.7 C333.5,305.1 332.4,304.6 331.3,304.3 C330.2,303.9 329.1,303.6 327.8,303.6 C326.5,303.6 324.8,304.2 323.3,304.1 C321.8,304.0 320.4,303.2 318.9,302.9 C317.5,302.7 315.9,303.0 314.5,302.7 C313.0,302.4 310.7,302.1 310.2,301.4 C309.7,300.7 310.9,299.5 311.4,298.7 C311.9,297.8 312.5,297.0 313.0,296.1 C313.4,295.2 313.7,294.3 314.0,293.3 C314.2,292.4 314.5,291.4 314.6,290.4 C314.7,289.4 314.6,288.5 314.7,287.5 C314.7,286.5 315.2,285.5 315.0,284.6 C314.8,283.7 313.8,283.0 313.4,282.2 C313.0,281.3 311.8,280.1 312.4,279.4Z"/>
+      <path id="b23" d="M341.0,308.7 C340.5,308.3 340.6,307.3 340.5,306.6 C340.5,305.9 340.7,305.2 340.7,304.5 C340.6,303.8 340.3,303.1 340.4,302.4 C340.5,301.7 340.4,300.5 341.0,300.3 C341.6,300.1 342.8,301.1 343.7,301.2 C344.7,301.3 345.7,301.0 346.6,300.9 C347.6,300.9 348.6,301.0 349.5,300.7 C350.4,300.4 351.1,299.3 352.0,299.2 C352.9,299.1 353.8,299.8 354.6,300.2 C355.5,300.6 356.5,300.9 357.1,301.5 C357.8,302.2 358.0,303.3 358.6,304.0 C359.2,304.7 360.5,304.9 360.8,305.8 C361.1,306.7 360.6,308.2 360.2,309.3 C359.9,310.4 359.4,311.9 358.6,312.4 C357.8,312.9 356.4,312.2 355.3,312.0 C354.2,311.9 353.0,311.9 351.9,311.8 C350.8,311.7 349.6,311.8 348.5,311.5 C347.4,311.3 346.3,310.6 345.4,310.2 C344.5,309.8 344.1,309.2 343.4,309.0 C342.6,308.7 341.5,309.1 341.0,308.7Z"/>
+      <path id="b24" d="M380.6,279.4 C381.6,278.8 382.9,279.7 384.1,279.9 C385.2,280.1 386.4,280.3 387.5,280.6 C388.7,280.9 389.9,281.2 390.9,281.7 C391.9,282.3 393.0,283.1 393.8,283.8 C394.6,284.5 394.8,285.4 395.5,286.1 C396.1,286.7 396.8,287.4 397.6,287.9 C398.5,288.3 399.6,288.1 400.4,288.5 C401.3,288.9 401.6,289.6 402.6,290.4 C403.6,291.2 405.1,292.8 406.5,293.4 C408.0,294.1 410.2,293.5 411.4,294.3 C412.7,295.2 413.0,297.2 414.1,298.4 C415.2,299.6 416.6,300.6 418.0,301.4 C419.4,302.2 420.8,302.5 422.2,303.0 C423.7,303.5 425.1,304.2 426.6,304.3 C428.1,304.3 429.6,303.6 431.1,303.5 C432.6,303.4 434.7,303.1 435.6,303.6 C436.5,304.1 435.9,305.6 436.3,306.4 C436.7,307.3 437.6,308.0 437.9,308.9 C438.2,309.8 438.1,310.8 438.3,311.8 C438.4,312.7 438.7,313.8 438.9,314.6 C439.1,315.4 439.6,316.1 439.6,316.8 C439.7,317.6 439.3,318.3 439.2,319.1 C439.1,319.9 439.2,320.7 438.9,321.4 C438.7,322.1 438.6,323.5 437.8,323.4 C437.0,323.3 435.3,321.4 433.9,320.9 C432.4,320.4 430.7,320.6 429.2,320.3 C427.7,320.0 426.3,319.3 424.8,319.0 C423.3,318.8 421.9,319.0 420.2,319.0 C418.5,319.0 416.6,318.6 414.9,318.8 C413.1,318.9 411.4,319.9 409.6,319.7 C407.9,319.6 406.1,318.8 404.6,318.0 C403.0,317.1 402.1,315.4 400.4,314.6 C398.7,313.8 396.3,313.7 394.3,313.2 C392.3,312.7 390.3,311.5 388.3,311.4 C386.3,311.3 384.2,312.3 382.2,312.8 C380.2,313.4 377.6,314.4 376.2,314.6 C374.8,314.8 374.4,314.0 373.5,313.8 C372.6,313.6 371.7,313.5 370.8,313.4 C369.8,313.2 368.9,313.0 368.0,313.0 C367.0,313.0 365.4,314.2 365.2,313.5 C365.0,312.8 366.1,310.3 366.6,308.7 C367.1,307.2 367.4,305.5 368.1,304.0 C368.8,302.5 370.2,301.3 370.8,299.8 C371.4,298.2 371.1,296.2 371.8,294.8 C372.5,293.4 374.0,292.7 375.0,291.6 C376.0,290.5 377.3,289.4 377.8,288.0 C378.3,286.6 377.7,284.8 378.1,283.4 C378.6,281.9 379.6,280.0 380.6,279.4Z"/>
+      <path id="b25" d="M400.4,284.9 C400.6,284.3 402.6,284.5 403.7,284.5 C404.8,284.5 405.9,284.9 407.0,284.8 C408.1,284.8 409.2,284.4 410.3,284.2 C411.4,284.0 412.4,283.9 413.6,283.8 C414.8,283.7 416.4,283.6 417.8,283.6 C419.2,283.6 420.7,283.2 421.9,283.8 C423.1,284.3 423.7,286.1 424.9,286.9 C426.1,287.6 428.7,287.6 429.0,288.2 C429.3,288.8 427.8,290.0 426.8,290.4 C425.8,290.8 424.2,290.3 422.9,290.3 C421.7,290.4 420.4,290.8 419.1,290.7 C417.8,290.5 416.6,289.6 415.3,289.6 C414.0,289.5 412.4,290.3 411.4,290.4 C410.4,290.5 409.9,290.1 409.2,289.9 C408.4,289.7 407.7,289.7 407.0,289.4 C406.3,289.1 405.6,288.6 404.9,288.4 C404.2,288.2 403.4,288.8 402.6,288.2 C401.8,287.6 400.2,285.5 400.4,284.9Z"/>
+      <path id="b26" d="M441.1,312.4 C441.3,311.6 442.8,311.0 443.7,310.5 C444.7,310.0 445.7,309.6 446.8,309.4 C447.9,309.2 449.0,309.2 450.1,309.3 C451.1,309.4 452.1,309.8 453.2,310.2 C454.3,310.6 455.5,311.4 456.7,311.7 C457.9,312.0 459.4,311.7 460.5,312.2 C461.6,312.7 462.2,314.0 463.2,314.7 C464.2,315.5 466.0,316.1 466.4,316.8 C466.8,317.5 465.9,318.2 465.7,319.0 C465.4,319.7 465.1,320.4 464.9,321.1 C464.7,321.8 464.7,322.6 464.5,323.4 C464.4,324.1 464.6,325.2 464.2,325.6 C463.8,326.0 462.6,325.7 461.9,325.5 C461.1,325.3 460.5,324.6 459.8,324.4 C459.1,324.3 458.3,324.6 457.5,324.8 C456.8,325.0 456.2,325.5 455.4,325.6 C454.6,325.7 453.6,325.3 452.6,325.2 C451.7,325.0 450.7,325.1 449.8,324.9 C448.9,324.8 448.1,324.3 447.1,324.0 C446.2,323.8 444.9,324.0 444.4,323.4 C443.9,322.8 444.2,321.4 443.9,320.5 C443.6,319.6 442.6,318.9 442.4,318.0 C442.1,317.1 442.6,316.0 442.3,315.1 C442.1,314.1 440.9,313.2 441.1,312.4Z"/>
+      <path id="b27" d="M469.7,316.8 C470.2,316.1 471.6,315.9 472.6,315.4 C473.5,315.0 474.5,314.2 475.5,314.1 C476.5,314.0 477.5,314.6 478.6,314.7 C479.7,314.8 481.0,314.4 481.8,314.6 C482.6,314.8 482.7,315.7 483.1,316.1 C483.6,316.6 484.0,317.2 484.6,317.6 C485.1,317.9 485.8,318.1 486.5,318.3 C487.1,318.6 488.3,318.5 488.4,319.0 C488.5,319.5 487.5,320.3 487.3,321.0 C487.0,321.7 487.0,322.6 487.0,323.3 C487.0,324.1 487.3,324.9 487.2,325.7 C487.0,326.4 486.9,327.2 486.2,327.8 C485.5,328.4 484.1,328.9 483.0,329.1 C481.9,329.4 480.7,329.4 479.6,329.3 C478.5,329.2 477.4,328.8 476.3,328.6 C475.2,328.3 473.7,328.4 473.0,327.8 C472.3,327.2 472.2,326.1 471.8,325.2 C471.5,324.3 471.2,323.3 470.9,322.4 C470.5,321.5 469.8,320.7 469.6,319.8 C469.4,318.8 469.2,317.5 469.7,316.8Z"/>
+      <path id="b28" d="M492.8,316.8 C493.4,316.3 495.0,316.6 496.1,316.6 C497.2,316.6 498.3,316.8 499.4,316.8 C500.5,316.8 501.6,316.8 502.7,316.8 C503.8,316.8 504.8,317.0 506.0,316.8 C507.2,316.6 508.6,316.0 509.9,315.4 C511.1,314.8 512.1,313.5 513.4,313.3 C514.6,313.1 516.0,314.2 517.3,314.4 C518.6,314.6 520.3,314.7 521.4,314.6 C522.5,314.5 523.2,314.0 524.1,313.9 C525.0,313.7 526.0,313.8 526.9,313.7 C527.9,313.6 528.8,313.5 529.7,313.3 C530.6,313.1 531.5,312.3 532.4,312.4 C533.3,312.5 534.2,313.5 535.0,314.2 C535.8,314.8 536.6,315.5 537.3,316.3 C537.9,317.1 538.4,318.1 539.0,318.9 C539.7,319.8 541.1,320.5 541.2,321.2 C541.3,321.9 539.9,322.2 539.5,322.8 C539.0,323.5 538.9,324.4 538.4,325.0 C537.9,325.6 537.0,325.8 536.4,326.3 C535.8,326.8 535.7,327.5 534.6,327.8 C533.5,328.1 531.5,327.8 530.0,328.1 C528.4,328.3 527.0,329.2 525.5,329.3 C524.0,329.3 522.3,328.9 520.9,328.3 C519.5,327.6 518.3,326.0 517.0,325.6 C515.7,325.2 514.3,325.8 513.0,326.1 C511.7,326.4 510.4,326.9 509.2,327.4 C508.0,327.9 506.8,328.7 505.5,329.1 C504.3,329.6 502.6,330.1 501.6,330.0 C500.6,329.9 500.3,329.1 499.6,328.8 C498.9,328.6 498.1,328.6 497.3,328.5 C496.5,328.4 495.8,328.4 495.0,328.3 C494.3,328.2 493.1,328.3 492.8,327.8 C492.5,327.3 493.2,325.9 493.2,325.0 C493.1,324.1 492.4,323.2 492.3,322.3 C492.2,321.4 492.7,320.5 492.7,319.6 C492.8,318.7 492.2,317.3 492.8,316.8Z"/>
+      <path id="b29" d="M556.6,316.8 C557.6,315.7 560.7,314.3 562.9,313.8 C565.1,313.3 567.5,313.6 569.8,313.8 C572.1,314.0 574.3,314.5 576.5,315.0 C578.7,315.5 580.7,316.4 583.0,316.8 C585.3,317.2 587.9,316.8 590.0,317.6 C592.2,318.3 593.8,321.0 595.9,321.4 C598.0,321.8 600.4,320.5 602.6,320.1 C604.9,319.7 607.8,319.7 609.4,319.0 C611.0,318.3 611.3,316.7 612.4,315.8 C613.5,314.9 614.8,314.0 616.2,313.6 C617.5,313.2 619.1,313.6 620.6,313.4 C622.0,313.2 623.9,312.2 624.8,312.4 C625.7,312.6 625.3,314.0 625.8,314.6 C626.2,315.3 626.9,315.7 627.5,316.3 C628.0,316.9 628.5,317.7 629.1,318.1 C629.8,318.6 631.7,318.7 631.4,319.0 C631.1,319.3 628.5,319.5 627.2,320.1 C626.0,320.8 625.2,322.2 623.9,322.9 C622.7,323.5 621.3,323.7 620.0,324.2 C618.6,324.6 617.6,325.1 616.0,325.6 C614.4,326.1 612.4,326.9 610.5,327.0 C608.7,327.0 606.8,325.9 605.0,325.9 C603.2,325.9 601.3,326.9 599.5,326.8 C597.6,326.8 595.8,325.7 594.0,325.6 C592.2,325.5 590.3,326.2 588.4,326.1 C586.6,326.1 584.7,325.7 582.9,325.4 C581.1,325.2 579.2,325.1 577.4,324.7 C575.6,324.4 573.6,323.6 572.0,323.4 C570.4,323.2 569.4,323.1 568.1,323.3 C566.8,323.5 565.6,324.2 564.3,324.4 C563.0,324.6 561.6,324.8 560.4,324.6 C559.1,324.4 557.2,324.2 556.6,323.4 C556.0,322.6 557.0,321.2 557.0,320.1 C557.0,319.0 555.6,317.9 556.6,316.8Z"/>
+      <path id="b30" d="M536.8,343.2 C537.6,342.4 540.4,342.6 542.2,342.1 C543.9,341.5 545.4,340.3 547.1,339.6 C548.8,338.9 550.7,338.8 552.3,337.9 C553.9,337.0 554.8,334.7 556.6,334.4 C558.4,334.1 561.0,335.0 563.0,335.8 C565.0,336.7 566.4,338.8 568.4,339.6 C570.4,340.3 572.9,339.6 575.0,340.2 C577.0,340.8 580.4,342.2 580.8,343.2 C581.2,344.2 578.5,345.4 577.1,346.3 C575.8,347.2 574.0,347.4 572.8,348.4 C571.6,349.4 571.0,351.0 570.1,352.3 C569.3,353.7 568.8,355.8 567.6,356.4 C566.4,357.0 564.5,356.6 563.0,356.2 C561.5,355.9 560.3,354.5 558.8,354.3 C557.3,354.1 555.7,354.5 554.3,354.8 C552.8,355.2 551.1,356.5 550.0,356.4 C548.9,356.3 548.6,354.6 547.7,354.0 C546.8,353.5 545.7,353.2 544.6,352.9 C543.6,352.5 542.4,352.4 541.5,351.9 C540.6,351.4 539.7,350.7 539.0,349.8 C538.3,348.9 537.5,347.9 537.1,346.8 C536.7,345.7 536.0,344.0 536.8,343.2Z"/>
+      <path id="b31" d="M638.0,334.4 C638.9,333.8 640.6,335.2 641.9,335.2 C643.2,335.2 644.6,334.4 645.8,334.5 C647.1,334.5 648.4,335.0 649.7,335.4 C650.9,335.8 652.1,336.2 653.4,336.6 C654.7,337.0 656.0,337.6 657.3,337.7 C658.6,337.8 660.1,337.5 661.3,337.1 C662.6,336.6 663.5,335.4 664.8,335.0 C666.0,334.5 668.2,334.1 668.8,334.4 C669.4,334.7 668.4,335.9 668.3,336.6 C668.3,337.3 668.5,338.1 668.6,338.8 C668.8,339.5 669.2,340.2 669.2,341.0 C669.3,341.7 669.1,342.2 668.8,343.2 C668.5,344.2 668.2,345.9 667.6,347.1 C667.0,348.3 666.0,349.3 665.3,350.4 C664.6,351.5 664.0,352.9 663.2,353.9 C662.3,354.9 661.4,356.0 660.0,356.4 C658.6,356.8 656.6,356.2 654.9,356.4 C653.2,356.5 651.4,356.9 649.9,357.5 C648.3,358.1 647.0,359.6 645.4,360.2 C643.8,360.7 641.3,361.2 640.2,360.8 C639.1,360.4 639.6,358.7 639.0,357.7 C638.5,356.8 637.9,355.8 637.1,355.1 C636.3,354.4 635.2,354.0 634.3,353.5 C633.3,353.0 631.8,353.0 631.4,352.0 C631.0,351.0 631.6,348.8 632.0,347.3 C632.4,345.8 633.2,344.3 633.9,342.9 C634.6,341.5 635.6,340.2 636.3,338.8 C636.9,337.4 637.1,335.0 638.0,334.4Z"/>
+      <path id="b32" d="M635.8,316.8 C635.8,316.7 637.7,316.4 638.6,316.1 C639.5,315.7 640.2,314.8 641.1,314.7 C642.0,314.6 643.0,315.3 644.0,315.3 C644.9,315.3 646.4,314.4 646.8,314.6 C647.2,314.8 646.3,316.1 646.3,316.8 C646.3,317.5 647.1,318.9 646.8,319.0 C646.5,319.1 645.1,318.0 644.3,317.7 C643.4,317.3 642.5,316.9 641.5,316.8 C640.6,316.6 639.6,316.8 638.7,316.8 C637.7,316.8 635.8,316.9 635.8,316.8Z"/>
+      <path id="b33" d="M657.8,312.4 C658.2,312.1 660.2,312.3 661.3,312.6 C662.4,312.9 663.3,313.9 664.4,314.0 C665.5,314.1 666.6,313.5 667.7,313.2 C668.8,312.9 670.5,312.2 671.0,312.4 C671.5,312.6 670.7,313.9 670.7,314.6 C670.7,315.3 671.4,316.3 671.0,316.8 C670.6,317.3 669.2,317.5 668.3,317.6 C667.4,317.8 666.4,317.8 665.5,317.8 C664.6,317.8 663.6,317.9 662.7,317.7 C661.8,317.5 660.6,317.3 660.0,316.8 C659.4,316.3 659.3,315.3 659.0,314.6 C658.6,313.8 657.4,312.7 657.8,312.4Z"/>
+      <path id="b34" d="M624.8,367.4 C625.3,367.0 626.4,367.4 627.2,367.4 C628.0,367.4 628.8,367.1 629.5,367.2 C630.3,367.3 631.1,367.7 631.7,368.1 C632.4,368.5 633.5,369.0 633.6,369.6 C633.7,370.2 632.5,370.9 632.1,371.6 C631.7,372.3 632.1,373.8 631.4,374.0 C630.7,374.2 629.2,373.2 628.1,372.8 C627.0,372.5 625.5,372.3 624.8,371.8 C624.1,371.3 624.2,370.3 624.2,369.6 C624.2,368.9 624.3,367.8 624.8,367.4Z"/>
+      <path id="b35" d="M333.3,86.9 C334.4,87.0 335.1,89.1 336.1,90.0 C337.1,91.0 338.3,91.9 339.5,92.5 C340.7,93.2 342.1,93.8 343.4,94.1 C344.8,94.4 346.2,94.6 347.6,94.6 C349.0,94.6 350.4,94.0 351.7,94.1 C353.1,94.2 354.4,94.8 355.8,95.1 C357.1,95.5 358.6,95.7 359.8,96.3 C361.0,97.0 361.5,98.4 363.0,99.0 C364.5,99.6 366.7,99.4 368.5,99.7 C370.3,100.0 372.1,100.5 373.9,100.8 C375.8,101.1 377.6,101.3 379.5,101.3 C381.3,101.4 383.1,101.3 385.0,101.2 C386.9,101.1 388.9,101.2 390.7,100.8 C392.5,100.3 394.0,98.5 395.8,98.4 C397.6,98.2 399.5,99.6 401.4,99.7 C403.2,99.8 405.2,98.9 407.0,99.0 C408.8,99.1 410.6,99.7 412.5,100.1 C414.3,100.5 416.0,101.3 417.9,101.4 C419.7,101.5 421.6,100.5 423.4,100.5 C425.3,100.4 428.2,100.1 429.0,101.2 C429.8,102.3 429.0,105.1 428.4,106.9 C427.9,108.7 425.9,110.2 425.7,112.0 C425.5,113.7 427.2,115.6 427.3,117.5 C427.5,119.4 427.8,121.4 426.8,123.2 C425.8,125.0 423.2,126.9 421.1,128.0 C419.0,129.2 415.5,128.6 414.0,130.2 C412.5,131.7 413.1,135.3 412.0,137.4 C410.8,139.5 408.8,141.7 407.0,143.0 C405.2,144.3 403.1,144.4 401.3,145.4 C399.5,146.3 397.8,147.4 396.0,148.6 C394.3,149.7 392.9,151.5 391.0,152.4 C389.2,153.3 386.7,153.0 385.0,154.0 C383.3,155.0 381.8,156.7 380.7,158.4 C379.7,160.0 379.6,162.3 378.7,164.1 C377.8,165.9 376.4,167.3 375.2,168.9 C374.1,170.5 372.7,171.9 371.8,173.8 C370.9,175.7 370.2,178.1 370.0,180.4 C369.9,182.6 371.4,185.2 370.7,187.1 C370.0,189.0 367.3,190.2 366.0,192.0 C364.8,193.8 364.2,197.1 363.0,198.0 C361.8,198.9 360.3,197.5 359.0,197.6 C357.7,197.6 356.3,198.7 355.1,198.5 C353.9,198.3 352.9,196.7 351.7,196.2 C350.4,195.8 348.5,196.6 347.6,195.8 C346.7,195.0 346.6,192.9 346.2,191.4 C345.9,189.9 346.2,188.1 345.4,186.8 C344.6,185.6 342.7,185.2 341.6,184.1 C340.5,183.0 339.0,181.8 338.8,180.4 C338.6,179.0 340.1,177.2 340.4,175.6 C340.6,173.9 340.5,172.2 340.4,170.5 C340.3,168.8 340.1,167.2 339.8,165.5 C339.5,163.9 339.5,162.1 338.8,160.6 C338.1,159.1 337.0,157.6 335.8,156.4 C334.6,155.2 332.9,154.5 331.5,153.5 C330.1,152.5 328.7,151.6 327.4,150.6 C326.0,149.6 324.2,148.6 323.4,147.4 C322.6,146.2 322.7,144.7 322.4,143.3 C322.0,141.9 322.0,140.4 321.5,139.1 C320.9,137.9 319.7,136.9 318.9,135.7 C318.1,134.5 317.1,133.4 316.8,132.0 C316.5,130.6 316.8,129.0 317.1,127.5 C317.4,126.1 318.5,124.7 318.7,123.3 C318.9,121.9 318.1,120.3 318.1,118.8 C318.2,117.3 318.7,115.8 319.0,114.4 C319.3,113.0 319.8,111.9 320.1,110.6 C320.3,109.4 320.2,108.0 320.5,106.8 C320.8,105.5 321.6,104.3 321.8,103.0 C321.9,101.7 320.7,100.1 321.2,99.0 C321.7,97.9 323.8,97.5 324.8,96.5 C325.8,95.5 326.4,94.1 327.2,92.9 C328.0,91.6 328.6,90.2 329.6,89.2 C330.6,88.2 332.2,86.8 333.3,86.9Z"/>
+      <path id="b36" d="M426.8,123.2 C428.1,123.4 428.1,127.3 428.9,129.4 C429.7,131.4 430.5,133.4 431.6,135.3 C432.6,137.2 433.9,139.0 435.3,140.7 C436.7,142.3 438.2,143.6 440.0,145.2 C441.8,146.8 443.9,149.0 446.2,150.4 C448.4,151.8 451.5,152.1 453.5,153.7 C455.6,155.3 457.2,157.7 458.6,159.9 C460.0,162.2 461.5,165.2 462.0,167.2 C462.5,169.2 461.8,170.3 461.7,171.8 C461.7,173.4 461.8,174.9 461.5,176.4 C461.2,177.9 460.4,179.3 459.8,180.7 C459.1,182.1 458.6,183.8 457.6,184.8 C456.6,185.8 454.8,186.0 453.7,186.9 C452.6,187.9 452.0,189.4 451.1,190.6 C450.3,191.8 449.2,192.8 448.4,194.0 C447.7,195.3 447.4,196.9 446.6,198.0 C445.8,199.1 444.6,200.0 443.6,200.8 C442.5,201.7 440.9,202.2 440.3,203.3 C439.7,204.4 440.4,206.2 440.0,207.6 C439.6,208.9 438.5,210.8 437.8,211.2 C437.1,211.6 436.4,210.4 435.7,209.9 C435.0,209.5 434.4,208.8 433.6,208.5 C432.9,208.2 431.9,208.5 431.1,208.2 C430.3,207.9 430.3,207.1 429.0,206.8 C427.7,206.5 425.3,206.2 423.5,206.1 C421.7,206.0 419.8,206.2 418.0,206.0 C416.1,205.8 414.4,205.0 412.6,204.8 C410.7,204.5 408.9,204.5 407.0,204.6 C405.1,204.7 403.1,204.8 401.3,205.1 C399.4,205.4 397.5,206.7 395.7,206.5 C393.9,206.4 392.2,205.0 390.4,204.3 C388.6,203.6 386.8,202.7 385.0,202.4 C383.2,202.1 381.2,202.6 379.3,202.4 C377.5,202.2 375.7,201.5 373.8,201.2 C371.9,200.9 369.9,201.1 368.1,200.6 C366.3,200.0 363.3,199.4 363.0,198.0 C362.7,196.6 364.8,193.8 366.0,192.0 C367.3,190.2 370.0,189.0 370.7,187.1 C371.4,185.2 369.9,182.6 370.0,180.4 C370.2,178.1 370.9,175.7 371.8,173.8 C372.7,171.9 374.1,170.5 375.2,168.9 C376.4,167.3 377.8,165.9 378.7,164.1 C379.6,162.3 379.7,160.0 380.7,158.4 C381.8,156.7 383.3,155.0 385.0,154.0 C386.7,153.0 389.2,153.3 391.0,152.4 C392.9,151.5 394.3,149.7 396.0,148.6 C397.8,147.4 399.5,146.3 401.3,145.4 C403.1,144.4 405.2,144.3 407.0,143.0 C408.8,141.7 410.8,139.5 412.0,137.4 C413.1,135.3 412.5,131.7 414.0,130.2 C415.5,128.6 419.0,129.2 421.1,128.0 C423.2,126.9 425.5,123.0 426.8,123.2Z"/>
+      <path id="b37" d="M477.4,182.6 C477.8,183.4 477.2,185.3 476.8,186.6 C476.5,187.9 475.8,189.1 475.4,190.4 C475.1,191.7 475.0,193.0 474.6,194.3 C474.2,195.6 473.7,196.7 473.0,198.0 C472.3,199.3 471.5,201.0 470.7,202.4 C469.8,203.8 468.8,205.1 467.8,206.4 C466.9,207.8 465.5,209.0 464.9,210.6 C464.3,212.1 464.9,214.2 464.2,215.6 C463.5,217.0 461.9,217.9 460.5,218.7 C459.1,219.6 457.6,220.4 456.0,220.6 C454.5,220.9 452.7,220.1 451.1,220.3 C449.6,220.6 447.8,222.4 446.6,222.2 C445.4,222.0 445.1,220.1 444.1,219.4 C443.2,218.7 441.7,218.6 440.7,217.9 C439.8,217.1 439.0,216.0 438.5,214.9 C438.0,213.8 437.5,212.4 437.8,211.2 C438.1,210.0 439.6,208.9 440.0,207.6 C440.4,206.2 439.7,204.4 440.3,203.3 C440.9,202.2 442.5,201.7 443.6,200.8 C444.6,200.0 445.8,199.1 446.6,198.0 C447.4,196.9 447.7,195.3 448.4,194.0 C449.2,192.8 450.3,191.8 451.1,190.6 C452.0,189.4 452.6,187.9 453.7,186.9 C454.8,186.0 456.6,185.8 457.6,184.8 C458.6,183.8 459.1,182.1 459.8,180.7 C460.4,179.3 461.2,177.9 461.5,176.4 C461.8,174.9 461.7,173.4 461.7,171.8 C461.8,170.3 461.6,167.6 462.0,167.2 C462.4,166.8 463.4,168.4 463.9,169.2 C464.5,170.0 464.5,171.1 465.0,171.8 C465.6,172.5 466.6,172.8 467.2,173.5 C467.8,174.2 468.1,175.2 468.6,176.0 C469.1,176.8 469.5,177.8 470.1,178.4 C470.8,179.0 471.8,179.3 472.6,179.9 C473.3,180.5 473.9,181.3 474.7,181.8 C475.5,182.2 477.0,181.8 477.4,182.6Z"/>
+      <path id="b38" d="M429.0,101.2 C429.6,100.1 431.1,100.2 432.2,100.1 C433.3,99.9 434.5,100.5 435.6,100.3 C436.7,100.2 437.7,99.5 438.8,99.3 C439.9,99.1 441.3,99.8 442.2,99.0 C443.1,98.2 443.5,96.1 444.3,94.7 C445.0,93.3 445.7,91.8 446.6,90.5 C447.5,89.2 448.7,88.1 449.8,86.9 C450.9,85.8 451.5,84.2 453.2,83.6 C454.9,83.0 458.0,83.8 460.1,83.2 C462.3,82.5 464.0,80.2 466.2,79.7 C468.3,79.2 470.7,80.0 472.9,80.3 C475.2,80.6 477.6,81.2 479.6,81.4 C481.6,81.6 483.2,81.7 484.9,81.5 C486.7,81.4 488.6,80.1 490.2,80.5 C491.8,80.8 492.9,82.9 494.4,83.8 C496.0,84.7 497.7,85.4 499.4,85.8 C501.1,86.2 502.8,86.2 504.5,86.0 C506.2,85.9 508.0,84.6 509.5,84.8 C511.1,85.1 512.4,87.0 514.0,87.5 C515.6,88.1 518.4,87.0 519.2,88.0 C520.0,89.0 518.3,92.0 518.5,93.8 C518.8,95.7 520.8,97.5 520.8,99.3 C520.7,101.0 518.7,102.6 518.1,104.4 C517.5,106.2 517.6,108.5 517.0,110.0 C516.4,111.5 515.5,112.2 514.7,113.3 C513.9,114.3 512.8,115.2 512.1,116.2 C511.3,117.3 510.6,118.5 510.0,119.6 C509.3,120.8 508.4,121.8 508.2,123.2 C508.0,124.6 508.8,126.3 508.8,127.9 C508.7,129.4 508.6,131.1 508.0,132.5 C507.5,133.9 506.0,135.0 505.3,136.3 C504.6,137.7 504.4,139.2 503.8,140.8 C503.2,142.4 502.1,144.2 501.4,146.0 C500.7,147.8 500.5,149.8 499.5,151.4 C498.5,153.0 496.6,154.0 495.5,155.5 C494.4,157.0 493.6,159.2 492.8,160.6 C492.0,162.0 491.3,162.8 490.7,164.0 C490.1,165.2 490.0,166.7 489.2,167.7 C488.4,168.8 486.9,169.3 486.1,170.3 C485.2,171.3 484.6,172.8 484.0,173.8 C483.4,174.8 482.9,175.4 482.2,176.0 C481.5,176.6 480.4,176.9 479.8,177.5 C479.2,178.2 479.1,179.3 478.7,180.1 C478.3,181.0 478.1,182.3 477.4,182.6 C476.7,182.9 475.5,182.2 474.7,181.8 C473.9,181.3 473.3,180.5 472.6,179.9 C471.8,179.3 470.8,179.0 470.1,178.4 C469.5,177.8 469.1,176.8 468.6,176.0 C468.1,175.2 467.8,174.2 467.2,173.5 C466.6,172.8 465.6,172.5 465.0,171.8 C464.5,171.1 464.5,170.0 463.9,169.2 C463.4,168.4 462.9,168.7 462.0,167.2 C461.1,165.7 460.0,162.2 458.6,159.9 C457.2,157.7 455.6,155.3 453.5,153.7 C451.5,152.1 448.4,151.8 446.2,150.4 C443.9,149.0 441.8,146.8 440.0,145.2 C438.2,143.6 436.7,142.3 435.3,140.7 C433.9,139.0 432.6,137.2 431.6,135.3 C430.5,133.4 429.7,131.4 428.9,129.4 C428.1,127.3 427.1,125.2 426.8,123.2 C426.5,121.2 427.5,119.4 427.3,117.5 C427.2,115.6 425.5,113.7 425.7,112.0 C425.9,110.2 427.9,108.7 428.4,106.9 C429.0,105.1 428.4,102.3 429.0,101.2Z"/>
+      <path id="b39" d="M453.2,83.6 C452.2,82.7 454.1,79.6 454.4,77.7 C454.7,75.7 454.7,73.6 455.2,71.6 C455.7,69.7 456.2,67.4 457.3,65.8 C458.5,64.1 460.8,62.9 462.0,61.6 C463.2,60.3 463.9,59.1 464.4,57.7 C465.0,56.4 464.8,54.7 465.3,53.3 C465.9,51.9 466.9,50.7 467.8,49.5 C468.7,48.3 469.6,46.9 470.8,46.2 C472.0,45.5 473.7,45.6 475.1,45.4 C476.6,45.3 478.3,45.9 479.6,45.4 C480.8,44.8 481.3,42.9 482.4,42.0 C483.5,41.0 484.6,40.2 486.2,39.6 C487.8,39.0 490.2,39.0 492.2,38.6 C494.2,38.3 496.2,37.8 498.2,37.5 C500.2,37.2 502.3,36.7 504.3,36.7 C506.3,36.6 509.5,36.6 510.4,37.4 C511.3,38.2 509.9,40.0 509.8,41.3 C509.8,42.7 509.7,44.0 510.0,45.3 C510.2,46.6 511.0,47.8 511.4,49.0 C511.8,50.3 512.5,51.8 512.6,52.8 C512.7,53.8 512.2,54.4 512.0,55.2 C511.7,56.0 511.3,56.7 511.0,57.5 C510.6,58.2 510.3,59.0 509.8,59.7 C509.4,60.4 508.0,60.8 508.2,61.6 C508.4,62.4 510.3,63.6 511.1,64.8 C511.9,66.0 512.3,67.4 512.9,68.7 C513.5,70.0 514.2,71.3 514.6,72.7 C514.9,74.1 514.8,75.8 514.8,77.0 C514.8,78.2 514.5,79.1 514.7,80.1 C514.8,81.1 515.4,82.1 515.8,83.0 C516.2,83.9 516.7,84.8 517.2,85.7 C517.8,86.5 519.7,87.7 519.2,88.0 C518.7,88.3 515.6,88.1 514.0,87.5 C512.4,87.0 511.1,85.1 509.5,84.8 C508.0,84.6 506.2,85.9 504.5,86.0 C502.8,86.2 501.1,86.2 499.4,85.8 C497.7,85.4 496.0,84.7 494.4,83.8 C492.9,82.9 491.8,80.8 490.2,80.5 C488.6,80.1 486.7,81.4 484.9,81.5 C483.2,81.7 481.6,81.6 479.6,81.4 C477.6,81.2 475.2,80.6 472.9,80.3 C470.7,80.0 468.3,79.2 466.2,79.7 C464.0,80.2 462.3,82.5 460.1,83.2 C458.0,83.8 454.2,84.5 453.2,83.6Z"/>
+      <path id="b40" d="M642.4,111.1 C642.9,110.4 644.1,110.0 645.0,109.8 C646.0,109.6 647.0,109.8 648.0,109.7 C649.0,109.7 650.0,109.8 650.9,109.4 C651.8,109.1 652.5,108.3 653.4,107.8 C654.3,107.3 655.2,106.8 656.1,106.2 C657.0,105.6 658.0,105.0 658.6,104.2 C659.2,103.4 659.3,102.1 659.9,101.3 C660.5,100.4 661.4,99.7 662.2,99.0 C663.0,98.3 663.8,97.7 664.6,97.2 C665.5,96.7 666.4,96.3 667.4,96.1 C668.4,95.8 669.5,96.1 670.4,95.9 C671.4,95.7 672.6,94.4 673.2,94.6 C673.8,94.8 674.0,96.3 674.3,97.2 C674.6,98.1 675.1,99.0 675.1,100.0 C675.2,100.9 674.8,101.8 674.7,102.8 C674.5,103.7 674.9,104.9 674.3,105.6 C673.7,106.3 672.2,106.5 671.4,107.2 C670.5,107.9 670.0,109.1 669.2,109.8 C668.3,110.5 667.2,110.9 666.4,111.7 C665.6,112.4 665.1,113.5 664.4,114.4 C663.7,115.3 662.8,116.2 662.1,117.1 C661.4,118.0 661.0,119.3 660.1,119.9 C659.2,120.6 657.9,120.7 656.8,121.1 C655.6,121.4 654.6,122.2 653.4,122.1 C652.2,122.0 651.0,120.9 649.7,120.7 C648.4,120.5 647.1,121.0 645.7,120.9 C644.4,120.9 643.2,120.3 641.9,120.4 C640.6,120.4 638.4,121.3 638.0,121.0 C637.6,120.7 638.7,119.2 639.2,118.5 C639.7,117.7 640.7,117.2 641.1,116.5 C641.6,115.7 641.6,114.7 641.8,113.8 C642.0,112.9 641.9,111.8 642.4,111.1Z"/>
+      <path id="b41" d="M677.6,50.6 C678.5,50.2 680.0,50.7 681.1,51.0 C682.2,51.4 684.0,52.0 684.2,52.8 C684.4,53.6 682.7,54.7 682.3,55.8 C681.9,56.9 682.6,59.1 682.0,59.4 C681.4,59.7 680.0,58.0 678.9,57.6 C677.8,57.2 676.0,57.9 675.4,57.2 C674.8,56.5 675.2,54.7 675.5,53.6 C675.9,52.5 676.7,51.0 677.6,50.6Z"/>
+      <path id="b42" d="M708.4,41.8 C709.0,41.5 710.7,42.1 711.8,42.5 C712.9,42.8 714.7,43.4 715.0,44.0 C715.3,44.6 714.1,45.4 713.7,46.1 C713.4,46.8 713.3,48.3 712.8,48.4 C712.3,48.5 711.6,47.2 710.8,46.8 C710.1,46.4 708.8,46.7 708.4,46.2 C708.0,45.7 708.5,44.7 708.5,44.0 C708.5,43.3 707.8,42.1 708.4,41.8Z"/>
+      <path id="b43" d="M591.8,111.1 C592.8,110.4 594.7,110.0 596.1,109.3 C597.5,108.7 598.8,107.4 600.3,107.4 C601.7,107.3 603.2,108.6 604.7,108.8 C606.2,109.1 607.2,109.0 609.4,108.9 C611.6,108.8 615.2,108.9 618.0,108.4 C620.8,107.9 623.5,105.7 626.2,106.0 C628.8,106.2 631.1,109.3 633.8,110.1 C636.5,111.0 641.1,110.5 642.4,111.1 C643.7,111.7 642.0,112.9 641.8,113.8 C641.6,114.7 641.6,115.7 641.1,116.5 C640.7,117.2 639.7,117.7 639.2,118.5 C638.7,119.2 639.3,120.6 638.0,121.0 C636.7,121.4 633.6,120.8 631.4,120.8 C629.2,120.8 627.0,121.0 624.8,120.9 C622.6,120.9 620.3,120.3 618.1,120.5 C615.9,120.7 613.7,122.1 611.6,122.1 C609.5,122.1 607.7,120.6 605.7,120.4 C603.6,120.2 601.5,120.6 599.5,121.0 C597.5,121.4 595.6,122.8 593.6,123.0 C591.6,123.2 588.3,122.7 587.4,122.1 C586.5,121.5 587.9,120.2 588.2,119.2 C588.4,118.2 588.5,117.2 588.8,116.3 C589.1,115.3 589.5,114.4 590.0,113.5 C590.5,112.6 590.8,111.8 591.8,111.1Z"/>
+      <path id="b44" d="M561.0,112.2 C561.9,111.2 563.3,109.8 564.7,109.0 C566.0,108.2 567.7,107.9 569.2,107.2 C570.7,106.6 572.1,105.6 573.7,105.3 C575.3,105.1 577.2,105.4 578.6,105.6 C580.0,105.8 581.1,105.9 582.2,106.4 C583.3,106.9 584.0,108.1 585.1,108.6 C586.2,109.1 587.4,109.1 588.6,109.6 C589.7,110.0 591.6,110.4 591.8,111.1 C592.0,111.8 590.5,112.6 590.0,113.5 C589.5,114.4 589.1,115.3 588.8,116.3 C588.5,117.2 588.4,118.2 588.2,119.2 C587.9,120.2 588.2,121.5 587.4,122.1 C586.6,122.7 584.8,122.2 583.6,122.6 C582.5,123.1 581.5,124.0 580.5,124.8 C579.5,125.5 578.6,126.4 577.5,127.0 C576.5,127.7 574.8,127.7 574.2,128.7 C573.6,129.7 574.4,131.8 574.2,133.3 C573.9,134.8 573.7,136.5 573.0,137.8 C572.2,139.1 570.6,139.9 569.7,141.1 C568.8,142.3 567.4,144.0 567.6,145.2 C567.8,146.4 570.0,147.0 570.8,148.2 C571.6,149.4 571.6,151.2 572.4,152.4 C573.3,153.5 574.8,154.1 575.8,155.1 C576.9,156.1 577.5,158.1 578.6,158.4 C579.7,158.7 581.3,157.3 582.7,156.7 C584.1,156.1 585.4,155.4 586.7,154.8 C588.1,154.2 589.7,153.8 590.9,153.0 C592.1,152.1 592.8,150.5 594.0,149.6 C595.2,148.7 596.7,148.1 598.2,147.8 C599.6,147.4 601.2,147.4 602.7,147.5 C604.2,147.5 605.8,148.2 607.3,148.0 C608.8,147.8 610.3,146.2 611.6,146.3 C612.9,146.4 613.9,147.9 615.1,148.5 C616.3,149.1 617.7,149.6 619.0,150.0 C620.3,150.4 621.6,150.7 622.9,151.0 C624.3,151.3 625.8,151.5 627.0,151.8 C628.2,152.1 629.0,152.2 629.9,152.6 C630.8,152.9 631.6,153.5 632.5,154.0 C633.4,154.5 634.2,155.0 635.2,155.3 C636.1,155.7 637.5,155.6 638.0,156.2 C638.5,156.8 638.2,158.1 638.1,159.0 C637.9,160.0 637.1,160.8 637.1,161.7 C637.1,162.6 637.8,163.5 638.0,164.4 C638.1,165.3 638.7,166.5 638.0,167.2 C637.3,167.9 635.3,168.0 634.0,168.4 C632.6,168.8 631.2,169.1 629.9,169.5 C628.6,170.0 627.2,170.5 626.0,171.2 C624.8,171.9 623.8,173.1 622.6,173.8 C621.4,174.5 620.0,174.7 618.9,175.4 C617.7,176.1 616.6,176.9 615.7,177.9 C614.7,178.8 613.9,180.0 613.2,181.1 C612.6,182.3 612.1,183.7 611.6,184.8 C611.1,185.9 610.7,186.8 610.0,187.7 C609.3,188.5 608.1,189.0 607.5,189.8 C606.8,190.7 606.5,191.8 606.1,192.8 C605.7,193.8 605.7,195.1 605.0,195.8 C604.3,196.5 602.9,196.8 601.8,196.9 C600.7,197.1 599.5,196.5 598.4,196.7 C597.3,196.9 596.3,198.0 595.2,198.2 C594.1,198.4 593.2,198.1 591.8,198.0 C590.4,197.9 588.6,197.6 587.1,197.3 C585.5,197.1 583.9,196.9 582.3,196.4 C580.8,196.0 579.1,195.6 577.8,194.8 C576.4,193.9 575.5,192.1 574.2,191.4 C572.9,190.7 571.3,191.1 570.0,190.6 C568.7,190.0 567.7,188.8 566.4,188.2 C565.2,187.7 563.6,187.7 562.3,187.1 C561.1,186.6 559.5,185.9 558.8,184.8 C558.1,183.7 558.4,182.0 557.9,180.8 C557.4,179.5 556.8,178.2 555.9,177.2 C555.0,176.2 553.7,175.6 552.7,174.6 C551.7,173.7 550.5,172.7 550.0,171.6 C549.5,170.5 549.8,169.2 549.7,168.0 C549.7,166.8 549.9,165.5 549.4,164.5 C548.9,163.4 547.4,162.9 546.8,161.9 C546.2,160.9 545.3,159.6 545.6,158.4 C545.9,157.2 547.6,155.8 548.6,154.5 C549.6,153.2 551.1,152.1 551.6,150.6 C552.2,149.2 552.0,147.4 552.1,145.7 C552.2,144.1 552.0,142.3 552.2,140.8 C552.4,139.3 553.1,138.2 553.2,136.9 C553.4,135.5 553.1,134.1 553.3,132.8 C553.5,131.4 553.7,130.0 554.3,128.8 C554.8,127.6 556.0,126.5 556.6,125.4 C557.2,124.3 557.8,123.3 558.2,122.2 C558.5,121.1 558.3,119.9 558.5,118.7 C558.6,117.5 558.6,116.2 559.0,115.2 C559.4,114.1 560.1,113.2 561.0,112.2Z"/>
+      <path id="b45" d="M631.4,165.0 C632.1,164.8 634.0,165.7 635.2,166.1 C636.5,166.4 637.8,167.0 639.1,167.2 C640.4,167.3 641.9,167.2 643.2,166.9 C644.5,166.5 646.2,164.7 646.8,165.0 C647.4,165.3 646.5,167.6 646.8,168.7 C647.2,169.8 649.3,170.9 649.0,171.6 C648.7,172.3 646.5,172.4 645.2,172.8 C644.0,173.3 642.8,174.2 641.5,174.4 C640.3,174.5 638.9,173.7 637.6,173.6 C636.3,173.5 634.3,174.1 633.6,173.8 C632.9,173.5 633.4,172.2 633.1,171.5 C632.8,170.8 632.2,170.3 631.9,169.6 C631.6,168.9 631.3,168.1 631.2,167.3 C631.2,166.6 630.7,165.2 631.4,165.0Z"/>
+      <path id="b46" d="M545.6,158.4 C546.0,158.5 546.2,160.9 546.8,161.9 C547.4,162.9 548.9,163.4 549.4,164.5 C549.9,165.5 549.7,166.8 549.7,168.0 C549.8,169.2 549.5,170.5 550.0,171.6 C550.5,172.7 551.7,173.7 552.7,174.6 C553.7,175.6 555.0,176.2 555.9,177.2 C556.8,178.2 557.4,179.5 557.9,180.8 C558.4,182.0 559.0,183.5 558.8,184.8 C558.6,186.1 557.4,187.1 556.9,188.4 C556.3,189.6 555.9,190.9 555.5,192.2 C555.0,193.5 554.3,194.7 554.1,196.1 C553.9,197.4 554.8,199.1 554.4,200.2 C554.0,201.3 552.8,201.9 551.9,202.4 C550.9,202.9 549.5,202.6 548.6,203.2 C547.8,203.8 547.4,205.0 546.9,206.0 C546.4,207.0 546.3,208.9 545.6,209.0 C544.9,209.1 543.9,207.2 542.9,206.5 C541.9,205.8 540.5,205.5 539.7,204.7 C538.9,203.8 538.6,202.5 538.1,201.4 C537.6,200.3 537.2,199.1 536.8,198.0 C536.4,196.9 536.1,195.9 535.8,194.8 C535.6,193.7 535.4,192.6 535.3,191.5 C535.2,190.3 535.5,189.2 535.3,188.1 C535.2,187.0 534.6,186.0 534.6,184.8 C534.6,183.6 534.8,182.0 535.3,180.8 C535.8,179.5 537.1,178.6 537.5,177.3 C537.8,176.0 537.0,174.5 537.2,173.1 C537.5,171.8 538.3,170.4 539.0,169.4 C539.7,168.4 540.7,168.0 541.5,167.2 C542.3,166.4 543.3,165.7 543.8,164.8 C544.3,163.8 544.2,162.6 544.5,161.5 C544.8,160.5 545.2,158.3 545.6,158.4Z"/>
+      <path id="b47" d="M558.8,184.8 C559.7,184.6 561.1,186.6 562.3,187.1 C563.6,187.7 565.2,187.7 566.4,188.2 C567.7,188.8 568.7,190.0 570.0,190.6 C571.3,191.1 572.9,190.7 574.2,191.4 C575.5,192.1 576.4,193.9 577.8,194.8 C579.1,195.6 580.8,196.0 582.3,196.4 C583.9,196.9 585.5,197.1 587.1,197.3 C588.6,197.6 591.1,197.3 591.8,198.0 C592.5,198.7 591.8,200.5 591.5,201.6 C591.1,202.7 590.4,204.1 589.6,204.6 C588.8,205.1 587.8,204.3 586.8,204.3 C585.9,204.3 585.0,204.5 584.1,204.6 C583.2,204.7 582.3,204.8 581.3,204.8 C580.4,204.8 579.6,204.3 578.6,204.6 C577.6,204.9 576.2,205.7 575.1,206.5 C574.0,207.2 572.5,207.8 572.0,209.0 C571.5,210.2 571.6,212.2 571.9,213.7 C572.1,215.3 573.5,216.6 573.6,218.1 C573.7,219.6 573.1,221.3 572.4,222.7 C571.8,224.1 570.6,225.2 569.8,226.6 C569.0,228.0 568.4,229.7 567.8,231.3 C567.3,232.9 566.6,234.6 566.6,236.3 C566.7,237.9 568.1,239.5 568.3,241.2 C568.5,242.9 567.8,245.1 567.6,246.4 C567.4,247.7 567.2,248.2 567.2,249.1 C567.1,250.1 567.4,251.0 567.4,251.9 C567.5,252.8 567.3,253.7 567.4,254.7 C567.4,255.6 568.3,256.9 567.6,257.4 C566.9,257.9 564.5,257.9 563.1,257.7 C561.6,257.4 560.3,256.2 558.8,256.0 C557.4,255.7 555.8,256.4 554.4,256.2 C552.9,256.1 550.8,255.9 550.0,255.2 C549.2,254.5 549.7,252.9 549.4,251.8 C549.0,250.8 548.1,249.9 547.8,248.8 C547.6,247.7 547.9,246.5 547.9,245.4 C547.9,244.3 547.7,243.5 547.8,242.0 C547.9,240.5 548.2,238.1 548.8,236.3 C549.4,234.5 551.0,233.0 551.4,231.3 C551.8,229.5 551.4,227.4 551.2,225.6 C550.9,223.7 550.5,221.3 550.0,220.0 C549.5,218.7 548.6,218.5 548.0,217.7 C547.3,216.9 546.5,216.1 546.3,215.1 C546.1,214.2 546.8,213.0 546.7,212.0 C546.6,211.0 545.6,210.0 545.6,209.0 C545.6,208.0 546.4,207.0 546.9,206.0 C547.4,205.0 547.8,203.8 548.6,203.2 C549.5,202.6 550.9,202.9 551.9,202.4 C552.8,201.9 554.0,201.3 554.4,200.2 C554.8,199.1 553.9,197.4 554.1,196.1 C554.3,194.7 555.0,193.5 555.5,192.2 C555.9,190.9 556.3,189.6 556.9,188.4 C557.4,187.1 557.9,185.0 558.8,184.8Z"/>
+      <path id="b48" d="M569.8,261.8 C570.1,261.5 572.0,262.1 573.1,262.1 C574.2,262.1 576.0,261.4 576.4,261.8 C576.8,262.2 575.8,263.6 575.4,264.5 C575.1,265.4 574.7,266.2 574.4,267.1 C574.2,268.0 573.9,269.0 573.9,269.9 C573.8,270.9 574.5,272.5 574.2,272.8 C573.9,273.1 572.6,272.3 571.9,271.9 C571.2,271.5 570.0,271.2 569.8,270.6 C569.6,270.0 570.5,269.2 570.7,268.5 C571.0,267.7 571.1,267.0 571.2,266.2 C571.2,265.4 571.3,264.6 571.0,263.8 C570.8,263.1 569.5,262.1 569.8,261.8Z"/>
+      <path id="b49" d="M591.8,198.0 C592.4,197.4 594.1,198.4 595.2,198.2 C596.3,198.0 597.3,196.9 598.4,196.7 C599.5,196.5 600.7,197.1 601.8,196.9 C602.9,196.8 603.9,195.6 605.0,195.8 C606.1,196.0 607.5,197.3 608.5,198.3 C609.6,199.3 610.2,200.7 611.3,201.7 C612.3,202.6 613.7,203.3 614.8,204.1 C616.0,205.0 617.1,205.9 618.2,206.8 C619.3,207.7 620.2,209.0 621.4,209.8 C622.7,210.5 624.4,210.6 625.5,211.4 C626.7,212.2 627.3,213.7 628.2,214.8 C629.2,215.9 631.1,216.7 631.4,217.8 C631.7,218.9 630.4,220.3 629.7,221.6 C629.1,222.8 628.1,223.8 627.6,225.0 C627.1,226.3 626.9,227.7 626.8,229.1 C626.7,230.4 627.0,232.1 627.0,233.2 C627.0,234.3 627.0,234.9 626.8,235.8 C626.7,236.6 626.4,237.5 626.0,238.2 C625.5,238.9 624.8,239.5 624.3,240.1 C623.7,240.7 623.5,241.2 622.6,242.0 C621.7,242.8 620.4,244.1 619.1,244.8 C617.8,245.5 616.0,245.3 614.9,246.2 C613.9,247.1 613.8,249.1 612.9,250.2 C612.0,251.3 610.4,252.9 609.4,253.0 C608.4,253.1 607.7,251.4 606.9,250.5 C606.0,249.7 605.2,248.9 604.6,247.9 C603.9,246.9 603.8,245.5 603.1,244.6 C602.5,243.6 601.2,243.2 600.6,242.0 C600.0,240.8 600.2,239.0 599.7,237.5 C599.3,236.1 598.2,234.8 597.9,233.3 C597.7,231.8 598.4,230.1 598.1,228.7 C597.8,227.2 596.9,225.9 596.2,224.4 C595.5,222.9 595.0,220.9 594.0,219.4 C593.1,217.9 591.2,216.9 590.4,215.3 C589.6,213.8 589.5,211.8 589.4,210.0 C589.2,208.2 589.2,206.0 589.6,204.6 C590.0,203.2 591.1,202.7 591.5,201.6 C591.8,200.5 591.2,198.6 591.8,198.0Z"/>
+      <path id="b50" d="M616.0,233.2 C616.5,233.0 618.2,235.0 619.5,235.6 C620.8,236.2 622.2,236.5 623.6,236.8 C625.0,237.1 626.5,236.9 627.8,237.4 C629.1,237.9 630.7,238.7 631.4,239.8 C632.1,240.9 631.9,242.4 631.8,243.7 C631.8,245.0 631.3,246.3 631.0,247.6 C630.7,248.9 630.5,250.1 630.2,251.4 C629.9,252.7 629.7,254.5 629.2,255.2 C628.7,255.9 627.7,255.6 627.0,255.6 C626.3,255.6 625.5,255.2 624.8,255.2 C624.1,255.1 623.3,255.3 622.6,255.3 C621.9,255.3 620.9,255.6 620.4,255.2 C619.9,254.8 619.8,253.7 619.4,253.0 C619.0,252.2 618.6,251.5 618.1,250.8 C617.7,250.1 617.0,249.6 616.6,248.8 C616.2,248.1 616.1,247.4 616.0,246.4 C615.9,245.4 615.8,244.2 615.8,243.1 C615.8,242.0 615.7,240.9 615.9,239.8 C616.0,238.7 616.5,237.6 616.5,236.5 C616.6,235.4 615.5,233.4 616.0,233.2Z"/>
+      <path id="b51" d="M611.6,237.6 C611.8,237.2 613.0,238.2 613.7,238.5 C614.4,238.8 615.1,239.2 615.8,239.3 C616.6,239.5 617.4,239.3 618.1,239.4 C618.9,239.5 619.8,239.2 620.4,239.8 C621.0,240.4 621.6,241.8 621.8,242.9 C622.1,244.0 621.9,245.2 622.0,246.3 C622.2,247.4 622.7,248.5 622.8,249.6 C622.9,250.7 623.1,252.3 622.6,253.0 C622.1,253.7 620.7,253.7 619.7,253.7 C618.8,253.7 617.8,253.4 616.9,253.0 C616.0,252.6 615.4,251.6 614.5,251.3 C613.6,250.9 612.1,251.5 611.6,250.8 C611.1,250.1 611.3,248.4 611.5,247.3 C611.7,246.2 612.8,245.3 612.9,244.2 C613.1,243.1 612.7,242.0 612.5,240.9 C612.2,239.8 611.4,238.0 611.6,237.6Z"/>
+      <path id="b52" d="M737.0,198.0 C737.7,197.2 740.2,195.8 742.0,195.0 C743.7,194.2 745.6,193.6 747.5,193.3 C749.4,192.9 751.3,192.7 753.3,192.8 C755.2,192.8 757.1,193.2 759.0,193.6 C760.9,194.0 762.8,194.3 764.6,194.9 C766.3,195.6 767.8,197.2 769.6,197.7 C771.4,198.1 773.4,197.5 775.3,197.6 C777.2,197.6 779.3,197.6 781.0,198.0 C782.7,198.4 783.9,199.1 785.4,199.8 C786.8,200.4 788.2,201.1 789.6,201.8 C791.0,202.5 792.4,203.5 793.9,204.0 C795.4,204.5 798.3,204.2 798.6,204.6 C798.9,205.0 796.6,205.7 795.8,206.5 C795.1,207.3 794.8,208.6 794.0,209.4 C793.2,210.1 792.0,210.6 791.0,210.9 C789.9,211.2 789.2,211.4 787.6,211.2 C786.0,211.0 783.6,210.3 781.6,210.0 C779.5,209.7 777.4,209.8 775.4,209.4 C773.4,209.0 771.5,207.9 769.5,207.5 C767.5,207.1 765.3,207.2 763.4,206.8 C761.5,206.4 759.8,205.8 758.0,205.2 C756.2,204.6 754.5,203.7 752.6,203.3 C750.8,202.9 748.8,202.6 746.9,202.8 C745.0,203.0 742.6,204.5 741.4,204.6 C740.2,204.7 740.4,203.7 739.9,203.2 C739.4,202.7 738.8,202.4 738.4,201.8 C738.0,201.3 737.8,200.6 737.6,200.0 C737.3,199.3 736.3,198.8 737.0,198.0Z"/>
+      <path id="b53" d="M701.8,200.2 C702.4,199.5 704.8,199.7 706.3,199.5 C707.8,199.4 709.3,199.3 710.8,199.4 C712.3,199.6 713.8,200.0 715.3,200.5 C716.7,201.0 718.7,201.5 719.4,202.4 C720.1,203.3 719.1,204.8 719.4,205.9 C719.6,207.0 720.6,207.9 720.8,209.0 C721.0,210.1 720.9,211.3 720.6,212.4 C720.4,213.5 720.2,214.9 719.4,215.6 C718.6,216.3 716.9,216.1 715.6,216.3 C714.3,216.5 713.0,216.7 711.7,216.6 C710.4,216.6 709.1,216.3 707.8,216.2 C706.6,216.0 704.7,216.3 704.0,215.6 C703.3,214.9 703.6,213.0 703.5,211.7 C703.3,210.4 703.5,209.1 703.3,207.8 C703.2,206.6 702.9,205.3 702.6,204.0 C702.4,202.7 701.2,200.9 701.8,200.2Z"/>
+      <path id="b54" d="M737.0,209.0 C737.4,208.7 738.6,209.3 739.3,209.6 C740.0,210.0 740.5,210.8 741.2,211.0 C741.9,211.3 742.7,211.0 743.5,211.0 C744.3,211.0 745.4,210.6 745.8,211.2 C746.2,211.8 745.6,213.4 745.6,214.5 C745.6,215.6 746.2,217.3 745.8,217.8 C745.4,218.3 744.3,217.9 743.5,217.8 C742.8,217.6 742.1,217.1 741.4,217.0 C740.7,216.8 739.9,216.9 739.1,217.1 C738.4,217.2 737.4,218.0 737.0,217.8 C736.6,217.6 736.9,216.3 736.8,215.6 C736.6,214.8 736.2,214.1 736.3,213.4 C736.3,212.7 736.8,212.0 736.9,211.2 C737.0,210.5 736.6,209.3 737.0,209.0Z"/>
+      <path id="b55" d="M836.0,250.8 C836.6,250.2 838.3,250.1 839.4,250.1 C840.5,250.0 841.7,250.2 842.8,250.5 C843.9,250.8 844.9,251.5 845.9,251.9 C847.0,252.4 848.7,252.3 849.2,253.0 C849.7,253.7 848.7,254.9 848.7,255.9 C848.7,256.8 848.9,257.8 849.3,258.7 C849.6,259.6 850.5,260.3 850.8,261.2 C851.2,262.0 851.8,263.7 851.4,264.0 C851.0,264.3 849.2,263.4 848.1,263.2 C847.1,263.0 846.0,262.7 844.9,262.6 C843.7,262.4 842.6,262.4 841.5,262.3 C840.4,262.2 839.0,262.3 838.2,261.8 C837.4,261.3 837.2,260.1 836.7,259.3 C836.3,258.4 835.7,257.5 835.5,256.6 C835.4,255.7 835.7,254.7 835.8,253.7 C835.9,252.7 835.4,251.4 836.0,250.8Z"/>
+      <path id="b56" d="M871.2,250.8 C872.1,249.8 873.5,251.2 874.6,251.2 C875.7,251.2 876.9,250.5 878.0,250.7 C879.1,250.9 880.0,251.9 881.0,252.3 C882.1,252.7 884.2,251.7 884.4,253.0 C884.6,254.3 883.4,258.0 882.5,260.3 C881.6,262.6 879.1,264.7 878.9,267.0 C878.7,269.3 880.9,271.6 881.5,274.1 C882.0,276.5 882.6,280.5 882.2,281.6 C881.8,282.7 880.2,281.2 879.3,280.8 C878.4,280.3 877.8,279.4 876.9,278.9 C876.0,278.5 875.0,278.2 874.1,277.9 C873.1,277.7 871.9,278.5 871.2,277.2 C870.5,275.9 870.5,272.6 869.8,270.4 C869.1,268.2 867.2,266.2 867.1,264.0 C867.0,261.8 868.6,259.7 869.3,257.5 C870.0,255.3 870.3,251.8 871.2,250.8Z"/>
+      <path id="b57" d="M807.4,290.4 C808.0,289.5 809.5,289.5 810.6,289.2 C811.6,288.9 812.8,288.7 813.9,288.6 C815.0,288.4 816.1,288.4 817.2,288.3 C818.4,288.2 820.3,287.4 820.6,288.2 C820.9,289.0 819.3,291.4 818.9,293.0 C818.5,294.7 818.1,296.4 818.1,298.1 C818.1,299.8 818.5,301.5 818.9,303.2 C819.3,304.8 820.9,307.2 820.6,308.0 C820.3,308.8 818.3,308.0 817.2,307.9 C816.1,307.7 815.0,307.4 814.0,307.1 C812.9,306.8 811.8,306.4 810.7,306.2 C809.6,306.0 807.9,306.5 807.4,305.8 C806.9,305.1 807.5,303.2 807.6,301.9 C807.7,300.6 808.3,299.4 808.2,298.1 C808.1,296.8 807.1,295.6 807.0,294.3 C806.9,293.0 806.8,291.3 807.4,290.4Z"/>
+      <path id="b58" d="M693.0,303.6 C693.7,302.9 696.5,302.1 698.3,301.4 C700.1,300.8 701.9,299.8 703.7,299.7 C705.6,299.6 707.5,300.3 709.4,300.6 C711.2,300.9 713.8,300.9 715.0,301.4 C716.2,301.9 716.4,302.8 716.8,303.7 C717.1,304.6 716.8,305.8 717.2,306.6 C717.7,307.4 718.5,308.0 719.2,308.6 C720.0,309.2 722.2,310.1 721.6,310.2 C721.0,310.3 717.5,309.3 715.5,309.3 C713.5,309.4 711.4,309.9 709.4,310.4 C707.4,310.9 705.6,312.0 703.6,312.3 C701.6,312.6 698.6,312.8 697.4,312.4 C696.2,312.0 697.1,310.7 696.6,310.0 C696.2,309.3 695.4,308.8 694.9,308.1 C694.5,307.4 694.4,306.6 694.0,305.8 C693.7,305.1 692.3,304.3 693.0,303.6Z"/>
+      <path id="b59" d="M776.6,305.8 C777.1,305.1 778.0,305.1 778.7,304.7 C779.4,304.3 780.0,303.7 780.7,303.6 C781.4,303.4 782.3,304.0 783.1,304.0 C783.8,304.0 785.0,303.1 785.4,303.6 C785.8,304.1 785.5,305.8 785.5,306.9 C785.5,308.0 785.8,309.6 785.4,310.2 C785.0,310.8 783.9,310.6 783.1,310.6 C782.3,310.6 781.5,310.2 780.7,310.3 C780.0,310.3 779.1,310.5 778.4,310.9 C777.8,311.3 777.1,312.7 776.6,312.4 C776.1,312.1 775.6,310.2 775.6,309.1 C775.6,308.0 776.1,306.5 776.6,305.8Z"/>
+      <path id="b60" d="M728.2,92.4 C728.7,92.2 730.2,93.9 731.3,94.5 C732.3,95.1 733.5,95.6 734.6,96.2 C735.7,96.7 736.8,97.2 737.9,97.7 C739.1,98.2 740.9,98.0 741.4,99.0 C741.9,100.0 741.2,102.0 741.0,103.6 C740.9,105.1 740.1,106.6 740.3,108.1 C740.5,109.5 741.5,110.9 742.1,112.3 C742.6,113.7 743.0,115.4 743.6,116.6 C744.2,117.8 745.2,118.5 745.7,119.5 C746.3,120.5 746.3,122.0 747.0,122.9 C747.8,123.8 749.2,124.0 750.1,124.8 C751.0,125.6 752.4,126.9 752.4,127.6 C752.4,128.3 750.9,128.3 750.4,128.8 C749.8,129.4 749.6,130.2 749.0,130.8 C748.5,131.4 747.7,131.7 747.1,132.2 C746.6,132.8 745.7,133.6 745.8,134.2 C745.9,134.8 747.4,135.2 748.0,135.9 C748.7,136.6 749.3,137.3 749.7,138.2 C750.1,139.0 750.2,140.0 750.6,140.8 C751.1,141.6 752.5,142.3 752.4,143.0 C752.3,143.7 751.0,144.7 750.1,145.3 C749.2,145.9 748.0,145.9 747.1,146.5 C746.2,147.1 745.4,147.9 744.8,148.8 C744.2,149.7 744.2,151.6 743.6,151.8 C743.0,152.0 741.8,150.7 741.0,150.1 C740.2,149.4 739.4,148.7 738.8,147.8 C738.2,147.0 738.0,145.7 737.4,144.9 C736.7,144.1 735.3,143.7 734.8,143.0 C734.3,142.3 734.3,141.5 734.2,140.8 C734.0,140.1 734.2,139.3 734.0,138.5 C733.9,137.8 733.5,137.1 733.2,136.4 C733.0,135.7 732.4,135.0 732.6,134.2 C732.8,133.4 733.8,132.6 734.4,131.7 C734.9,130.9 735.6,130.1 735.9,129.1 C736.1,128.2 735.7,127.1 735.9,126.1 C736.1,125.1 737.4,124.0 737.0,123.2 C736.6,122.4 734.7,121.9 733.7,121.1 C732.7,120.3 731.8,119.3 730.9,118.3 C730.0,117.4 729.1,116.4 728.3,115.4 C727.4,114.4 726.5,113.1 726.0,112.2 C725.5,111.3 725.2,110.8 725.1,110.0 C725.0,109.3 725.4,108.4 725.3,107.7 C725.2,107.0 724.6,106.3 724.4,105.6 C724.1,104.9 723.7,104.2 723.8,103.4 C723.9,102.6 724.7,101.5 725.3,100.7 C725.9,99.9 727.0,99.3 727.4,98.5 C727.9,97.6 727.9,96.5 728.0,95.5 C728.1,94.4 727.7,92.6 728.2,92.4Z"/>
+      <path id="b61" d="M743.6,79.2 C744.2,78.7 745.8,78.4 746.9,78.4 C748.0,78.4 749.7,78.7 750.2,79.2 C750.7,79.7 749.9,80.7 749.9,81.4 C749.8,82.1 749.7,82.9 749.7,83.6 C749.6,84.3 749.3,85.1 749.4,85.9 C749.5,86.6 750.6,87.8 750.2,88.0 C749.8,88.2 748.0,87.2 746.9,87.2 C745.8,87.2 744.3,88.2 743.6,88.0 C742.9,87.8 743.0,86.6 742.8,85.9 C742.7,85.1 742.7,84.3 742.8,83.6 C743.0,82.9 743.5,82.2 743.6,81.5 C743.7,80.7 743.0,79.7 743.6,79.2Z"/>
+      <path id="b62" d="M723.8,143.0 C724.3,142.5 726.0,142.0 727.1,142.0 C728.2,142.0 729.8,142.5 730.4,143.0 C731.0,143.5 730.5,144.6 730.7,145.3 C730.9,146.0 731.7,146.7 731.7,147.4 C731.8,148.1 731.3,148.9 731.0,149.6 C730.8,150.3 731.1,151.4 730.4,151.8 C729.7,152.2 728.2,152.2 727.1,152.2 C726.0,152.2 724.4,152.2 723.8,151.8 C723.2,151.4 723.7,150.3 723.7,149.6 C723.7,148.9 723.7,148.1 723.8,147.4 C723.9,146.7 724.4,145.9 724.4,145.2 C724.4,144.5 723.3,143.5 723.8,143.0Z"/>
+      <path id="b63" d="M721.6,162.8 C722.2,162.4 724.7,162.8 726.1,162.4 C727.5,162.0 728.8,161.1 730.3,160.6 C731.7,160.2 733.2,159.6 734.7,159.6 C736.2,159.6 738.4,160.1 739.2,160.6 C740.0,161.1 739.6,162.1 739.7,162.8 C739.9,163.5 740.2,164.3 740.3,165.0 C740.4,165.7 740.3,166.6 740.1,167.3 C740.0,168.0 740.0,169.2 739.2,169.4 C738.4,169.6 736.6,168.4 735.3,168.2 C733.9,168.0 732.4,167.8 731.2,168.1 C729.9,168.4 728.8,169.4 727.5,170.0 C726.3,170.6 724.5,171.7 723.8,171.6 C723.1,171.5 723.5,170.1 723.5,169.3 C723.4,168.5 723.6,167.7 723.5,167.0 C723.3,166.3 723.0,165.6 722.6,164.9 C722.3,164.2 721.0,163.2 721.6,162.8Z"/>
+      <path id="b64" d="M671.0,171.6 C672.4,170.6 676.3,169.2 679.0,168.3 C681.8,167.5 684.8,166.1 687.5,166.4 C690.2,166.7 692.6,169.5 695.3,170.3 C698.1,171.2 702.6,170.8 704.0,171.6 C705.4,172.4 703.8,173.9 703.6,175.0 C703.3,176.1 702.5,177.1 702.5,178.2 C702.4,179.3 702.9,180.4 703.1,181.5 C703.4,182.6 705.3,184.2 704.0,184.8 C702.7,185.4 698.2,184.9 695.4,185.4 C692.6,185.9 689.9,188.2 687.2,188.0 C684.6,187.8 682.2,185.0 679.5,184.1 C676.8,183.2 672.5,183.3 671.0,182.6 C669.5,181.9 670.5,180.8 670.3,179.8 C670.0,178.9 669.4,178.0 669.5,177.1 C669.6,176.2 670.6,175.4 670.8,174.5 C671.1,173.6 669.6,172.6 671.0,171.6Z"/>
+      <path id="b65" d="M721.6,115.5 C722.1,116.0 724.4,116.0 724.9,115.5 C725.4,115.0 725.4,112.8 724.9,112.2 C724.4,111.7 722.1,111.7 721.6,112.2 C721.1,112.8 721.1,115.0 721.6,115.5Z"/>
+      <path id="b66" d="M921.8,198.0 C921.6,197.0 924.3,195.6 925.5,194.5 C926.7,193.3 928.2,192.3 929.2,191.0 C930.2,189.7 930.8,187.9 931.7,186.5 C932.7,185.1 933.6,184.0 935.0,182.6 C936.4,181.2 938.2,179.3 940.1,178.4 C942.1,177.5 944.9,178.2 946.6,177.1 C948.3,176.0 948.9,173.4 950.3,171.8 C951.6,170.1 953.4,167.5 954.8,167.2 C956.2,166.9 957.3,169.3 958.6,170.2 C959.9,171.1 961.3,172.1 962.8,172.6 C964.3,173.1 966.0,172.9 967.6,173.1 C969.2,173.3 971.0,173.3 972.4,173.8 C973.8,174.3 974.6,175.6 975.8,176.3 C976.9,177.0 978.2,177.7 979.5,178.1 C980.8,178.6 982.3,178.9 983.6,178.9 C985.0,179.0 986.5,177.8 987.8,178.2 C989.1,178.6 990.1,180.7 991.5,181.4 C992.9,182.1 994.7,182.2 996.2,182.5 C997.8,182.8 999.4,182.8 1000.9,183.1 C1002.5,183.5 1004.1,184.4 1005.4,184.8 C1006.7,185.2 1007.6,185.4 1008.7,185.8 C1009.8,186.2 1010.7,186.9 1011.8,187.3 C1012.9,187.6 1014.1,187.6 1015.2,187.7 C1016.3,187.9 1017.7,187.8 1018.6,188.1 C1019.5,188.4 1019.9,189.1 1020.6,189.3 C1021.4,189.5 1022.7,188.2 1023.0,189.2 C1023.3,190.2 1022.6,193.3 1022.7,195.3 C1022.8,197.3 1023.8,199.3 1023.8,201.3 C1023.7,203.3 1022.5,205.3 1022.4,207.3 C1022.3,209.3 1023.5,212.1 1023.0,213.4 C1022.5,214.7 1020.7,214.8 1019.5,215.3 C1018.2,215.8 1016.9,216.3 1015.6,216.4 C1014.3,216.4 1012.9,215.9 1011.6,215.7 C1010.3,215.6 1009.2,215.6 1007.6,215.6 C1006.0,215.6 1003.8,215.5 1002.0,215.8 C1000.2,216.1 998.4,217.3 996.6,217.3 C994.8,217.3 993.0,216.2 991.2,215.9 C989.4,215.6 987.6,215.5 985.6,215.6 C983.6,215.7 981.2,215.9 979.2,216.7 C977.3,217.5 975.8,219.9 973.8,220.4 C971.9,220.9 969.6,220.1 967.5,219.7 C965.4,219.3 963.3,218.6 961.4,217.8 C959.5,217.0 957.9,215.9 956.1,215.0 C954.3,214.1 952.4,213.5 950.7,212.4 C949.0,211.4 947.5,210.1 945.9,208.7 C944.4,207.4 943.2,205.4 941.6,204.6 C940.0,203.8 937.9,204.7 936.2,204.2 C934.6,203.7 933.3,202.1 931.6,201.5 C930.0,200.9 928.1,201.2 926.4,200.6 C924.8,200.0 922.0,199.0 921.8,198.0Z"/>
+      <path id="b67" d="M908.6,149.6 C909.2,149.2 910.8,150.4 911.9,150.8 C913.0,151.1 914.1,151.6 915.2,151.7 C916.3,151.8 917.6,151.7 918.7,151.4 C919.8,151.0 921.5,149.6 921.8,149.6 C922.1,149.6 921.1,151.0 920.8,151.7 C920.5,152.4 920.3,153.1 920.1,153.8 C919.9,154.6 919.8,155.3 919.7,156.1 C919.6,156.9 920.1,158.1 919.6,158.4 C919.1,158.7 917.7,158.2 916.8,158.2 C915.8,158.1 914.8,158.3 914.0,158.0 C913.1,157.8 912.4,156.9 911.5,156.6 C910.6,156.3 909.1,156.8 908.6,156.2 C908.1,155.6 908.3,154.0 908.3,152.9 C908.3,151.8 908.0,150.0 908.6,149.6Z"/>
+      <path id="b68" d="M908.6,169.4 C909.3,169.3 911.4,170.7 912.9,170.9 C914.3,171.1 915.9,170.8 917.4,170.6 C918.9,170.5 920.3,170.0 921.8,169.8 C923.2,169.6 925.3,169.1 926.2,169.4 C927.1,169.7 926.9,170.9 926.9,171.6 C926.9,172.3 927.0,173.6 926.2,173.8 C925.4,174.0 923.3,173.0 921.8,172.6 C920.3,172.3 918.9,171.5 917.4,171.5 C915.9,171.4 914.4,171.9 912.9,172.3 C911.5,172.7 909.3,173.9 908.6,173.8 C907.9,173.7 908.8,172.3 908.8,171.6 C908.8,170.9 907.9,169.5 908.6,169.4Z"/>
+      <path id="b69" d="M842.6,140.8 C843.5,140.1 845.9,140.8 847.5,141.0 C849.1,141.2 850.7,141.4 852.2,142.0 C853.7,142.5 855.1,143.5 856.4,144.4 C857.7,145.3 859.1,146.7 860.2,147.4 C861.3,148.1 862.0,148.2 862.9,148.6 C863.8,149.0 864.7,149.4 865.7,149.7 C866.6,150.0 867.6,150.1 868.6,150.4 C869.5,150.8 870.6,151.0 871.2,151.8 C871.8,152.6 872.2,154.2 872.3,155.4 C872.4,156.6 871.3,157.9 871.6,159.0 C871.9,160.1 873.4,160.7 874.1,161.7 C874.7,162.7 875.6,163.5 875.6,165.0 C875.6,166.5 874.2,168.7 874.2,170.5 C874.2,172.4 875.1,174.3 875.4,176.1 C875.8,178.0 875.9,179.8 876.3,181.6 C876.7,183.4 877.1,185.3 877.8,187.0 C878.5,188.7 879.7,190.2 880.5,191.8 C881.4,193.5 882.0,195.4 883.1,196.8 C884.3,198.1 886.3,198.8 887.6,200.1 C888.9,201.4 890.2,203.4 891.0,204.6 C891.8,205.8 892.1,206.3 892.6,207.1 C893.1,208.0 893.4,208.9 893.8,209.9 C894.2,210.8 894.6,211.7 894.8,212.7 C895.1,213.6 895.1,214.8 895.4,215.6 C895.7,216.4 896.4,217.0 896.9,217.6 C897.4,218.3 898.2,218.8 898.6,219.5 C898.9,220.3 898.7,221.2 898.9,222.0 C899.1,222.8 900.3,224.7 899.8,224.4 C899.3,224.1 897.5,221.4 896.0,220.3 C894.5,219.3 892.7,218.5 890.9,218.1 C889.2,217.6 887.3,217.7 885.5,217.7 C883.6,217.6 881.7,217.8 880.0,217.8 C878.3,217.8 876.7,217.9 875.2,217.4 C873.7,217.0 872.4,215.9 870.9,215.3 C869.5,214.6 867.9,214.3 866.5,213.6 C865.1,212.9 863.8,211.5 862.4,211.2 C861.0,210.9 859.6,211.9 858.2,211.9 C856.9,211.9 855.5,211.4 854.1,211.1 C852.8,210.7 851.3,210.3 850.1,209.6 C849.0,208.9 848.2,207.7 847.0,206.8 C845.8,205.9 844.3,205.4 843.1,204.5 C841.9,203.6 841.1,202.2 839.8,201.5 C838.6,200.7 836.9,200.7 835.6,200.1 C834.2,199.6 831.5,198.6 831.6,198.0 C831.7,197.4 834.9,197.4 836.4,196.8 C837.8,196.2 839.3,195.3 840.5,194.2 C841.8,193.2 842.7,191.9 843.8,190.7 C844.9,189.5 846.0,187.8 847.0,187.0 C848.0,186.2 849.1,186.5 849.9,185.9 C850.7,185.4 851.2,184.2 852.1,183.7 C852.9,183.3 854.0,183.2 855.0,183.0 C856.0,182.8 857.9,183.0 858.0,182.6 C858.1,182.2 856.5,181.0 855.6,180.4 C854.8,179.8 853.8,179.2 852.8,178.8 C851.8,178.4 850.5,178.6 849.6,178.1 C848.6,177.6 847.4,177.1 847.0,176.0 C846.6,174.9 847.4,173.0 847.4,171.5 C847.4,170.0 847.2,168.5 847.0,167.1 C846.8,165.6 846.5,164.1 846.2,162.7 C845.8,161.2 845.1,159.9 844.8,158.4 C844.5,156.9 844.9,155.3 844.5,153.8 C844.0,152.4 842.6,151.2 842.3,149.8 C841.9,148.4 842.2,146.8 842.3,145.3 C842.3,143.8 841.7,141.5 842.6,140.8Z"/>
+      <path id="b70" d="M803.0,149.6 C802.4,148.8 803.9,148.0 804.4,147.2 C804.9,146.5 805.4,145.7 806.0,145.0 C806.6,144.3 807.3,143.7 807.9,143.0 C808.5,142.3 808.7,141.4 809.6,140.8 C810.5,140.2 812.1,139.8 813.4,139.6 C814.6,139.5 816.0,139.8 817.3,139.9 C818.6,140.0 819.9,140.1 821.1,140.0 C822.4,140.0 823.6,139.8 825.0,139.7 C826.4,139.6 828.1,139.1 829.6,139.3 C831.0,139.5 832.3,140.8 833.7,141.1 C835.2,141.5 836.7,141.4 838.2,141.4 C839.7,141.3 841.9,140.1 842.6,140.8 C843.3,141.5 842.3,143.8 842.3,145.3 C842.2,146.8 841.9,148.4 842.3,149.8 C842.6,151.2 844.0,152.4 844.5,153.8 C844.9,155.3 844.5,156.9 844.8,158.4 C845.1,159.9 845.8,161.2 846.2,162.7 C846.5,164.1 846.8,165.6 847.0,167.1 C847.2,168.5 847.4,170.0 847.4,171.5 C847.4,173.0 847.8,174.9 847.0,176.0 C846.2,177.1 844.3,177.5 842.8,177.9 C841.4,178.3 839.8,178.4 838.3,178.5 C836.7,178.6 835.1,178.0 833.6,178.3 C832.1,178.6 830.8,180.4 829.4,180.4 C828.0,180.4 826.3,179.3 825.0,178.4 C823.7,177.6 822.5,176.3 821.4,175.2 C820.4,174.0 819.3,172.7 818.5,171.4 C817.6,170.1 817.1,168.7 816.2,167.2 C815.3,165.7 813.7,164.2 813.0,162.4 C812.2,160.7 812.6,158.5 811.8,156.8 C811.0,155.1 809.6,153.5 808.1,152.3 C806.7,151.1 803.6,150.4 803.0,149.6Z"/>
+      <path id="b71" d="M792.0,133.1 C792.6,132.9 794.9,133.8 796.4,133.9 C797.8,134.0 799.3,133.7 800.8,133.7 C802.3,133.8 803.7,134.1 805.2,134.1 C806.7,134.2 809.1,133.9 809.6,134.2 C810.1,134.5 808.7,135.5 808.4,136.2 C808.2,136.9 808.2,137.8 808.1,138.5 C808.1,139.3 808.0,140.0 807.8,140.8 C807.7,141.5 808.0,142.7 807.4,143.0 C806.8,143.3 805.2,142.8 804.1,142.6 C803.0,142.4 801.9,141.9 800.8,141.8 C799.7,141.6 798.6,141.7 797.5,141.5 C796.4,141.3 794.9,141.2 794.2,140.8 C793.5,140.4 793.4,139.6 793.2,139.0 C793.0,138.4 793.1,137.7 793.0,137.0 C793.0,136.3 793.1,135.6 792.9,134.9 C792.8,134.3 791.4,133.3 792.0,133.1Z"/>
+      <path id="b72" d="M776.6,173.8 C777.1,173.1 779.6,172.8 781.1,172.8 C782.6,172.9 784.1,174.0 785.6,173.9 C787.0,173.9 788.4,172.9 789.8,172.5 C791.2,172.1 793.3,171.2 794.2,171.6 C795.1,172.0 794.9,173.8 794.9,174.9 C794.9,176.0 795.0,177.7 794.2,178.2 C793.4,178.7 791.5,177.6 790.3,177.8 C789.0,177.9 787.7,178.5 786.4,178.8 C785.2,179.1 783.9,179.4 782.6,179.6 C781.3,179.9 779.6,180.8 778.8,180.4 C778.0,180.0 778.2,178.1 777.9,177.0 C777.5,175.9 776.1,174.5 776.6,173.8Z"/>
+      <path id="b73" d="M798.6,156.2 C799.2,155.5 800.8,155.6 801.9,155.2 C803.0,154.9 804.6,153.8 805.2,154.0 C805.8,154.2 805.5,155.5 805.4,156.2 C805.4,156.9 805.1,157.7 805.1,158.4 C805.1,159.1 805.6,159.9 805.6,160.6 C805.7,161.3 805.8,162.5 805.2,162.8 C804.6,163.1 803.0,162.2 801.9,162.2 C800.8,162.2 799.2,163.3 798.6,162.8 C798.0,162.3 798.1,160.6 798.1,159.5 C798.1,158.4 798.0,156.9 798.6,156.2Z"/>
+      <path id="b74" d="M891.0,204.6 C891.2,204.4 892.8,205.7 893.7,205.9 C894.7,206.2 895.9,205.8 896.8,206.1 C897.7,206.5 898.2,207.6 899.1,208.0 C900.0,208.5 900.6,209.1 902.0,209.0 C903.4,208.9 905.7,208.0 907.4,207.2 C909.2,206.5 911.0,205.7 912.4,204.5 C913.9,203.3 914.8,201.1 916.3,200.1 C917.9,199.0 920.1,197.9 921.8,198.0 C923.5,198.1 924.8,200.0 926.4,200.6 C928.1,201.2 930.0,200.9 931.6,201.5 C933.3,202.1 934.6,203.7 936.2,204.2 C937.9,204.7 940.0,203.8 941.6,204.6 C943.2,205.4 944.4,207.4 945.9,208.7 C947.5,210.1 949.0,211.4 950.7,212.4 C952.4,213.5 954.3,214.1 956.1,215.0 C957.9,215.9 960.7,216.8 961.4,217.8 C962.1,218.8 960.5,220.0 960.4,221.1 C960.3,222.2 960.9,223.4 960.9,224.5 C961.0,225.6 960.9,226.8 960.6,227.9 C960.3,229.0 959.1,230.1 959.2,231.0 C959.3,231.9 961.0,232.4 961.5,233.4 C962.0,234.3 962.1,235.5 962.5,236.5 C962.8,237.5 963.2,238.6 963.7,239.5 C964.3,240.4 966.0,241.3 965.8,242.0 C965.6,242.7 963.3,242.9 962.3,243.7 C961.3,244.6 961.0,246.3 960.0,246.9 C959.0,247.5 957.5,247.2 956.2,247.5 C955.0,247.8 953.6,249.0 952.6,248.6 C951.6,248.2 951.3,246.1 950.4,245.0 C949.5,244.0 948.4,243.0 947.3,242.3 C946.1,241.6 944.7,241.3 943.4,240.8 C942.1,240.4 940.7,240.3 939.4,239.8 C938.1,239.3 936.9,238.5 935.6,237.9 C934.4,237.4 933.0,237.0 931.7,236.5 C930.4,236.0 929.1,235.5 927.8,234.9 C926.5,234.4 925.2,233.5 924.0,233.2 C922.8,232.9 921.9,233.5 920.9,233.4 C919.9,233.3 918.8,233.0 917.9,232.4 C917.1,231.9 916.6,230.8 915.8,230.2 C915.0,229.6 914.1,229.1 913.0,228.8 C911.9,228.5 910.5,228.8 909.5,228.4 C908.4,228.0 907.5,226.9 906.5,226.4 C905.4,225.9 904.3,225.7 903.1,225.4 C902.0,225.0 900.5,225.0 899.8,224.4 C899.1,223.8 899.1,222.8 898.9,222.0 C898.7,221.2 898.9,220.3 898.6,219.5 C898.2,218.8 897.4,218.3 896.9,217.6 C896.4,217.0 895.7,216.4 895.4,215.6 C895.1,214.8 895.1,213.6 894.8,212.7 C894.6,211.7 894.2,210.8 893.8,209.9 C893.4,208.9 893.1,208.0 892.6,207.1 C892.1,206.3 890.8,204.8 891.0,204.6Z"/>
+      <path id="b75" d="M961.4,217.8 C962.6,217.6 965.4,219.3 967.5,219.7 C969.6,220.1 971.9,220.9 973.8,220.4 C975.8,219.9 977.3,217.5 979.2,216.7 C981.2,215.9 983.6,215.7 985.6,215.6 C987.6,215.5 989.4,215.6 991.2,215.9 C993.0,216.2 994.8,217.3 996.6,217.3 C998.4,217.3 1000.2,216.1 1002.0,215.8 C1003.8,215.5 1006.0,215.6 1007.6,215.6 C1009.2,215.6 1010.3,215.6 1011.6,215.7 C1012.9,215.9 1014.3,216.4 1015.6,216.4 C1016.9,216.3 1018.2,215.8 1019.5,215.3 C1020.7,214.8 1023.1,211.8 1023.0,213.4 C1022.9,215.0 1019.6,220.8 1019.1,224.6 C1018.6,228.5 1019.7,232.6 1020.1,236.5 C1020.5,240.4 1021.0,244.2 1021.5,248.1 C1022.0,251.9 1023.7,257.7 1023.0,259.6 C1022.3,261.5 1019.1,259.4 1017.2,259.5 C1015.2,259.7 1013.2,260.8 1011.4,260.5 C1009.6,260.1 1008.1,258.3 1006.4,257.5 C1004.6,256.6 1002.7,256.1 1001.0,255.2 C999.3,254.3 998.0,252.6 996.2,251.8 C994.5,251.0 992.4,250.6 990.5,250.6 C988.6,250.5 986.7,251.5 984.8,251.6 C982.8,251.6 980.6,251.2 979.0,250.8 C977.4,250.4 976.5,249.8 975.3,249.2 C974.1,248.6 973.0,248.0 971.8,247.3 C970.6,246.6 969.4,246.0 968.4,245.1 C967.4,244.2 966.6,242.9 965.8,242.0 C965.0,241.1 964.3,240.4 963.7,239.5 C963.2,238.6 962.8,237.5 962.5,236.5 C962.1,235.5 962.0,234.3 961.5,233.4 C961.0,232.4 959.3,231.9 959.2,231.0 C959.1,230.1 960.3,229.0 960.6,227.9 C960.9,226.8 961.0,225.6 960.9,224.5 C960.9,223.4 960.3,222.2 960.4,221.1 C960.5,220.0 960.2,218.0 961.4,217.8Z"/>
+      <path id="b76" d="M1023.0,259.6 C1025.1,262.5 1028.6,271.1 1029.6,277.1 C1030.7,283.2 1029.8,289.7 1029.2,295.9 C1028.7,302.1 1027.4,308.0 1026.4,314.1 C1025.4,320.1 1024.4,329.6 1023.0,332.2 C1021.6,334.8 1019.6,330.6 1018.2,329.4 C1016.7,328.3 1015.4,327.0 1014.3,325.5 C1013.3,324.0 1013.0,321.9 1011.9,320.4 C1010.8,319.0 1009.1,317.8 1007.6,316.8 C1006.1,315.8 1004.3,315.3 1002.8,314.4 C1001.3,313.4 1000.1,311.8 998.5,311.0 C996.9,310.2 995.0,309.6 993.3,309.4 C991.5,309.3 989.4,309.8 987.8,310.2 C986.2,310.6 985.1,311.7 983.6,312.0 C982.2,312.3 980.6,311.8 979.1,312.0 C977.6,312.1 976.2,313.0 974.7,313.0 C973.2,313.1 971.4,313.1 970.2,312.4 C969.0,311.7 968.1,310.2 967.2,309.0 C966.3,307.8 965.5,306.6 964.9,305.2 C964.2,303.9 964.0,302.4 963.4,301.0 C962.8,299.6 962.1,299.0 961.4,297.0 C960.7,295.0 959.6,291.5 959.1,288.7 C958.5,285.9 958.1,283.1 958.1,280.2 C958.0,277.3 958.0,274.2 958.9,271.5 C959.9,268.8 963.2,265.9 963.6,264.0 C964.0,262.1 962.0,261.3 961.1,259.9 C960.3,258.6 959.4,257.3 958.4,256.1 C957.5,254.8 956.7,253.4 955.7,252.2 C954.7,250.9 952.5,249.4 952.6,248.6 C952.7,247.8 955.0,247.8 956.2,247.5 C957.5,247.2 959.0,247.5 960.0,246.9 C961.0,246.3 961.3,244.6 962.3,243.7 C963.3,242.9 964.8,241.8 965.8,242.0 C966.8,242.2 967.4,244.2 968.4,245.1 C969.4,246.0 970.6,246.6 971.8,247.3 C973.0,248.0 974.1,248.6 975.3,249.2 C976.5,249.8 977.4,250.4 979.0,250.8 C980.6,251.2 982.8,251.6 984.8,251.6 C986.7,251.5 988.6,250.5 990.5,250.6 C992.4,250.6 994.5,251.0 996.2,251.8 C998.0,252.6 999.3,254.3 1001.0,255.2 C1002.7,256.1 1004.6,256.6 1006.4,257.5 C1008.1,258.3 1009.6,260.1 1011.4,260.5 C1013.2,260.8 1015.2,259.7 1017.2,259.5 C1019.1,259.4 1020.9,256.7 1023.0,259.6Z"/>
+    </defs>
+
+    <!-- perairan dangkal di sekeliling pulau -->
+    <g fill="#6bc0cf" stroke="#6bc0cf" stroke-width="12" stroke-linejoin="round" opacity=".3" filter="url(#kabur)"><use href="#b1"/><use href="#b2"/><use href="#b3"/><use href="#b4"/><use href="#b5"/><use href="#b6"/><use href="#b7"/><use href="#b8"/><use href="#b9"/><use href="#b10"/><use href="#b11"/><use href="#b12"/><use href="#b13"/><use href="#b14"/><use href="#b15"/><use href="#b16"/><use href="#b17"/><use href="#b18"/><use href="#b19"/><use href="#b20"/><use href="#b21"/><use href="#b22"/><use href="#b23"/><use href="#b24"/><use href="#b25"/><use href="#b26"/><use href="#b27"/><use href="#b28"/><use href="#b29"/><use href="#b30"/><use href="#b31"/><use href="#b32"/><use href="#b33"/><use href="#b34"/><use href="#b35"/><use href="#b36"/><use href="#b37"/><use href="#b38"/><use href="#b39"/><use href="#b40"/><use href="#b41"/><use href="#b42"/><use href="#b43"/><use href="#b44"/><use href="#b45"/><use href="#b46"/><use href="#b47"/><use href="#b48"/><use href="#b49"/><use href="#b50"/><use href="#b51"/><use href="#b52"/><use href="#b53"/><use href="#b54"/><use href="#b55"/><use href="#b56"/><use href="#b57"/><use href="#b58"/><use href="#b59"/><use href="#b60"/><use href="#b61"/><use href="#b62"/><use href="#b63"/><use href="#b64"/><use href="#b65"/><use href="#b66"/><use href="#b67"/><use href="#b68"/><use href="#b69"/><use href="#b70"/><use href="#b71"/><use href="#b72"/><use href="#b73"/><use href="#b74"/><use href="#b75"/><use href="#b76"/></g>
+    <!-- lapisan dasar gelap: mengisi celah sehingga tampak sebagai garis batas -->
+    <g fill="#0a2a37" stroke="#0a2a37" stroke-width=".8" stroke-linejoin="round"><use href="#b1"/><use href="#b2"/><use href="#b3"/><use href="#b4"/><use href="#b5"/><use href="#b6"/><use href="#b7"/><use href="#b8"/><use href="#b9"/><use href="#b10"/><use href="#b11"/><use href="#b12"/><use href="#b13"/><use href="#b14"/><use href="#b15"/><use href="#b16"/><use href="#b17"/><use href="#b18"/><use href="#b19"/><use href="#b20"/><use href="#b21"/><use href="#b22"/><use href="#b23"/><use href="#b24"/><use href="#b25"/><use href="#b26"/><use href="#b27"/><use href="#b28"/><use href="#b29"/><use href="#b30"/><use href="#b31"/><use href="#b32"/><use href="#b33"/><use href="#b34"/><use href="#b35"/><use href="#b36"/><use href="#b37"/><use href="#b38"/><use href="#b39"/><use href="#b40"/><use href="#b41"/><use href="#b42"/><use href="#b43"/><use href="#b44"/><use href="#b45"/><use href="#b46"/><use href="#b47"/><use href="#b48"/><use href="#b49"/><use href="#b50"/><use href="#b51"/><use href="#b52"/><use href="#b53"/><use href="#b54"/><use href="#b55"/><use href="#b56"/><use href="#b57"/><use href="#b58"/><use href="#b59"/><use href="#b60"/><use href="#b61"/><use href="#b62"/><use href="#b63"/><use href="#b64"/><use href="#b65"/><use href="#b66"/><use href="#b67"/><use href="#b68"/><use href="#b69"/><use href="#b70"/><use href="#b71"/><use href="#b72"/><use href="#b73"/><use href="#b74"/><use href="#b75"/><use href="#b76"/></g>
+
+    <!-- daratan: 38 provinsi -->
+    <g id="daratan" filter="url(#timbul)">
+      <g class="provinsi" id="aceh" tabindex="0" role="link" aria-label="Aceh" style="--warna:#5a8646"><use href="#b1"/><use href="#b2"/></g>
+      <g class="provinsi" id="sumatera-utara" tabindex="0" role="link" aria-label="Sumatera Utara" style="--warna:#608f4b"><use href="#b3"/><use href="#b4"/></g>
+      <g class="provinsi" id="sumatera-barat" tabindex="0" role="link" aria-label="Sumatera Barat" style="--warna:#689b52"><use href="#b5"/><use href="#b6"/><use href="#b7"/></g>
+      <g class="provinsi" id="riau" tabindex="0" role="link" aria-label="Riau" style="--warna:#70a758"><use href="#b8"/></g>
+      <g class="provinsi" id="kepulauan-riau" tabindex="0" role="link" aria-label="Kepulauan Riau" style="--warna:#7aad63"><use href="#b9"/><use href="#b10"/><use href="#b11"/><use href="#b12"/></g>
+      <g class="provinsi" id="jambi" tabindex="0" role="link" aria-label="Jambi" style="--warna:#84b36f"><use href="#b13"/></g>
+      <g class="provinsi" id="sumatera-selatan" tabindex="0" role="link" aria-label="Sumatera Selatan" style="--warna:#8eb97b"><use href="#b14"/></g>
+      <g class="provinsi" id="bengkulu" tabindex="0" role="link" aria-label="Bengkulu" style="--warna:#98bf86"><use href="#b15"/></g>
+      <g class="provinsi" id="lampung" tabindex="0" role="link" aria-label="Lampung" style="--warna:#a2c692"><use href="#b16"/></g>
+      <g class="provinsi" id="bangka-belitung" tabindex="0" role="link" aria-label="Kepulauan Bangka Belitung" style="--warna:#accc9e"><use href="#b17"/><use href="#b18"/></g>
+      <g class="provinsi" id="dki-jakarta" tabindex="0" role="link" aria-label="DKI Jakarta" style="--warna:#e4a324"><use href="#b19"/></g>
+      <g class="provinsi" id="banten" tabindex="0" role="link" aria-label="Banten" style="--warna:#e6aa34"><use href="#b20"/></g>
+      <g class="provinsi" id="jawa-barat" tabindex="0" role="link" aria-label="Jawa Barat" style="--warna:#e8b144"><use href="#b21"/></g>
+      <g class="provinsi" id="jawa-tengah" tabindex="0" role="link" aria-label="Jawa Tengah" style="--warna:#eab754"><use href="#b22"/></g>
+      <g class="provinsi" id="di-yogyakarta" tabindex="0" role="link" aria-label="DI Yogyakarta" style="--warna:#ecbe64"><use href="#b23"/></g>
+      <g class="provinsi" id="jawa-timur" tabindex="0" role="link" aria-label="Jawa Timur" style="--warna:#eec574"><use href="#b24"/><use href="#b25"/></g>
+      <g class="provinsi" id="bali" tabindex="0" role="link" aria-label="Bali" style="--warna:#dd6e50"><use href="#b26"/></g>
+      <g class="provinsi" id="nusa-tenggara-barat" tabindex="0" role="link" aria-label="Nusa Tenggara Barat" style="--warna:#e07a5f"><use href="#b27"/><use href="#b28"/></g>
+      <g class="provinsi" id="nusa-tenggara-timur" tabindex="0" role="link" aria-label="Nusa Tenggara Timur" style="--warna:#e3866e"><use href="#b29"/><use href="#b30"/><use href="#b31"/><use href="#b32"/><use href="#b33"/><use href="#b34"/></g>
+      <g class="provinsi" id="kalimantan-barat" tabindex="0" role="link" aria-label="Kalimantan Barat" style="--warna:#507c6d"><use href="#b35"/></g>
+      <g class="provinsi" id="kalimantan-tengah" tabindex="0" role="link" aria-label="Kalimantan Tengah" style="--warna:#548373"><use href="#b36"/></g>
+      <g class="provinsi" id="kalimantan-selatan" tabindex="0" role="link" aria-label="Kalimantan Selatan" style="--warna:#5b8e7d"><use href="#b37"/></g>
+      <g class="provinsi" id="kalimantan-timur" tabindex="0" role="link" aria-label="Kalimantan Timur" style="--warna:#629987"><use href="#b38"/></g>
+      <g class="provinsi" id="kalimantan-utara" tabindex="0" role="link" aria-label="Kalimantan Utara" style="--warna:#6ca18f"><use href="#b39"/></g>
+      <g class="provinsi" id="sulawesi-utara" tabindex="0" role="link" aria-label="Sulawesi Utara" style="--warna:#7f5ad5"><use href="#b40"/><use href="#b41"/><use href="#b42"/></g>
+      <g class="provinsi" id="gorontalo" tabindex="0" role="link" aria-label="Gorontalo" style="--warna:#8a69d9"><use href="#b43"/></g>
+      <g class="provinsi" id="sulawesi-tengah" tabindex="0" role="link" aria-label="Sulawesi Tengah" style="--warna:#9577dc"><use href="#b44"/><use href="#b45"/></g>
+      <g class="provinsi" id="sulawesi-barat" tabindex="0" role="link" aria-label="Sulawesi Barat" style="--warna:#a185e0"><use href="#b46"/></g>
+      <g class="provinsi" id="sulawesi-selatan" tabindex="0" role="link" aria-label="Sulawesi Selatan" style="--warna:#ac93e3"><use href="#b47"/><use href="#b48"/></g>
+      <g class="provinsi" id="sulawesi-tenggara" tabindex="0" role="link" aria-label="Sulawesi Tenggara" style="--warna:#b7a2e7"><use href="#b49"/><use href="#b50"/><use href="#b51"/></g>
+      <g class="provinsi" id="maluku" tabindex="0" role="link" aria-label="Maluku" style="--warna:#489fc5"><use href="#b52"/><use href="#b53"/><use href="#b54"/><use href="#b55"/><use href="#b56"/><use href="#b57"/><use href="#b58"/><use href="#b59"/></g>
+      <g class="provinsi" id="maluku-utara" tabindex="0" role="link" aria-label="Maluku Utara" style="--warna:#56a7c9"><use href="#b60"/><use href="#b61"/><use href="#b62"/><use href="#b63"/><use href="#b64"/><use href="#b65"/></g>
+      <g class="provinsi" id="papua" tabindex="0" role="link" aria-label="Papua" style="--warna:#a5b84a"><use href="#b66"/><use href="#b67"/><use href="#b68"/></g>
+      <g class="provinsi" id="papua-barat" tabindex="0" role="link" aria-label="Papua Barat" style="--warna:#abbd57"><use href="#b69"/></g>
+      <g class="provinsi" id="papua-barat-daya" tabindex="0" role="link" aria-label="Papua Barat Daya" style="--warna:#b2c264"><use href="#b70"/><use href="#b71"/><use href="#b72"/><use href="#b73"/></g>
+      <g class="provinsi" id="papua-tengah" tabindex="0" role="link" aria-label="Papua Tengah" style="--warna:#b8c870"><use href="#b74"/></g>
+      <g class="provinsi" id="papua-pegunungan" tabindex="0" role="link" aria-label="Papua Pegunungan" style="--warna:#bfcd7d"><use href="#b75"/></g>
+      <g class="provinsi" id="papua-selatan" tabindex="0" role="link" aria-label="Papua Selatan" style="--warna:#c5d28a"><use href="#b76"/></g>
+    </g>
+
+    <!-- sorotan saat provinsi disentuh (diisi oleh JavaScript) -->
+    <g id="sorot"></g>
+</svg>
+                </div>
+
+                <p class="map-status" id="status" aria-live="polite">
+                    👋 Selamat datang! Pilih provinsi pada peta atau daftar di bawah.
+                </p>
+
+                <section class="culture-panel" id="panel-budaya" aria-live="polite">
+                    <p class="section-label">PROFIL BUDAYA DAERAH</p>
+                    <h3 id="judul-budaya">🌺 Budaya Indonesia</h3>
+                    <p class="culture-description" id="deskripsi-budaya">
+                        Setiap provinsi memiliki kekayaan budaya yang unik.
+                        Pilih provinsi untuk mengenal salah satu warisan budayanya.
+                    </p>
+
+                    <div class="culture-details">
+                        <article class="detail-item">
+                            <span>🏠 Rumah adat</span>
+                            <strong id="rumah-adat">Pilih provinsi</strong>
+                        </article>
+                        <article class="detail-item">
+                            <span>💃 Tarian daerah</span>
+                            <strong id="tarian-daerah">Pilih provinsi</strong>
+                        </article>
+                        <article class="detail-item">
+                            <span>🍛 Makanan khas</span>
+                            <strong id="makanan-khas">Pilih provinsi</strong>
+                        </article>
+                        <article class="detail-item">
+                            <span>👘 Pakaian adat</span>
+                            <strong id="pakaian-adat">Pilih provinsi</strong>
+                        </article>
+                        <article class="detail-item">
+                            <span>🎉 Tradisi daerah</span>
+                            <strong id="tradisi-daerah">Pilih provinsi</strong>
+                        </article>
+                    </div>
+                </section>
+            </section>
+
+
+        </div>
+
+        <aside class="sidebar">
+
+            <section class="card">
+                <div class="welcome-box">
+                    <div class="emoji">🇮🇩</div>
+                    <h3>Selamat Datang!</h3>
+                    <p>
+                        Mari mengenal Indonesia melalui budaya, kesenian,
+                        makanan, rumah adat, dan tradisi dari setiap daerah.
+                    </p>
+                </div>
+
+                <p class="section-label">PANDUAN JELAJAH</p>
+                <h2 class="section-title">Cara Menggunakan</h2>
+
+                <div class="quick-facts">
+                    <div class="quick-fact">
+                        <div class="quick-fact-icon">🗺️</div>
+                        <div>
+                            <strong>1. Pilih provinsi</strong>
+                            <small>Klik peta atau daftar daerah.</small>
+                        </div>
+                    </div>
+
+                    <div class="quick-fact">
+                        <div class="quick-fact-icon">📚</div>
+                        <div>
+                            <strong>2. Baca informasinya</strong>
+                            <small>Lihat profil budaya daerah.</small>
+                        </div>
+                    </div>
+
+                    <div class="quick-fact">
+                        <div class="quick-fact-icon">🔎</div>
+                        <div>
+                            <strong>3. Cari daerah lain</strong>
+                            <small>Gunakan kolom pencarian.</small>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="card">
+                <p class="section-label">TAHUKAH KAMU?</p>
+                <h2 class="section-title">💡 Fakta Nusantara</h2>
+                <p class="section-desc">
+                    Indonesia memiliki keberagaman bahasa, seni, kuliner,
+                    pakaian adat, rumah adat, dan tradisi yang menjadi bagian
+                    dari identitas bangsa.
+                </p>
+                <div class="tip">
+                    🌱 Yuk, jaga dan lestarikan budaya Indonesia dengan
+                    mempelajari serta menghargai tradisi dari berbagai daerah.
+                </div>
+            </section>
+
+        </aside>
+
+    </div>
+</main>
+
+<footer>
+    © {{ date('Y') }} NusantaraLand · Mengenal budaya, mencintai Indonesia 🇮🇩
+</footer>
+
+<script>
+const dataBudaya = {
+    "aceh": {
+        nama: "Aceh",
+        deskripsi: "Aceh dikenal dengan budaya Islam yang kuat, seni tradisional, dan sejarah Kesultanan Aceh.",
+        rumah: "Rumoh Aceh",
+        tarian: "Tari Saman",
+        makanan: "Mie Aceh",
+        pakaian: "Ulee Balang",
+        tradisi: "Peusijuek"
+    },
+    "sumatera-utara": {
+        nama: "Sumatera Utara",
+        deskripsi: "Sumatera Utara memiliki beragam budaya, termasuk budaya Batak dan Melayu.",
+        rumah: "Rumah Bolon",
+        tarian: "Tari Tor-Tor",
+        makanan: "Arsik",
+        pakaian: "Ulos",
+        tradisi: "Mangulosi"
+    },
+    "sumatera-barat": {
+        nama: "Sumatera Barat",
+        deskripsi: "Budaya Minangkabau terkenal dengan adat matrilineal, seni, dan kulinernya.",
+        rumah: "Rumah Gadang",
+        tarian: "Tari Piring",
+        makanan: "Rendang",
+        pakaian: "Bundo Kanduang",
+        tradisi: "Tabuik"
+    },
+    "riau": {
+        nama: "Riau",
+        deskripsi: "Riau memiliki warisan budaya Melayu yang terlihat dalam bahasa, sastra, dan keseniannya.",
+        rumah: "Selaso Jatuh Kembar",
+        tarian: "Tari Zapin",
+        makanan: "Gulai Ikan Patin",
+        pakaian: "Teluk Belanga",
+        tradisi: "Balimau Kasai"
+    },
+    "kepulauan-riau": {
+        nama: "Kepulauan Riau",
+        deskripsi: "Kepulauan Riau dikenal dengan budaya Melayu dan sejarah maritimnya.",
+        rumah: "Rumah Belah Bubung",
+        tarian: "Tari Zapin",
+        makanan: "Gonggong",
+        pakaian: "Teluk Belanga",
+        tradisi: "Mandi Safar"
+    },
+    "jambi": {
+        nama: "Jambi",
+        deskripsi: "Jambi memiliki tradisi Melayu dan warisan budaya masyarakat di sepanjang Sungai Batanghari.",
+        rumah: "Kajang Leko",
+        tarian: "Tari Sekapur Sirih",
+        makanan: "Tempoyak",
+        pakaian: "Baju Kurung Tanggung",
+        tradisi: "Kenduri Sko"
+    },
+    "sumatera-selatan": {
+        nama: "Sumatera Selatan",
+        deskripsi: "Sumatera Selatan terkenal dengan sejarah Kerajaan Sriwijaya dan budaya Palembang.",
+        rumah: "Rumah Limas",
+        tarian: "Tari Gending Sriwijaya",
+        makanan: "Pempek",
+        pakaian: "Aesan Gede",
+        tradisi: "Sedekah Rame"
+    },
+    "bengkulu": {
+        nama: "Bengkulu",
+        deskripsi: "Bengkulu memiliki tradisi masyarakat pesisir dan warisan budaya yang beragam.",
+        rumah: "Bubungan Lima",
+        tarian: "Tari Andun",
+        makanan: "Pendap",
+        pakaian: "Pakaian adat Bengkulu",
+        tradisi: "Tabot"
+    },
+    "lampung": {
+        nama: "Lampung",
+        deskripsi: "Lampung dikenal dengan kain tapis, adat Pepadun, dan adat Saibatin.",
+        rumah: "Nuwo Sesat",
+        tarian: "Tari Sigeh Pengunten",
+        makanan: "Seruit",
+        pakaian: "Pakaian adat Lampung",
+        tradisi: "Cakak Pepadun"
+    },
+    "bangka-belitung": {
+        nama: "Kepulauan Bangka Belitung",
+        deskripsi: "Daerah kepulauan ini memiliki budaya Melayu dan tradisi masyarakat pesisir.",
+        rumah: "Rumah Rakit",
+        tarian: "Tari Campak",
+        makanan: "Lempah Kuning",
+        pakaian: "Paksian",
+        tradisi: "Perang Ketupat"
+    },
+    "dki-jakarta": {
+        nama: "DKI Jakarta",
+        deskripsi: "Jakarta merupakan pusat budaya Betawi yang berkembang bersama budaya masyarakat dari berbagai daerah.",
+        rumah: "Rumah Kebaya",
+        tarian: "Tari Yapong",
+        makanan: "Kerak Telor",
+        pakaian: "Sadariah dan Kebaya Encim",
+        tradisi: "Palang Pintu"
+    },
+    "banten": {
+        nama: "Banten",
+        deskripsi: "Banten memiliki warisan budaya Sunda Banten, tradisi masyarakat Baduy, dan kesenian debus.",
+        rumah: "Rumah Sulah Nyanda",
+        tarian: "Tari Walijamaliha",
+        makanan: "Sate Bandeng",
+        pakaian: "Pangsi",
+        tradisi: "Seba Baduy"
+    },
+    "jawa-barat": {
+        nama: "Jawa Barat",
+        deskripsi: "Jawa Barat kaya dengan budaya Sunda, seni pertunjukan, dan tradisi masyarakatnya.",
+        rumah: "Julang Ngapak",
+        tarian: "Tari Jaipong",
+        makanan: "Karedok",
+        pakaian: "Kebaya Sunda",
+        tradisi: "Seren Taun"
+    },
+    "jawa-tengah": {
+        nama: "Jawa Tengah",
+        deskripsi: "Jawa Tengah terkenal dengan budaya Jawa, batik, gamelan, dan tradisi keraton.",
+        rumah: "Joglo",
+        tarian: "Tari Gambyong",
+        makanan: "Lumpia Semarang",
+        pakaian: "Jawi Jangkep",
+        tradisi: "Dugderan"
+    },
+    "di-yogyakarta": {
+        nama: "DI Yogyakarta",
+        deskripsi: "Yogyakarta merupakan pusat kebudayaan Jawa yang memiliki tradisi keraton dan seni klasik.",
+        rumah: "Bangsal Kencono",
+        tarian: "Tari Bedhaya",
+        makanan: "Gudeg",
+        pakaian: "Surjan dan Kebaya",
+        tradisi: "Sekaten"
+    },
+    "jawa-timur": {
+        nama: "Jawa Timur",
+        deskripsi: "Jawa Timur memiliki budaya yang beragam, mulai dari kesenian Jawa hingga tradisi Madura.",
+        rumah: "Joglo Situbondo",
+        tarian: "Tari Remo",
+        makanan: "Rawon",
+        pakaian: "Pesa'an Madura",
+        tradisi: "Kasada"
+    },
+    "bali": {
+        nama: "Bali",
+        deskripsi: "Bali dikenal dengan seni tari, arsitektur tradisional, upacara adat, dan kehidupan masyarakatnya.",
+        rumah: "Angkul-angkul",
+        tarian: "Tari Kecak",
+        makanan: "Ayam Betutu",
+        pakaian: "Payas Agung",
+        tradisi: "Ngaben"
+    },
+    "nusa-tenggara-barat": {
+        nama: "Nusa Tenggara Barat",
+        deskripsi: "NTB memiliki budaya Sasak, Samawa, dan Mbojo dengan tradisi yang beragam.",
+        rumah: "Bale Lumbung",
+        tarian: "Tari Gandrung Lombok",
+        makanan: "Ayam Taliwang",
+        pakaian: "Lambung dan Pegon",
+        tradisi: "Bau Nyale"
+    },
+    "nusa-tenggara-timur": {
+        nama: "Nusa Tenggara Timur",
+        deskripsi: "NTT terkenal dengan kain tenun, budaya masyarakat kepulauan, dan tradisi adat.",
+        rumah: "Mbaru Niang",
+        tarian: "Tari Caci",
+        makanan: "Se'i",
+        pakaian: "Kain tenun ikat",
+        tradisi: "Pasola"
+    },
+    "kalimantan-barat": {
+        nama: "Kalimantan Barat",
+        deskripsi: "Kalimantan Barat memiliki kekayaan budaya Dayak dan Melayu.",
+        rumah: "Rumah Panjang",
+        tarian: "Tari Monong",
+        makanan: "Bubur Pedas",
+        pakaian: "King Baba dan King Bibinge",
+        tradisi: "Naik Dango"
+    },
+    "kalimantan-tengah": {
+        nama: "Kalimantan Tengah",
+        deskripsi: "Kalimantan Tengah dikenal dengan budaya Dayak dan tradisi masyarakat di sekitar sungai.",
+        rumah: "Rumah Betang",
+        tarian: "Tari Mandau",
+        makanan: "Juhu Singkah",
+        pakaian: "Sangkarut",
+        tradisi: "Tiwah"
+    },
+    "kalimantan-selatan": {
+        nama: "Kalimantan Selatan",
+        deskripsi: "Kalimantan Selatan memiliki budaya Banjar, pasar terapung, dan tradisi sungai.",
+        rumah: "Bubungan Tinggi",
+        tarian: "Tari Baksa Kembang",
+        makanan: "Soto Banjar",
+        pakaian: "Bagajah Gamuling Baular Lulut",
+        tradisi: "Baayun Maulid"
+    },
+    "kalimantan-timur": {
+        nama: "Kalimantan Timur",
+        deskripsi: "Kalimantan Timur memiliki budaya Dayak, Kutai, dan Paser.",
+        rumah: "Rumah Lamin",
+        tarian: "Tari Hudoq",
+        makanan: "Nasi Bekepor",
+        pakaian: "Ta'a dan Sapei Sapaq",
+        tradisi: "Erau"
+    },
+    "kalimantan-utara": {
+        nama: "Kalimantan Utara",
+        deskripsi: "Kalimantan Utara memiliki budaya masyarakat Dayak dan Tidung.",
+        rumah: "Rumah Baloy",
+        tarian: "Tari Jepen",
+        makanan: "Kepiting Soka",
+        pakaian: "Pakaian adat Tidung",
+        tradisi: "Iraw Tengkayu"
+    },
+    "sulawesi-utara": {
+        nama: "Sulawesi Utara",
+        deskripsi: "Sulawesi Utara memiliki tradisi Minahasa dan masyarakat pesisir yang kaya kesenian.",
+        rumah: "Walewangko",
+        tarian: "Tari Kabasaran",
+        makanan: "Tinutuan",
+        pakaian: "Laku Tepu",
+        tradisi: "Tulude"
+    },
+    "gorontalo": {
+        nama: "Gorontalo",
+        deskripsi: "Gorontalo dikenal dengan adat yang dipengaruhi nilai budaya dan tradisi lokal.",
+        rumah: "Dulohupa",
+        tarian: "Tari Saronde",
+        makanan: "Binte Biluhuta",
+        pakaian: "Biliu dan Makuta",
+        tradisi: "Mopotilolo"
+    },
+    "sulawesi-tengah": {
+        nama: "Sulawesi Tengah",
+        deskripsi: "Sulawesi Tengah memiliki tradisi masyarakat Kaili, Pamona, dan berbagai kelompok etnis lainnya.",
+        rumah: "Souraja",
+        tarian: "Tari Dero",
+        makanan: "Kaledo",
+        pakaian: "Nggembe",
+        tradisi: "Mora'a"
+    },
+    "sulawesi-barat": {
+        nama: "Sulawesi Barat",
+        deskripsi: "Sulawesi Barat terkenal dengan budaya Mandar, tradisi maritim, dan kain tenun.",
+        rumah: "Boyang",
+        tarian: "Tari Patuddu",
+        makanan: "Jepa",
+        pakaian: "Pattuqduq Towaine",
+        tradisi: "Sayyang Pattu'du"
+    },
+    "sulawesi-selatan": {
+        nama: "Sulawesi Selatan",
+        deskripsi: "Sulawesi Selatan memiliki budaya Bugis, Makassar, dan Toraja yang kaya tradisi.",
+        rumah: "Tongkonan",
+        tarian: "Tari Pakarena",
+        makanan: "Coto Makassar",
+        pakaian: "Baju Bodo",
+        tradisi: "Rambu Solo'"
+    },
+    "sulawesi-tenggara": {
+        nama: "Sulawesi Tenggara",
+        deskripsi: "Sulawesi Tenggara memiliki budaya Tolaki, Buton, Muna, dan masyarakat kepulauan.",
+        rumah: "Banua Tada",
+        tarian: "Tari Lulo",
+        makanan: "Sinonggi",
+        pakaian: "Babu Nggawi",
+        tradisi: "Karia"
+    },
+    "maluku": {
+        nama: "Maluku",
+        deskripsi: "Maluku dikenal dengan budaya bahari, musik tradisional, dan tradisi pela gandong.",
+        rumah: "Baileo",
+        tarian: "Tari Cakalele",
+        makanan: "Papeda",
+        pakaian: "Baju Cele",
+        tradisi: "Pela Gandong"
+    },
+    "maluku-utara": {
+        nama: "Maluku Utara",
+        deskripsi: "Maluku Utara memiliki sejarah kesultanan dan tradisi masyarakat kepulauan rempah.",
+        rumah: "Sasadu",
+        tarian: "Tari Soya-Soya",
+        makanan: "Gohu Ikan",
+        pakaian: "Manteren Lamo",
+        tradisi: "Legu Gam"
+    },
+    "papua": {
+        nama: "Papua",
+        deskripsi: "Papua memiliki keragaman budaya masyarakat adat, seni ukir, musik, dan tradisi lokal.",
+        rumah: "Kariwari",
+        tarian: "Tari Yospan",
+        makanan: "Papeda",
+        pakaian: "Koteka dan rok rumbai",
+        tradisi: "Bakar Batu"
+    },
+    "papua-barat": {
+        nama: "Papua Barat",
+        deskripsi: "Papua Barat memiliki budaya masyarakat pesisir dan tradisi adat yang beragam.",
+        rumah: "Mod Aki Aksa",
+        tarian: "Tari Tumbu Tanah",
+        makanan: "Ikan Bakar Manokwari",
+        pakaian: "Pakaian adat Papua Barat",
+        tradisi: "Sasi"
+    },
+    "papua-barat-daya": {
+        nama: "Papua Barat Daya",
+        deskripsi: "Papua Barat Daya memiliki budaya masyarakat adat di wilayah Sorong, Raja Ampat, dan sekitarnya.",
+        rumah: "Rumah adat suku Moi",
+        tarian: "Tari Sajojo",
+        makanan: "Papeda",
+        pakaian: "Pakaian adat masyarakat setempat",
+        tradisi: "Tradisi adat masyarakat Raja Ampat"
+    },
+    "papua-tengah": {
+        nama: "Papua Tengah",
+        deskripsi: "Papua Tengah memiliki tradisi masyarakat adat di wilayah pegunungan dan pesisir.",
+        rumah: "Honai",
+        tarian: "Tari perang tradisional",
+        makanan: "Papeda",
+        pakaian: "Pakaian adat masyarakat setempat",
+        tradisi: "Bakar Batu"
+    },
+    "papua-pegunungan": {
+        nama: "Papua Pegunungan",
+        deskripsi: "Papua Pegunungan dikenal dengan budaya masyarakat pegunungan, termasuk tradisi suku Dani.",
+        rumah: "Honai",
+        tarian: "Tari perang tradisional",
+        makanan: "Ubi jalar",
+        pakaian: "Koteka dan rok rumbai",
+        tradisi: "Bakar Batu"
+    },
+    "papua-selatan": {
+        nama: "Papua Selatan",
+        deskripsi: "Papua Selatan memiliki budaya masyarakat adat, termasuk tradisi masyarakat Marind dan Asmat.",
+        rumah: "Rumah adat masyarakat setempat",
+        tarian: "Tari tradisional Asmat",
+        makanan: "Sagu",
+        pakaian: "Pakaian adat masyarakat setempat",
+        tradisi: "Ukiran dan upacara adat Asmat"
+    }
+};
+
+const status = document.getElementById("status");
+const judul = document.getElementById("judul-budaya");
+const deskripsi = document.getElementById("deskripsi-budaya");
+const rumah = document.getElementById("rumah-adat");
+const tarian = document.getElementById("tarian-daerah");
+const makanan = document.getElementById("makanan-khas");
+const pakaian = document.getElementById("pakaian-adat");
+const tradisi = document.getElementById("tradisi-daerah");
+const search = document.getElementById("cari-provinsi");
+
+function pilihProvinsi(id) {
+    const data = dataBudaya[id];
+
+    if (!data) {
+        status.textContent = "Informasi untuk provinsi ini belum tersedia.";
+        return;
+    }
+
+    document.querySelectorAll(".provinsi").forEach(el => {
+        el.classList.toggle("terpilih", el.id === id);
+        el.setAttribute("aria-pressed", el.id === id ? "true" : "false");
+    });
+
+    document.querySelectorAll(".region-link").forEach(el => {
+        el.classList.toggle("terpilih", el.dataset.provinsi === id);
+    });
+
+    judul.textContent = "🌺 " + data.nama;
+    deskripsi.textContent = data.deskripsi;
+    rumah.textContent = data.rumah;
+    tarian.textContent = data.tarian;
+    makanan.textContent = data.makanan;
+    pakaian.textContent = data.pakaian;
+    tradisi.textContent = data.tradisi;
+
+    status.textContent = "Kamu sedang menjelajahi budaya " + data.nama + ".";
+}
+
+document.querySelectorAll(".provinsi").forEach(el => {
+    el.setAttribute("role", "button");
+    el.setAttribute("aria-pressed", "false");
+
+    el.addEventListener("click", () => {
+        pilihProvinsi(el.id);
+    });
+
+    el.addEventListener("keydown", event => {
+        if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            pilihProvinsi(el.id);
+        }
+    });
+
+    el.addEventListener("mouseenter", () => {
+        const data = dataBudaya[el.id];
+        if (data) {
+            status.textContent = "Klik untuk melihat budaya " + data.nama + ".";
+        }
+    });
+
+    el.addEventListener("focus", () => {
+        const data = dataBudaya[el.id];
+        if (data) {
+            status.textContent = "Tekan Enter untuk melihat budaya " + data.nama + ".";
+        }
+    });
+});
+
+document.querySelectorAll(".region-link").forEach(button => {
+    button.addEventListener("click", () => {
+        pilihProvinsi(button.dataset.provinsi);
+
+        const target = document.getElementById(button.dataset.provinsi);
+        if (target) {
+            target.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
+        }
+
+        document.getElementById("panel-budaya").scrollIntoView({
+            behavior: "smooth",
+            block: "nearest"
+        });
+    });
+});
+
+search.addEventListener("input", () => {
+    const kata = search.value.trim().toLocaleLowerCase("id");
+
+    document.querySelectorAll(".region-link").forEach(button => {
+        const cocok = button.textContent.toLocaleLowerCase("id").includes(kata);
+        button.hidden = !cocok;
+    });
+
+    document.querySelectorAll(".region-heading").forEach(heading => {
+        let berikutnya = heading.nextElementSibling;
+        let adaHasil = false;
+
+        while (berikutnya && !berikutnya.classList.contains("region-heading")) {
+            if (berikutnya.classList.contains("region-link") && !berikutnya.hidden) {
+                adaHasil = true;
+            }
+            berikutnya = berikutnya.nextElementSibling;
+        }
+
+        heading.hidden = !adaHasil;
+    });
+});
+</script>
+
+</body>
+</html>
