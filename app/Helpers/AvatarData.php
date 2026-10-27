@@ -31,7 +31,63 @@ class AvatarData
                 'harga' => 100,
                 'grup' => 'Pulau Jawa'
             ],
-            
+             'jakarta' => [
+                'nama' => 'Betawi', 
+                'warna' => '#3B82F6', 
+                'emoji' => 'betawi.png', 
+                'harga' => 100,
+                'grup' => 'Pulau Jawa'
+             ],
+             'jakarta-cewek' => [
+                'nama' => 'kebaya encim', 
+                'warna' => '#EC4899', 
+                'emoji' => 'kebaya encim.png', 
+                'harga' => 100,
+                'grup' => 'Pulau Jawa'
+            ],
+            'jawa-barat-cowok' => [
+                'nama' => 'beskap sunday depo', 
+                'warna' => '#EC4899', 
+                'emoji' => 'beskap sunday depo.png', 
+                'harga' => 100,
+                'grup' => 'Pulau Jawa'
+            ],
+            'jawa-barat-cewek' => [
+                'nama' => 'kebaya sunday depo', 
+                'warna' => '#EC4899', 
+                'emoji' => 'kebaya sunday depo-cewek.png', 
+                'harga' => 100,
+                'grup' => 'Pulau Jawa'
+            ],
+            'jawa-tengah-cowok' => [
+                'nama' => 'beskap Jawa Tengah', 
+                'warna' => '#EC4899', 
+                'emoji' => 'beskap-jateng.png', 
+                'harga' => 100,
+                'grup' => 'Pulau Jawa'
+            ],
+            'jawa-tengah-cewek' => [
+                'nama' => 'kebaya & ganduk mentul', 
+                'warna' => '#EC4899', 
+                'emoji' => 'kebaya & ganduk mentul.png', 
+                'harga' => 100,
+                'grup' => 'Pulau Jawa'
+            ],
+            'jawa-timur-cowok' => [
+                'nama' => 'pesa an & udeng madura', 
+                'warna' => '#EC4899', 
+                'emoji' => 'pesa an & udeng madura.png', 
+                'harga' => 100,
+                'grup' => 'Pulau Jawa'
+            ],
+            'jawa-timur-cewek' => [
+                'nama' => 'kebaya pesa an maduray', 
+                'warna' => '#EC4899', 
+                'emoji' => 'kebaya pesa an maduray.png', 
+                'harga' => 100,
+                'grup' => 'Pulau Jawa'
+            ],
+
             // ================= PULAU KALIMANTAN =================
             'dayak-cowo' => [
                 'nama' => 'Dayak', 
@@ -41,51 +97,65 @@ class AvatarData
                 'grup' => 'Pulau Kalimantan'
             ],
             'dayak-cewek' => [
-                'nama' => 'Deder', 
+                'nama' => 'Dayak', 
                 'warna' => '#F59E0B', 
                 'emoji' => 'dayak-cewek.png', 
                 'harga' => 100,
                 'grup' => 'Pulau Kalimantan'
             ],
             'kalimantan-selatan-cowo' => [
-                'nama' => 'Teluk Belanga', 
+                'nama' => 'Banjar', 
                 'warna' => '#6366F1', 
                 'emoji' => 'kalimantan-selatan.png', 
                 'harga' => 100,
                 'grup' => 'Pulau Kalimantan'
             ],
             'kalimantan-selatan-cewek' => [
-                'nama' => 'Kurung Basisit', 
+                'nama' => 'Banjar', 
                 'warna' => '#8B5CF6', 
                 'emoji' => 'kalimantan-selatan-cewek.png', 
                 'harga' => 100,
                 'grup' => 'Pulau Kalimantan'
             ],
              'kalimantan-timur-cowo' => [
-                'nama' => 'Linto Baro', 
+                'nama' => 'Kutai', 
                 'warna' => '#6366F1', 
                 'emoji' => 'kalimantan-timur.png', 
                 'harga' => 100,
                 'grup' => 'Pulau Kalimantan'
             ],
             'kalimantan-timur-cewek' => [
-                'nama' => 'Ta a', 
+                'nama' => 'Kutai', 
                 'warna' => '#8B5CF6', 
                 'emoji' => 'kalimantan-timur-cewek.png', 
                 'harga' => 100,
                 'grup' => 'Pulau Kalimantan'
             ],
-            'kalimantan-barat-cowo' => [
-                'nama' => 'Sapei Sapaq', 
+            'kalimantan-utara-cowo' => [
+                'nama' => 'Tidung', 
                 'warna' => '#6366F1', 
                 'emoji' => 'kalimantan-barat.png', 
                 'harga' => 100,
                 'grup' => 'Pulau Kalimantan'
             ],
-            'kalimantan-barat-cewek' => [
-                'nama' => 'Ta a', 
+            'kalimantan-utarat-cewek' => [
+                'nama' => 'Tidung', 
                 'warna' => '#8B5CF6', 
                 'emoji' => 'kalimantan-barat-cewek.png', 
+                'harga' => 100,
+                'grup' => 'Pulau Kalimantan'
+            ],
+            'kalimantan-utara-cowo' => [
+                'nama' => 'Punan', 
+                'warna' => '#6366F1', 
+                'emoji' => 'kalimantan-utara.png', 
+                'harga' => 100,
+                'grup' => 'Pulau Kalimantan'
+            ],
+            'kalimantan-utarat-cewek' => [
+                'nama' => 'Punan', 
+                'warna' => '#8B5CF6', 
+                'emoji' => 'kalimantan-utara-cewek.png', 
                 'harga' => 100,
                 'grup' => 'Pulau Kalimantan'
             ],

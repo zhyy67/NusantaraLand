@@ -24,7 +24,7 @@
                     <div>
                         <span class="bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full">{{ strtoupper($budaya['nama']) }}</span>
                         <h1 class="text-3xl md:text-4xl font-extrabold text-gray-800 mt-3">Profil & Nilai Budaya</h1>
-                        <p class="text-sm text-gray-500 mt-1">Ibu Kota: <strong>{{ $budaya['ibu_kota'] ?? 'Banda Aceh' }}</strong></p>
+                        <p class="text-sm text-gray-500 mt-1">Ibu Kota: <strong>{{ $budaya['ibu_kota'] ?? 'Belum tersedia' }}</strong></p>
                     </div>
                 </div>
 
@@ -34,16 +34,29 @@
                     <p class="text-gray-600 leading-relaxed text-sm">{{ $budaya['deskripsi'] }}</p>
                 </div>
 
-                <!-- Video Edukasi (Placeholder) -->
+                <!-- Video Edukasi (YouTube Embed) -->
                 <div class="mb-6">
                     <h2 class="text-lg font-bold text-gray-800 flex items-center gap-2 mb-2">▶️ Video Edukasi</h2>
-                    <div class="relative bg-gray-900 rounded-xl overflow-hidden aspect-video flex items-center justify-center">
-                        <div class="text-center">
-                            <svg class="w-16 h-16 text-red-500 mx-auto mb-2" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M8 5v14l11-7z"/>
-                            </svg>
-                            <p class="text-white text-sm">Video Edukasi sedang disiapkan</p>
-                        </div>
+                    <div class="relative bg-gray-900 rounded-xl overflow-hidden aspect-video">
+                        @if(!empty($budaya['video_id']))
+                        <iframe 
+                            class="absolute inset-0 w-full h-full"
+                            src="https://www.youtube.com/embed/{{ $budaya['video_id'] }}?start={{ $budaya['video_start'] ?? 0 }}" 
+                            title="Video Edukasi {{ $budaya['nama'] }}"
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                        @else
+                            <div class="flex items-center justify-center w-full h-full">
+                                <div class="text-center">
+                                    <svg class="w-16 h-16 text-red-500 mx-auto mb-2" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M8 5v14l11-7z"/>
+                                    </svg>
+                                    <p class="text-white text-sm">Video Edukasi sedang disiapkan</p>
+                                </div>
+                            </div>
+                        @endif
                     </div>
                     <p class="text-xs text-gray-500 mt-2 italic text-center">Video Edukasi: {{ $budaya['nama'] }} - Edukasi Budaya</p>
                 </div>
@@ -51,7 +64,7 @@
                 <!-- Pesan Moral -->
                 <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded-r-lg">
                     <p class="text-sm font-bold text-yellow-800 mb-1">💡 Pesan Moral & Karakter</p>
-                    <p class="text-xs text-yellow-700 leading-relaxed">{{ $budaya['deskripsi'] }} — Milikilah kebanggaan akan budaya daerahmu!</p>
+                    <p class="text-xs text-yellow-700 leading-relaxed">{{ $budaya['pesan_moral'] ?? 'Milikilah kebanggaan akan budaya daerahmu!' }}</p>
                 </div>
             </div>
 
@@ -94,19 +107,16 @@
                 <div class="space-y-4">
                     <div class="bg-yellow-50 p-4 rounded-xl border border-yellow-100">
                         <p class="text-xs font-bold text-yellow-800 mb-1">✨ KEUNIKAN UTAMA</p>
-                        <p class="text-xs text-gray-600 leading-relaxed">{{ $budaya['deskripsi'] }}</p>
+                        <p class="text-xs text-gray-600 leading-relaxed">{{ $budaya['keunikan'] ?? 'Provinsi ini memiliki keunikan budaya yang khas.' }}</p>
                     </div>
                     <div class="bg-blue-50 p-4 rounded-xl border border-blue-100">
                         <p class="text-xs font-bold text-blue-800 mb-1">🚀 FAKTA UNIK</p>
-                        <p class="text-xs text-gray-600 leading-relaxed">Provinsi ini memiliki warisan budaya yang diakui UNESCO dan keindahan alam yang menakjubkan.</p>
+                        <p class="text-xs text-gray-600 leading-relaxed">{{ $budaya['fakta_unik'] ?? 'Provinsi ini memiliki warisan budaya yang menarik.' }}</p>
                     </div>
                 </div>
             </div>
 
-            
-
-            <!-- TOMBOL KOSTUMISASI (Tambahan) -->
-           <!-- TOMBOL MAIN KUIS -->
+            <!-- TOMBOL MAIN KUIS -->
             <a href="{{ route('kuis.index') }}" class="block bg-emerald-600 hover:bg-emerald-700 text-white text-center font-bold py-3 px-4 rounded-xl transition shadow-md">
                 🎯 Main Kuis Sekarang
             </a>
