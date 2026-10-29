@@ -53,5 +53,10 @@ Route::middleware('auth')->group(function () {
         Route::post('/avatar/beli', 'beli')->name('avatar.beli');
     });
 
-    require __DIR__.'/auth.php';
-});
+}); // <-- Kurung kurawal penutup middleware('auth') berakhir di sini
+
+// =========================================================
+// ROUTE AUTH BAWAAN (Login, Register, Logout, dll)
+// WAJIB DI LUAR GRUP MIDDLEWARE AUTH
+// =========================================================
+require __DIR__.'/auth.php';

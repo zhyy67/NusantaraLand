@@ -247,10 +247,10 @@ class AvatarData
             ],
             
             // ================= BALI & NUSA TENGGARA =================
-            'bali-cowo' => [
+            'bali' => [
                 'nama' => 'Bali', 
                 'warna' => '#F97316', 
-                'emoji' => 'bali.png', 
+                'emoji' => 'Payas Agung pria.png', 
                 'harga' => 100,
                 'grup' => 'Bali & Nusa Tenggara'
             ],
@@ -389,7 +389,8 @@ class AvatarData
                 'emoji' => 'Baju Kurung Besurek.png', 
                 'harga' => 100,
                 'grup' => 'Pulau Sumatera'
-            ],'sumatra-selatan' => [
+            ],
+            'sumatra-selatan' => [
                 'nama' => 'Kesan Pakcik', 
                 'warna' => '#84CC16', 
                 'emoji' => 'Kesan Pakcik.png', 
@@ -403,14 +404,146 @@ class AvatarData
                 'harga' => 100,
                 'grup' => 'Pulau Sumatera'
             ],
-            
-            // ================= PULAU PAPUA =================
-            'papua-cowo' => [
-                'nama' => 'Papua', 
-                'warna' => '#8B5CF6', 
-                'emoji' => 'papua.png', 
+            'bangka-belitung' => [
+                'nama' => 'Kupiah Resam', 
+                'warna' => '#84CC16', 
+                'emoji' => 'Kupiah Resam.png', 
                 'harga' => 100,
-                'grup' => 'Pulau Papua'
+                'grup' => 'Pulau Sumatera'
+            ],
+            'bangka-belitung-cewek' => [
+                'nama' => 'Paksian ', 
+                'warna' => '#22C55E', 
+                'emoji' => 'Paksian.png', 
+                'harga' => 100,
+                'grup' => 'Pulau Sumatera'
+            ],
+            'lampung' => [
+                'nama' => 'Pakaian Adat Pengantin Pria Lampung ', 
+                'warna' => '#84CC16', 
+                'emoji' => 'Pakaian Adat Pengantin Pria Lampung.png', 
+                'harga' => 100,
+                'grup' => 'Pulau Sumatera'
+            ],
+            'lampung-cewek' => [
+                'nama' => 'Siger Lampung', 
+                'warna' => '#22C55E', 
+                'emoji' => 'Siger Lampung.png', 
+                'harga' => 100,
+                'grup' => 'Pulau Sumatera'
+            ],
+            
+            // ================= PULAU PAPUA & Maluku =================
+            'maluku-utara' => [
+                'nama' => 'Manteren Lamo maluku utara', 
+                'warna' => '#8B5CF6', 
+                'emoji' => 'Manteren Lamo.png', 
+                'harga' => 100,
+                'grup' => 'Maluku & Papua'
+            ],
+            'maluku-utara-cewe' => [
+                'nama' => 'Kimun Gia maluku utara', 
+                'warna' => '#8B5CF6', 
+                'emoji' => 'Kimun Gia.png', 
+                'harga' => 100,
+                'grup' => 'Maluku & Papua'
+            ],
+             'maluku' => [
+                'nama' => 'Manteren Lamo maluku', 
+                'warna' => '#8B5CF6', 
+                'emoji' => 'Manteren Lamo 2.png', 
+                'harga' => 100,
+                'grup' => 'Maluku & Papua'
+            ],
+            'maluku-cewe' => [
+                'nama' => 'Kimun Gia maluku', 
+                'warna' => '#8B5CF6', 
+                'emoji' => 'Kimun Gia 2.png', 
+                'harga' => 100,
+                'grup' => 'Maluku & Papua'
+            ],
+            'papua-barat-daya' => [
+                'nama' => 'Rok Kain Rumput Pria', 
+                'warna' => '#8B5CF6', 
+                'emoji' => 'Rok Kain Rumput Pria.png', 
+                'harga' => 100,
+                'grup' => 'Maluku & Papua'
+            ],
+            'papua-barat-daya-cewek' => [
+                'nama' => 'Rok Kain Rumput cewek', 
+                'warna' => '#8B5CF6', 
+                'emoji' => 'Rok Kain Rumput cewek.png', 
+                'harga' => 100,
+                'grup' => 'Maluku & Papua'
+            ],
+            'papua-barat' => [
+                'nama' => 'Baju Serat Sagu', 
+                'warna' => '#8B5CF6', 
+                'emoji' => 'Baju Serat Sagu.png', 
+                'harga' => 100,
+                'grup' => 'Maluku & Papua'
+            ],'papua-barat-cewek' => [
+                'nama' => 'Baju Serat Sagu', 
+                'warna' => '#8B5CF6', 
+                'emoji' => 'Baju Serat Sagu 2.png', 
+                'harga' => 100,
+                'grup' => 'Maluku & Papua'
+            ],
+            'papua' => [
+                'nama' => 'Holim', 
+                'warna' => '#8B5CF6', 
+                'emoji' => 'Holim.png', 
+                'harga' => 100,
+                'grup' => 'Maluku & Papua'
+            ],
+            'papua-cewek' => [
+                'nama' => 'Rok Rumbai & Tas Noken', 
+                'warna' => '#8B5CF6', 
+                'emoji' => 'Rok Rumbai & Tas Noken.png', 
+                'harga' => 100,
+                'grup' => 'Maluku & Papua'
+            ],
+            'papua-tengah' => [
+                'nama' => 'marrind headres & skirt', 
+                'warna' => '#8B5CF6', 
+                'emoji' => 'marrind headres & skirt.png', 
+                'harga' => 100,
+                'grup' => 'Maluku & Papua'
+            ],
+            'papua-tengah-cewek' => [
+                'nama' => 'marind kain & manik', 
+                'warna' => '#8B5CF6', 
+                'emoji' => 'marind kain & manik.png', 
+                'harga' => 100,
+                'grup' => 'Maluku & Papua'
+            ],
+            'papua-pegunungan' => [
+                'nama' => 'southeast mimika face', 
+                'warna' => '#8B5CF6', 
+                'emoji' => 'southeast mimika face.png', 
+                'harga' => 100,
+                'grup' => 'Maluku & Papua'
+            ],
+            'papua-pegunungan-cewek' => [
+                'nama' => 'mimika mask ', 
+                'warna' => '#8B5CF6', 
+                'emoji' => 'mimika mask.png', 
+                'harga' => 100,
+                'grup' => 'Maluku & Papua'
+            ],
+            'papua-selatan' => [
+                'nama' => 'asmat onde & kembung', 
+                'warna' => '#8B5CF6', 
+                'emoji' => 'asmat onde & kembung.png', 
+                'harga' => 100,
+                'grup' => 'Maluku & Papua'
+            ],
+            'papua-selatan-cewek' => [
+                'nama' => 'asmat onde & kembung cewek', 
+                'warna' => '#8B5CF6', 
+                'emoji' => 'asmat onde & kembung cewek.png', 
+                'harga' => 100,
+                'grup' => 'Maluku & Papua'
             ],
         ];
     }

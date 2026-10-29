@@ -30,11 +30,11 @@
             <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-green-600 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
             <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-yellow-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob animation-delay-2000"></div>
 
-            <!-- Logo -->
+            <!-- Logo Baru -->
             <div class="relative z-10 mb-6 flex flex-col items-center">
                 <a href="/" class="flex items-center gap-3">
-                    <div class="w-14 h-14 border-2 border-nusantara-gold rounded-full flex items-center justify-center bg-nusantara-dark shadow-lg">
-                        <i class="fas fa-star text-nusantara-gold text-2xl"></i>
+                    <div class="w-16 h-16 bg-white rounded-full overflow-hidden border-4 border-nusantara-gold shadow-lg flex items-center justify-center p-1">
+                        <img src="{{ asset('logo/logo-nusantara.png') }}" alt="Logo Nusantara Land" class="w-full h-full object-cover rounded-full">
                     </div>
                     <span class="text-3xl font-extrabold text-white tracking-wider">
                         NUSANTARA <span class="text-nusantara-gold">LAND</span>

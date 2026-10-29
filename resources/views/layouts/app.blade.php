@@ -53,10 +53,11 @@
     <!-- Navbar -->
     <nav class="bg-nusantara-dark text-white py-4 px-6 shadow-md">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <!-- Logo -->
-            <a href="{{ route('dashboard') }}" class="flex items-center gap-2">
-                <div class="w-10 h-10 border-2 border-nusantara-gold rounded-full flex items-center justify-center">
-                    <i class="fas fa-star text-nusantara-gold"></i>
+            
+            <!-- Logo Baru -->
+            <a href="{{ route('dashboard') }}" class="flex items-center gap-3">
+                <div class="w-12 h-12 bg-white rounded-full overflow-hidden border-2 border-nusantara-gold shadow-sm flex items-center justify-center p-0.5">
+                    <img src="{{ asset('logo/logo-nusantara.png') }}" alt="Logo Nusantara Land" class="w-full h-full object-cover rounded-full">
                 </div>
                 <div class="text-xl font-bold tracking-wider">
                     NUSANTARA <span class="text-nusantara-gold">LAND</span>
