@@ -132,7 +132,7 @@
     <!-- ========================================== -->
     <!-- 2. CARD PETA NUSANTARA                     -->
     <!-- ========================================== -->
-    <div class="bg-white rounded-3xl p-6 md:p-8 w-full shadow-sm">
+    <div id="peta-budaya" class="scroll-mt-24 bg-white rounded-3xl p-6 md:p-8 w-full shadow-sm">
         <div class="flex items-center gap-4 mb-6">
             <div class="bg-blue-100 text-blue-600 p-3 rounded-xl">
                 <i class="fas fa-map-marked-alt text-xl"></i>

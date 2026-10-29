@@ -68,26 +68,48 @@
                 </div>
             </div>
 
-            <!-- GRID INFORMASI BUDAYA -->
+            <!-- GRID INFORMASI BUDAYA (DENGAN GAMBAR & PENJELASAN) -->
             <div class="bg-white rounded-3xl p-6 md:p-8 shadow-sm border border-gray-100">
                 <h2 class="text-lg font-bold text-gray-800 mb-4">🏛️ Informasi Budaya</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 
-                    <div class="bg-blue-50 border border-blue-100 rounded-2xl p-4">
-                        <span class="text-xs text-gray-500">🏠 Rumah Adat</span>
-                        <p class="text-lg font-bold text-gray-800 mt-1">{{ $budaya['rumah'] }}</p>
+                    <!-- Rumah Adat -->
+                    <div class="bg-blue-50 border border-blue-100 rounded-2xl overflow-hidden">
+                        <img src="{{ $budaya['foto_rumah'] }}" alt="Rumah Adat" class="w-full h-40 object-cover">
+                        <div class="p-4">
+                            <span class="text-xs text-gray-500">🏠 Rumah Adat</span>
+                            <p class="text-lg font-bold text-gray-800 mt-1">{{ $budaya['rumah'] }}</p>
+                           <p class="text-xs text-gray-600 mt-2 leading-relaxed">{{ $budaya['desc_rumah'] ?? 'Rumah adat khas ' . $budaya['nama'] . '.' }}</p>
+                        </div>
                     </div>
-                    <div class="bg-pink-50 border border-pink-100 rounded-2xl p-4">
-                        <span class="text-xs text-gray-500">💃 Tarian Daerah</span>
-                        <p class="text-lg font-bold text-gray-800 mt-1">{{ $budaya['tari'] }}</p>
+
+                    <!-- Tarian Daerah -->
+                    <div class="bg-pink-50 border border-pink-100 rounded-2xl overflow-hidden">
+                        <img src="{{ $budaya['foto_tari'] }}" alt="Tarian Daerah" class="w-full h-40 object-cover">
+                        <div class="p-4">
+                            <span class="text-xs text-gray-500">💃 Tarian Daerah</span>
+                            <p class="text-lg font-bold text-gray-800 mt-1">{{ $budaya['tari'] }}</p>
+                            <p class="text-xs text-gray-600 mt-2 leading-relaxed">{{ $budaya['desc_tari'] ?? 'Tarian tradisional ' . $budaya['nama'] . '.' }}</p>
+                        </div>
                     </div>
-                    <div class="bg-yellow-50 border border-yellow-100 rounded-2xl p-4">
-                        <span class="text-xs text-gray-500">🍛 Makanan Khas</span>
-                        <p class="text-lg font-bold text-gray-800 mt-1">{{ $budaya['makanan'] }}</p>
+
+                    <!-- Makanan Khas -->
+                    <div class="bg-yellow-50 border border-yellow-100 rounded-2xl overflow-hidden">
+                        <img src="{{ $budaya['foto_makanan'] }}" alt="Makanan Khas" class="w-full h-40 object-cover">
+                        <div class="p-4">
+                            <span class="text-xs text-gray-500">🍛 Makanan Khas</span>
+                            <p class="text-lg font-bold text-gray-800 mt-1">{{ $budaya['makanan'] }}</p>
+                            <p class="text-xs text-gray-600 mt-2 leading-relaxed">{{ $budaya['desc_makanan'] ?? 'Kuliner khas ' . $budaya['nama'] . '.' }}</p>
+                        </div>
                     </div>
-                    <div class="bg-purple-50 border border-purple-100 rounded-2xl p-4">
-                        <span class="text-xs text-gray-500">🎵 Alat Musik</span>
-                        <p class="text-lg font-bold text-gray-800 mt-1">{{ $budaya['musik'] }}</p>
+                    <!-- Alat Musik -->
+                    <div class="bg-purple-50 border border-purple-100 rounded-2xl overflow-hidden">
+                        <img src="{{ $budaya['foto_musik'] }}" alt="Alat Musik" class="w-full h-40 object-cover">
+                        <div class="p-4">
+                            <span class="text-xs text-gray-500">🎵 Alat Musik</span>
+                            <p class="text-lg font-bold text-gray-800 mt-1">{{ $budaya['musik'] }}</p>
+                            <p class="text-xs text-gray-600 mt-2 leading-relaxed">{{ $budaya['desc_musik'] ?? 'Alat musik tradisional ' . $budaya['nama'] . '.' }}</p>
+                        </div>
                     </div>
 
                 </div>

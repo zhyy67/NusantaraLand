@@ -28,21 +28,30 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    // --- Kuis Budaya ---
-    Route::get('/kuis', [KuisController::class, 'index'])->name('kuis.index');
-    Route::post('/kuis', [KuisController::class, 'submit'])->name('kuis.submit');
+    // --- Kuis Budaya (Misi & Peringkat sudah menyatu di sini) ---
+    Route::controller(KuisController::class)->group(function () {
+        Route::get('/kuis', 'index')->name('kuis.index');
+        Route::post('/kuis', 'submit')
+            ->middleware('throttle:10,1') // max 10 submit/menit, cegah spam
+            ->name('kuis.submit');
+        Route::get('/kuis/hasil', 'hasil')->name('kuis.hasil');
+    });
 
     // --- Peta dan Informasi Budaya ---
-    Route::get('/budaya', [BudayaController::class, 'index'])->name('budaya.index');
-    Route::get('/budaya/{nama}', [BudayaController::class, 'show'])->name('budaya.show');
+    Route::controller(BudayaController::class)->group(function () {
+        Route::get('/budaya', 'index')->name('budaya.index');
+        Route::get('/budaya/{nama}', 'show')
+            ->where('nama', '[A-Za-z\-]+')
+            ->name('budaya.show');
+    });
 
     // --- Kustomisasi Avatar ---
-    Route::get('/avatar', [AvatarController::class, 'index'])->name('avatar.index');
-    Route::get('/avatar/kostumisasi', [AvatarController::class, 'kostumisasi'])->name('avatar.kostumisasi');
-    Route::post('/avatar/update', [AvatarController::class, 'update'])->name('avatar.update');
-    Route::post('/avatar/beli', [AvatarController::class, 'beli'])->name('avatar.beli'); 
-});
+    Route::controller(AvatarController::class)->group(function () {
+        Route::get('/avatar', 'index')->name('avatar.index');
+        Route::get('/avatar/kostumisasi', 'kostumisasi')->name('avatar.kostumisasi');
+        Route::post('/avatar/update', 'update')->name('avatar.update');
+        Route::post('/avatar/beli', 'beli')->name('avatar.beli');
+    });
 
-// Route login, register, logout dari Laravel Breeze
-// HARUS DI LUAR GRUP MIDDLEWARE AUTH
-require __DIR__.'/auth.php';
+    require __DIR__.'/auth.php';
+});

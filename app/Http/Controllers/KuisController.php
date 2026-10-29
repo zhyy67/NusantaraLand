@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
+use App\Services\MisiService; // === TAMBAHAN ===
 
 class KuisController extends Controller
 {
@@ -1137,13 +1138,23 @@ class KuisController extends Controller
             $groupedQuestions[$group][$key] = $quiz;
         }
 
+        // === TAMBAHAN: Ambil data Misi Harian ===
+        $misiHarian = MisiService::getMisiUntukUser($user);
+
+        // === TAMBAHAN: Ambil data Peringkat ===
+        $topPemain = User::orderByDesc('points')->take(3)->get(['id', 'name', 'points']);
+        $peringkatUser = User::where('points', '>', $user->points)->count() + 1;
+
         return view('kuis', compact(
             'safeQuestions',
             'alreadyCompleted',
             'user',
             'quizKey',
             'currentQuiz',
-            'groupedQuestions'
+            'groupedQuestions',
+            'misiHarian',      // <-- Dikirim ke view
+            'topPemain',       // <-- Dikirim ke view
+            'peringkatUser'    // <-- Dikirim ke view
         ));
     }
 
@@ -1219,13 +1230,19 @@ class KuisController extends Controller
             return redirect()->route('kuis.index', ['daerah' => $quizKey])->with('info', $e->getMessage());
         }
 
+        // === TAMBAHAN: Update Progress Misi ===
+        // 1. Update misi menyelesaikan kuis
+        MisiService::tambahProgress($user, 'selesaikan_kuis', 1);
+        // 2. Update misi mendapatkan lencana/kostum baru (karena setiap selesai kuis dapat avatar)
+        MisiService::tambahProgress($user, 'lencana_baru', 1);
+
         // =======================================================
         // REDIRECT DENGAN NOTIFIKASI HADIAH
         // =======================================================
         return redirect()->route('kuis.index', ['daerah' => $quizKey])->with('result', [
             'correct' => $correct,
             'earned' => $earned,
-            'reward' => $allQuizzes[$quizKey]['title'] ?? 'Kostum Budaya', // <-- TAMBAHAN HADIAH
+            'reward' => $allQuizzes[$quizKey]['title'] ?? 'Kostum Budaya',
         ]);
     }
 }

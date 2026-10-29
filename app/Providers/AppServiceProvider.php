@@ -8,24 +8,17 @@ use Illuminate\Support\Facades\Auth;
 
 class AppServiceProvider extends ServiceProvider
 {
-    /**
-     * Register any application services.
-     */
     public function register(): void
     {
         //
     }
 
-    /**
-     * Bootstrap any application services.
-     */
     public function boot(): void
     {
-        // Share data user yang sedang login ke semua view
+        // Share data user ke SEMUA view, tanpa peduli login atau tidak
+        // Nilainya null jika belum login → aman dipakai dengan null-safe operator
         View::composer('*', function ($view) {
-            if (Auth::check()) {
-                $view->with('user', Auth::user());
-            }
+            $view->with('user', Auth::user());
         });
     }
 }

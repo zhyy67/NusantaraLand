@@ -161,22 +161,92 @@ class AvatarData
             ],
             
             // ================= PULAU SULAWESI =================
-            'sulawesi-selatan-cewek' => [
+             'gorontalo' => [
+                'nama' => 'gorontalo paluwala & makuta', 
+                'warna' => '#EF4444', 
+                'emoji' => 'gorontalo paluwala & makuta.png', 
+                'harga' => 100,
+                'grup' => 'Pulau Sulawesi'
+            ],
+            'gorontalo-cewek' => [
+                'nama' => 'gorontalo billiu & makuta', 
+                'warna' => '#EF4444', 
+                'emoji' => 'gorontalo billiu & makuta.png', 
+                'harga' => 100,
+                'grup' => 'Pulau Sulawesi'
+            ],
+            'sulawesi-tengah' => [
+                'nama' => 'Koje & Puruka Pajana', 
+                'warna' => '#EF4444', 
+                'emoji' => 'Koje & Puruka Pajana.png', 
+                'harga' => 100,
+                'grup' => 'Pulau Sulawesi'
+            ],
+            'sulawesi-tengah-cewek' => [
+                'nama' => 'Nggembe', 
+                'warna' => '#EF4444', 
+                'emoji' => 'Nggembe.png', 
+                'harga' => 100,
+                'grup' => 'Pulau Sulawesi'
+            ],
+            'sulawesi-utara' => [
+                'nama' => 'Laku Tepu', 
+                'warna' => '#EF4444', 
+                'emoji' => 'Laku Tepu pria.png', 
+                'harga' => 100,
+                'grup' => 'Pulau Sulawesi'
+            ],
+            'sulawesi-utara-cewek' => [
+                'nama' => 'Laku Tepu', 
+                'warna' => '#EF4444', 
+                'emoji' => 'Laku Tepu wanita.png', 
+                'harga' => 100,
+                'grup' => 'Pulau Sulawesi'
+            ],
+            'sulawesi-barat' => [
+                'nama' => 'Jas Tutu dan Passapu.png', 
+                'warna' => '#EF4444', 
+                'emoji' => 'Jas Tutu dan Passapu.png', 
+                'harga' => 100,
+                'grup' => 'Pulau Sulawesi'
+            ],
+            'sulawesi-barat-cewek' => [
                 'nama' => 'Bodo', 
                 'warna' => '#EF4444', 
                 'emoji' => 'bodo.png', 
                 'harga' => 100,
                 'grup' => 'Pulau Sulawesi'
             ],
+            'sulawesi-selatan' => [
+                'nama' => 'tpraja pasuki', 
+                'warna' => '#EF4444', 
+                'emoji' => 'tpraja pa suki.png', 
+                'harga' => 100,
+                'grup' => 'Pulau Sulawesi'
+            ],
+            'sulawesi-selatan-cewek' => [
+                'nama' => 'toraja pa suki kandaure', 
+                'warna' => '#EF4444', 
+                'emoji' => 'toraja pa suki kandaure.png', 
+                'harga' => 100,
+                'grup' => 'Pulau Sulawesi'
+            ],
+            'sulawesi-tenggara' => [
+                'nama' => 'Babu Nggawi Langga', 
+                'warna' => '#EF4444', 
+                'emoji' => 'Babu Nggawi Langga.png', 
+                'harga' => 100,
+                'grup' => 'Pulau Sulawesi'
+            ],
+            'sulawesi-tenggara-cewek' => [
+                'nama' => 'Babu Nggawi', 
+                'warna' => '#EF4444', 
+                'emoji' => 'Babu Nggawi.png', 
+                'harga' => 100,
+                'grup' => 'Pulau Sulawesi'
+            ],
             
             // ================= BALI & NUSA TENGGARA =================
-            'ntt-cewek' => [
-                'nama' => 'Tenun Rote', 
-                'warna' => '#14B8A6', 
-                'emoji' => 'tenun-rote.png', 
-                'harga' => 100,
-                'grup' => 'Bali & Nusa Tenggara'
-            ],
             'bali-cowo' => [
                 'nama' => 'Bali', 
                 'warna' => '#F97316', 
@@ -184,19 +254,152 @@ class AvatarData
                 'harga' => 100,
                 'grup' => 'Bali & Nusa Tenggara'
             ],
+            'bali-cewek' => [
+                'nama' => 'Payas Agung wanita', 
+                'warna' => '#F97316', 
+                'emoji' => 'Payas Agung wanita.png', 
+                'harga' => 100,
+                'grup' => 'Bali & Nusa Tenggara'
+            ],
+            'ntb' => [
+                'nama' => 'Pakaian adat Pegon ', 
+                'warna' => '#14B8A6', 
+                'emoji' => 'Pakaian adat Pegon.png', 
+                'harga' => 100,
+                'grup' => 'Bali & Nusa Tenggara'
+            ],
+            'ntb-cewek' => [
+                'nama' => 'Pakaian adat Lambung', 
+                'warna' => '#14B8A6', 
+                'emoji' => 'Pakaian adat Lambung.png', 
+                'harga' => 100,
+                'grup' => 'Bali & Nusa Tenggara'
+            ],
+            'ntt' => [
+                'nama' => 'Pakaian adat Rote dengan topi Ti i Langga', 
+                'warna' => '#14B8A6', 
+                'emoji' => 'Pakaian adat Rote dengan topi Ti i Langga.png', 
+                'harga' => 100,
+                'grup' => 'Bali & Nusa Tenggara'
+            ],
+            'ntt-cewek' => [
+                'nama' => 'Tenun Rote', 
+                'warna' => '#14B8A6', 
+                'emoji' => 'tenun-rote.png', 
+                'harga' => 100,
+                'grup' => 'Bali & Nusa Tenggara'
+            ],
+            
             
             // ================= PULAU SUMATERA =================
-            'sumatra-cowo' => [
-                'nama' => 'Sumatra', 
+            'aceh' => [
+                'nama' => 'Meukasah', 
                 'warna' => '#84CC16', 
-                'emoji' => 'sumatra.png', 
+                'emoji' => 'Meukasah.png', 
                 'harga' => 100,
                 'grup' => 'Pulau Sumatera'
             ],
             'aceh-cewek' => [
-                'nama' => 'Ulee Balang', 
+                'nama' => 'Baju Kurung ', 
                 'warna' => '#22C55E', 
-                'emoji' => 'ulee-balang.png', 
+                'emoji' => 'Baju Kurung.png', 
+                'harga' => 100,
+                'grup' => 'Pulau Sumatera'
+            ],
+            'sumatra-utara' => [
+                'nama' => 'Kain Ulos & Tengkuluk', 
+                'warna' => '#84CC16', 
+                'emoji' => 'Kain Ulos & Tengkuluk.png', 
+                'harga' => 100,
+                'grup' => 'Pulau Sumatera'
+            ],
+            'sumatra-utara-cewek' => [
+                'nama' => 'Kain Ulos ', 
+                'warna' => '#22C55E', 
+                'emoji' => 'Kain Ulos.png', 
+                'harga' => 100,
+                'grup' => 'Pulau Sumatera'
+            ],
+            'sumatra-barat' => [
+                'nama' => 'Baju Penghulu', 
+                'warna' => '#84CC16', 
+                'emoji' => 'Baju Penghulu.png', 
+                'harga' => 100,
+                'grup' => 'Pulau Sumatera'
+            ],
+            'sumatra-barat-cewek' => [
+                'nama' => 'Baju Batabue ', 
+                'warna' => '#22C55E', 
+                'emoji' => 'Baju Batabue.png', 
+                'harga' => 100,
+                'grup' => 'Pulau Sumatera'
+            ],
+            'riau' => [
+                'nama' => 'Teluk Belanga', 
+                'warna' => '#84CC16', 
+                'emoji' => 'Teluk Belanga.png', 
+                'harga' => 100,
+                'grup' => 'Pulau Sumatera'
+            ],
+            'riau-cewek' => [
+                'nama' => 'Kebaya Labuh', 
+                'warna' => '#22C55E', 
+                'emoji' => 'Kebaya Labuh.png', 
+                'harga' => 100,
+                'grup' => 'Pulau Sumatera'
+            ],
+            'kepulawan-riau' => [
+                'nama' => 'Baju Kurung Cekak Musang', 
+                'warna' => '#84CC16', 
+                'emoji' => 'Baju Kurung Cekak Musang.png', 
+                'harga' => 100,
+                'grup' => 'Pulau Sumatera'
+            ],
+            'kepulauan-riau-cewek' => [
+                'nama' => 'Kebaya Labuh & Mahkota', 
+                'warna' => '#22C55E', 
+                'emoji' => 'Kebaya Labuh & Mahkota.png', 
+                'harga' => 100,
+                'grup' => 'Pulau Sumatera'
+            ],
+            'jambi' => [
+                'nama' => 'Baju Kurung Suto', 
+                'warna' => '#84CC16', 
+                'emoji' => 'baju kurung suto.png', 
+                'harga' => 100,
+                'grup' => 'Pulau Sumatera'
+            ],
+            'jambi-cewek' => [
+                'nama' => 'Baju Kurung Tangguk', 
+                'warna' => '#22C55E', 
+                'emoji' => 'Baju Kurung Tangguk.png', 
+                'harga' => 100,
+                'grup' => 'Pulau Sumatera'
+            ],
+            'bengkulu' => [
+                'nama' => 'Kain Besurek', 
+                'warna' => '#84CC16', 
+                'emoji' => 'Kain Besurek.png', 
+                'harga' => 100,
+                'grup' => 'Pulau Sumatera'
+            ],
+            'bengkulu-cewek' => [
+                'nama' => 'Baju Kurung Besurek', 
+                'warna' => '#22C55E', 
+                'emoji' => 'Baju Kurung Besurek.png', 
+                'harga' => 100,
+                'grup' => 'Pulau Sumatera'
+            ],'sumatra-selatan' => [
+                'nama' => 'Kesan Pakcik', 
+                'warna' => '#84CC16', 
+                'emoji' => 'Kesan Pakcik.png', 
+                'harga' => 100,
+                'grup' => 'Pulau Sumatera'
+            ],
+            'sumatra-selatan-cewek' => [
+                'nama' => 'Aesan Gede ', 
+                'warna' => '#22C55E', 
+                'emoji' => 'Aesan Gede.png', 
                 'harga' => 100,
                 'grup' => 'Pulau Sumatera'
             ],

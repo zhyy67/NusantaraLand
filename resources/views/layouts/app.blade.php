@@ -5,24 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title', 'Nusantara Land')</title>
-    
+
     <!-- Tailwind CSS via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    
+
     <style>
         body { font-family: 'Poppins', sans-serif; background-color: #f3f4f6; }
-        
+
         /* Custom Colors */
         .bg-nusantara-dark { background-color: #0f3d2e; }
         .bg-nusantara-gold { background-color: #fbbf24; }
         .text-nusantara-gold { color: #fbbf24; }
-        
+
         /* Pattern Background untuk Hero */
         .hero-pattern {
             background-color: #0d5c46;
@@ -33,7 +33,7 @@
         /* Styling Progress Bar */
         .progress-bar-bg { background-color: #e5e7eb; border-radius: 9999px; height: 8px; }
         .progress-bar-fill { background-color: #fbbf24; height: 8px; border-radius: 9999px; }
-        
+
         /* Styling Leaderboard */
         .leaderboard-row.current-user {
             background-color: #fffbeb;
@@ -41,10 +41,14 @@
         }
     </style>
 
-    <!-- INI PENTING: Tempat CSS dari halaman lain (seperti @push('styles')) -->
     @stack('styles')
 </head>
 <body class="text-gray-800">
+
+@php
+    // Ambil user yang login dengan aman
+    $authUser = auth()->user();
+@endphp
 
     <!-- Navbar -->
     <nav class="bg-nusantara-dark text-white py-4 px-6 shadow-md">
@@ -61,41 +65,57 @@
 
             <!-- Menu Navigasi (Desktop) -->
             <div class="hidden md:flex gap-8 font-medium text-sm items-center">
-                <a href="{{ route('dashboard') }}" class="hover:text-nusantara-gold transition">Beranda</a>
-                <a href="#misi-harian" class="hover:text-nusantara-gold transition">Misi</a>
-                <a href="{{ route('kuis.index') }}" class="hover:text-nusantara-gold transition">Kuis</a>
-                <a href="#papan-peringkat" class="hover:text-nusantara-gold transition">Peringkat</a>
-                <a href="{{route('avatar.index')}}" class="hover:text-nusantara-gold transition">kostumisasi</a>
+                <a href="{{ route('dashboard') }}"
+                   class="{{ request()->routeIs('dashboard') ? 'text-nusantara-gold' : 'hover:text-nusantara-gold' }} transition">
+                    Beranda
+                </a>
+
+                {{-- Misi & Peringkat sekarang diarahkan ke anchor di halaman Kuis --}}
+                <a href="{{ route('kuis.index') }}#misi"
+                   class="hover:text-nusantara-gold transition">Misi</a>
+
+                <a href="{{ route('kuis.index') }}"
+                   class="{{ request()->routeIs('kuis.*') ? 'text-nusantara-gold' : 'hover:text-nusantara-gold' }} transition">
+                    Kuis
+                </a>
+
+                <a href="{{ route('kuis.index') }}#peringkat"
+                   class="hover:text-nusantara-gold transition">Peringkat</a>
+
+                <a href="{{ route('avatar.index') }}"
+                   class="{{ request()->routeIs('avatar.*') ? 'text-nusantara-gold' : 'hover:text-nusantara-gold' }} transition">
+                    Kostumisasi
+                </a>
             </div>
 
             <!-- User Info -->
-@auth
-<div class="flex items-center gap-2">
-    
-    <!-- Poin -->
-    <div class="bg-gray-800 rounded-full h-9 px-4 flex items-center gap-2 border border-gray-600">
-        <i class="fas fa-star text-nusantara-gold text-xs"></i>
-        <span class="text-sm font-bold">{{ $user->points ?? 0 }} poin</span>
-    </div>
+            @auth
+            <div class="flex items-center gap-2">
 
-    <!-- Level & Avatar -->
-    <a href="{{ route('profile.edit') }}" class="bg-yellow-500 text-black rounded-full h-9 px-4 flex items-center gap-2 font-bold hover:bg-yellow-400 transition">
-        <span class="bg-black text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">
-            {{ strtoupper(substr($user->name ?? 'U', 0, 1)) }}
-        </span>
-        <span class="text-sm">Lv {{ $user->level ?? 1 }}</span>
-    </a>
+                <!-- Poin -->
+                <div class="bg-gray-800 rounded-full h-9 px-4 flex items-center gap-2 border border-gray-600">
+                    <i class="fas fa-star text-nusantara-gold text-xs"></i>
+                    <span class="text-sm font-bold">{{ $authUser->points ?? 0 }} poin</span>
+                </div>
 
-    <!-- Logout (Sudah Disejajarkan) -->
-    <form method="POST" action="{{ route('logout') }}" class="inline-flex m-0">
-        @csrf
-        <button type="submit" class="bg-red-500 hover:bg-red-600 text-white text-sm font-bold rounded-full h-9 px-4 flex items-center gap-2 transition" title="Logout">
-            <i class="fas fa-sign-out-alt"></i> Keluar
-        </button>
-    </form>
+                <!-- Level & Avatar -->
+                <a href="{{ route('profile.edit') }}" class="bg-yellow-500 text-black rounded-full h-9 px-4 flex items-center gap-2 font-bold hover:bg-yellow-400 transition">
+                    <span class="bg-black text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">
+                        {{ strtoupper(substr($authUser->name ?? 'U', 0, 1)) }}
+                    </span>
+                    <span class="text-sm">Lv {{ $authUser->level ?? 1 }}</span>
+                </a>
 
-</div>
-@endauth
+                <!-- Logout -->
+                <form method="POST" action="{{ route('logout') }}" class="inline-flex m-0">
+                    @csrf
+                    <button type="submit" class="bg-red-500 hover:bg-red-600 text-white text-sm font-bold rounded-full h-9 px-4 flex items-center gap-2 transition" title="Logout">
+                        <i class="fas fa-sign-out-alt"></i> Keluar
+                    </button>
+                </form>
+
+            </div>
+            @endauth
 
             <!-- Menu Login (Jika belum login) -->
             @guest
