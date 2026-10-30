@@ -1,12 +1,17 @@
-[dependencies]
-"php/php" = "=8.3.4"
-
-[fs]
-"/app/" = "."
-
-[[command]]
-name = "run"
-module = "php/php:php"
-runner = "wasi"
-[command.annotations.wasi]
-main-args = ["-t", "/app/public", "-S", "localhost:8080"]
+[env]
+APP_NAME = "Laravel"
+APP_ENV = "production"
+APP_DEBUG = "true"
+APP_URL = "https://nusantaraland.wasmer.app"
+APP_KEY = "base64:JbN0rjKwQ4NSxDLOWlAuXn5BaY8RYJuTAFepp7qYSgs="
+DB_CONNECTION = "mysql"
+DB_HOST = "db.fr-roub1.bengt.wasmernet.com"
+DB_PORT = "20184"
+DB_DATABASE = "nusantaraland"
+DB_USERNAME = "user_08bbd252"
+DB_PASSWORD = "pw_FsaUz577J82r9hzJA8t1ZopGQpj0o0RL"
+SESSION_DRIVER = "database"
+CACHE_STORE = "array"
+QUEUE_CONNECTION = "sync"
+LOG_CHANNEL = "stderr"
+LOG_LEVEL = "error"
