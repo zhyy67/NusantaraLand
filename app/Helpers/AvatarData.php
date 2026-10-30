@@ -46,14 +46,14 @@ class AvatarData
                 'grup' => 'Pulau Jawa'
             ],
             'jawa-barat-cowok' => [
-                'nama' => 'beskap sunda depo', 
+                'nama' => 'beskap sunda', 
                 'warna' => '#EC4899', 
                 'emoji' => 'beskap sunday depo.png', 
                 'harga' => 100,
                 'grup' => 'Pulau Jawa'
             ],
             'jawa-barat-cewek' => [
-                'nama' => 'kebaya sunda depo', 
+                'nama' => 'kebaya sunda', 
                 'warna' => '#EC4899', 
                 'emoji' => 'kebaya sunday depo-cewek.png', 
                 'harga' => 100,
