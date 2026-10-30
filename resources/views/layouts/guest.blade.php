@@ -10,7 +10,7 @@
         <!-- ========================================== -->
         <!-- TAMBAHAN: FAVICON LOGO NUSANTARA LAND      -->
         <!-- ========================================== -->
-        <link rel="icon" type="image/png" href="{{ asset('logo/logo-nusantara.png') }}">
+        <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><image href=%22{{ asset('logo/logo-nusantara.png') }}%22 width=%22100%22 height=%22100%22 /></svg>">
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
