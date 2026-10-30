@@ -1,16 +1,16 @@
 FROM dunglas/frankenphp:1-php8.4-bookworm
 
-# Salin Composer dari image resmi Composer
+# Salin Composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
 # Install ekstensi PHP yang dibutuhkan Laravel & Database
 RUN install-php-extensions intl zip bcmath pdo_mysql
 
-# Copy seluruh kode proyek ke dalam container
+# Copy kode proyek
 WORKDIR /app
 COPY . .
 
-# Install dependensi Composer (sekarang perintah 'composer' sudah tersedia)
+# Install dependensi Composer (production)
 RUN composer install --no-dev --optimize-autoloader
 
 # Atur permission folder yang bisa ditulis

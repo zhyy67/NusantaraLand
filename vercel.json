@@ -3,7 +3,7 @@
     "app": {
       "root": "./",
       "runtime": "container",
-      "entrypoint": "Dockerfile"
+      "entrypoint": "Dockerfile.vercel"
     }
   },
   "rewrites": [
