@@ -1,5 +1,6 @@
 kind: wasmer.io/App.v0
 name: nusantaraland
+app_id: da_2qMIbt8Uzv3d
 owner: zhyy67
 package: .
 debug: true
@@ -20,4 +21,3 @@ env:
   QUEUE_CONNECTION: "sync"
   LOG_CHANNEL: "stderr"
   LOG_LEVEL: "error"
-app_id: da_2qMIbt8Uzv3d
