@@ -2,7 +2,9 @@ kind: wasmer.io/App.v0
 name: nusantaraland
 owner: zhyy67
 package: .
+debug: true
 env:
+  # ... (biarkan semua env yang sudah ada)
   APP_NAME: "Laravel"
   APP_ENV: "production"
   APP_DEBUG: "true"
@@ -15,3 +17,4 @@ env:
   SESSION_DRIVER: "database"
   CACHE_STORE: "array"
   QUEUE_CONNECTION: "sync"
+app_id: da_2qMIbt8Uzv3d
