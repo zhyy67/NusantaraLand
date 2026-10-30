@@ -135,7 +135,7 @@ return [
     */
 
     'providers' => Illuminate\Support\ServiceProvider::defaultProviders()->merge([
-        // Tambahkan provider kustom Anda di sini jika ada
-    ])->toArray(),
+    // ...
+])->toArray(),
 
 ];
