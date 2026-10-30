@@ -5,14 +5,15 @@
     "description": "The skeleton application for the Laravel framework.",
     "keywords": ["laravel", "framework"],
     "license": "MIT",
-   "require": {
-    "php": "^8.3",
-    "laravel/framework": "^13.17",
-    "laravel/tinker": "^3.0",
-    "symfony/console": "^7.4",
-    "symfony/error-handler": "^7.4",
-    "symfony/http-foundation": "~8.0.13"
-},
+    "require": {
+        "php": "^8.3",
+        "laravel/framework": "^13.17",
+        "laravel/tinker": "^3.0",
+        "symfony/console": "^7.4",
+        "symfony/error-handler": "^7.4",
+        "symfony/http-foundation": "~8.0.13",
+        "symfony/var-dumper": "~7.4.0"
+    },
     "require-dev": {
         "fakerphp/faker": "^1.23",
         "laravel/breeze": "^2.4",
