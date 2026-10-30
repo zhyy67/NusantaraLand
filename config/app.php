@@ -134,8 +134,8 @@ return [
     |
     */
 
-    'providers' => Illuminate\Support\ServiceProvider::defaultProviders()->merge([
-    // ...
+   'providers' => Illuminate\Support\ServiceProvider::defaultProviders()->merge([
+    Illuminate\View\ViewServiceProvider::class,
 ])->toArray(),
 
 ];
