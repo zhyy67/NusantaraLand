@@ -1,0 +1,20 @@
+FROM dunglas/frankenphp:1-php8.4-bookworm
+
+# Install ekstensi PHP yang dibutuhkan Laravel & Database Anda
+RUN install-php-extensions intl zip bcmath pdo_mysql
+
+# Copy seluruh kode proyek Anda ke dalam container
+WORKDIR /app
+COPY . .
+
+# Install dependensi Composer (tanpa dev)
+RUN composer install --no-dev --optimize-autoloader
+
+# Atur permission folder yang bisa ditulis
+RUN chown -R www-data:www-data /app/storage /app/bootstrap/cache
+
+# Salin konfigurasi Caddy
+COPY Caddyfile /etc/frankenphp/Caddyfile
+
+# Jalankan FrankenPHP
+CMD ["frankenphp", "run", "--config", "/etc/frankenphp/Caddyfile"]

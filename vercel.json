@@ -1,13 +1,11 @@
 {
-  "version": 2,
-  "framework": null,
-  "buildCommand": "echo 'skip build'",
-  "functions": {
-    "api/index.php": {
-      "runtime": "vercel-php@0.7.4"
+  "services": {
+    "app": {
+      "runtime": "container",
+      "entrypoint": "Dockerfile.vercel"
     }
   },
-  "routes": [
-    { "src": "/(.*)", "dest": "/api/index.php" }
+  "rewrites": [
+    { "source": "/(.*)", "destination": { "service": "app" } }
   ]
 }
