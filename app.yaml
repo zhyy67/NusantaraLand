@@ -5,7 +5,6 @@ package: .
 env:
   APP_NAME: "Laravel"
   APP_ENV: "production"
-  APP_KEY: "base64:JbN0rjKwQ4NSxDLOWlAuXn5BaY8RYJuTAFepp7qYSgs="
   APP_DEBUG: "true"
   APP_URL: "https://nusantaraland.wasmer.app"
   DB_CONNECTION: "mysql"
@@ -13,7 +12,6 @@ env:
   DB_PORT: "27427"
   DB_DATABASE: "defaultdb"
   DB_USERNAME: "avnadmin"
-  DB_PASSWORD: "AVNS_tFSKY3foU5KQtOXGm6X"
   SESSION_DRIVER: "database"
   CACHE_STORE: "array"
   QUEUE_CONNECTION: "sync"
