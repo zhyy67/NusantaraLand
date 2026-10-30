@@ -7,6 +7,11 @@
 
         <title>{{ config('app.name', 'Nusantara Land') }}</title>
 
+        <!-- ========================================== -->
+        <!-- TAMBAHAN: FAVICON LOGO NUSANTARA LAND      -->
+        <!-- ========================================== -->
+        <link rel="icon" type="image/png" href="{{ asset('logo/logo-nusantara.png') }}">
+
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />

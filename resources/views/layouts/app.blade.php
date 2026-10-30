@@ -6,6 +6,11 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title', 'Nusantara Land')</title>
 
+    <!-- ========================================== -->
+    <!-- TAMBAHAN: FAVICON LOGO NUSANTARA LAND      -->
+    <!-- ========================================== -->
+    <link rel="icon" type="image/png" href="{{ asset('logo/logo-nusantara.png') }}">
+
     <!-- Tailwind CSS via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
 
