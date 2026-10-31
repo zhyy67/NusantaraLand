@@ -5,13 +5,13 @@
 <!-- ========================================== -->
 <!-- HERO SECTION                               -->
 <!-- ========================================== -->
-<div class="relative overflow-hidden rounded-3xl mb-8 shadow-xl" style="background-color: #0f3d2e; background-image: radial-gradient(#1a7a5e 1px, transparent 1px); background-size: 20px 20px;">
+<div class="relative overflow-hidden rounded-2xl md:rounded-3xl mb-6 md:mb-8 shadow-xl" style="background-color: #0f3d2e; background-image: radial-gradient(#1a7a5e 1px, transparent 1px); background-size: 20px 20px;">
     <div class="absolute top-0 right-0 w-96 h-96 bg-green-800 opacity-20 rounded-full -mr-20 -mt-20 pointer-events-none"></div>
 
-    <div class="relative z-10 p-8 md:p-12 flex flex-col md:flex-row justify-between items-center gap-10">
+    <div class="relative z-10 p-5 md:p-12 flex flex-col md:flex-row justify-between items-center gap-6 md:gap-10" >
         
         <!-- KIRI: Teks & Tombol -->
-        <div class="w-full md:w-3/5">
+        <div class="w-full md:w-3/5 min-w-0">>
             <div class="inline-flex items-center gap-2 border border-white/30 rounded-full px-4 py-1.5 text-xs text-white mb-6">
                 <i class="fas fa-compass"></i> Petualangan Budaya Indonesia
             </div>
@@ -20,23 +20,23 @@
             <div class="flex items-center gap-4 mb-4">
                 
                 
-                <h1 class="text-4xl md:text-5xl font-extrabold text-white leading-tight">
+                <h1 class="text-2xl sm:text-3xl md:text-5xl font-extrabold text-white leading-tight break-words">
                     Halo, <span class="text-yellow-400">{{ $user->name }}</span>! <br> Siap bertualang hari ini?
                 </h1>
             </div>
             
-            <p class="text-green-100 mb-8 max-w-lg leading-relaxed text-sm md:text-base">
+            <p class="text-green-100 mb-6 md:mb-8 max-w-lg leading-relaxed text-xs sm:text-sm md:text-base break-words">
                 Jelajahi budaya 38 provinsi, taklukkan kuis bertahap waktu, selesaikan misi harian, dan kumpulkan poin untuk menjadi Sultan Nusantara.
             </p>
 
             <div class="flex flex-wrap gap-3 mb-8">
-                <div class="bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full flex items-center gap-2 border border-white/20 text-white text-sm font-semibold">
+                <div class="bg-white/10 backdrop-blur-sm px-3 md:px-4 py-1.5 md:py-2 rounded-full flex items-center gap-1.5 md:gap-2 border border-white/20 text-white text-[11px] md:text-sm font-semibold">
                     <i class="fas fa-star text-yellow-400"></i> {{ $user->points }} poin
                 </div>
-                <div class="bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full flex items-center gap-2 border border-white/20 text-white text-sm font-semibold">
+                <div class="bg-white/10 backdrop-blur-sm px-3 md:px-4 py-1.5 md:py-2 rounded-full flex items-center gap-1.5 md:gap-2 border border-white/20 text-white text-[11px] md:text-sm font-semibold">
                     <i class="fas fa-trophy text-yellow-400"></i> Level {{ $user->level }}
                 </div>
-                <div class="bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full flex items-center gap-2 border border-white/20 text-white text-sm font-semibold">
+                <div class="bg-white/10 backdrop-blur-sm px-3 md:px-4 py-1.5 md:py-2 rounded-full flex items-center gap-1.5 md:gap-2 border border-white/20 text-white text-[11px] md:text-sm font-semibold">
                     <i class="fas fa-fire text-orange-400"></i> {{ $user->streak }} hari beruntun
                 </div>
             </div>
@@ -49,27 +49,27 @@
         </div>
 
         <!-- KANAN: Progress Circle & Mini Cards -->
-        <div class="w-full md:w-2/5 flex flex-col items-center gap-6">
-            <div class="relative w-40 h-40">
+        <div class="w-full md:w-2/5 flex flex-col items-center gap-4 md:gap-6 min-w-0">
+            <div class="relative w-32 h-32 md:w-40 md:h-40">
                 <svg class="w-full h-full transform -rotate-90" viewBox="0 0 160 160">
                     <circle cx="80" cy="80" r="70" stroke="rgba(255,255,255,0.1)" stroke-width="12" fill="transparent" />
                     <circle cx="80" cy="80" r="70" stroke="#fbbf24" stroke-width="12" fill="transparent" 
                             stroke-dasharray="440" stroke-dashoffset="264" stroke-linecap="round" />
                 </svg>
                 <div class="absolute inset-0 flex flex-col items-center justify-center text-center">
-                    <span class="text-[10px] text-green-200 uppercase tracking-widest font-bold">Level</span>
-                    <span class="text-4xl font-extrabold text-white">{{ $user->level }}</span>
-                    <span class="text-[10px] text-green-300 mt-1">{{ $pointsToNextLevel }} Poin lagi</span>
+                    <span class="text-[9px] md:text-[10px] text-green-200 uppercase tracking-widest font-bold"">Level</span>
+                    <span class="text-3xl md:text-4xl font-extrabold text-white">{{ $user->level }}</span>
+                    <span class="text-[9px] md:text-[10px] text-green-300 mt-1">{{ $pointsToNextLevel }} Poin lagi</span>
                 </div>
             </div>
 
             <div class="flex gap-4 w-full justify-center">
-                <div class="bg-white/10 rounded-xl p-4 text-center w-32 border border-white/10">
-                    <div class="text-yellow-400 font-bold text-2xl">{{ $user->provinces_visited }}/{{ $user->total_provinces }}</div>
+                <div class="bg-white/10 rounded-xl p-3 md:p-4 text-center w-28 md:w-32 border border-white/10">
+                    <div class="text-yellow-400 font-bold text-lg md:text-2xl">{{ $user->provinces_visited }}/{{ $user->total_provinces }}</div>
                     <div class="text-[10px] text-green-100 mt-1">Provinsi Dijelajahi</div>
                 </div>
-                <div class="bg-white/10 rounded-xl p-4 text-center w-32 border border-white/10">
-                    <div class="text-yellow-400 font-bold text-2xl">{{ $user->badges_collected }}/{{ $user->total_badges }}</div>
+                <div cclass="bg-white/10 rounded-xl p-3 md:p-4 text-center w-28 md:w-32 border border-white/10">
+                    <div class="text-yellow-400 font-bold text-lg md:text-2xl">{{ $user->badges_collected }}/{{ $user->total_badges }}</div>
                     <div class="text-[10px] text-green-100 mt-1">Lencana Terkumpul</div>
                 </div>
             </div>
@@ -81,19 +81,19 @@
 <!-- ========================================== -->
 <!-- KONTEN UTAMA                               -->
 <!-- ========================================== -->
-<div class="w-full space-y-8">
+<div class="w-full space-y-6 md:space-y-8 overflow-hidden">
 
     <!-- ========================================== -->
     <!-- 1. EMPAT KARTU STATISTIK                   -->
     <!-- ========================================== -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6">
         <!-- Kartu 1 -->
-        <div class="bg-white rounded-3xl p-6 shadow-sm">
-            <div class="w-12 h-12 bg-[#d1e7dd] rounded-xl flex items-center justify-center text-2xl mb-4">
+        <div class="bg-white rounded-2xl md:rounded-3xl p-4 md:p-6 shadow-sm">
+            <div class="w-10 h-10 md:w-12 md:h-12 bg-[#d1e7dd] rounded-xl flex items-center justify-center text-xl md:text-2xl mb-3 md:mb-4">
                 📖
             </div>
             <div class="text-sm text-gray-500 mb-2">Provinsi di Indonesia</div>
-            <div class="text-3xl font-extrabold text-[#0f5132] mb-2">38</div>
+            <div class="text-2xl md:text-3xl font-extrabold text-[#0f5132] mb-1 md:mb-2"></div>
             <div class="text-xs text-gray-500">Dari Aceh hingga Papua</div>
         </div>
 
@@ -102,7 +102,7 @@
             <div class="w-12 h-12 bg-[#d1e7dd] rounded-xl flex items-center justify-center text-2xl mb-4">
                 🏠
             </div>
-            <div class="text-sm text-gray-500 mb-2">Rumah Adat</div>
+            <div class="text-xs md:text-sm text-gray-500 mb-1 md:mb-2">Rumah Adat</div>
             <div class="text-3xl font-extrabold text-[#0f5132] mb-2">Beragam</div>
             <div class="text-xs text-gray-500">Arsitektur khas daerah</div>
         </div>
@@ -132,19 +132,19 @@
     <!-- ========================================== -->
     <!-- 2. CARD PETA NUSANTARA                     -->
     <!-- ========================================== -->
-    <div id="peta-budaya" class="scroll-mt-24 bg-white rounded-3xl p-6 md:p-8 w-full shadow-sm">
-        <div class="flex items-center gap-4 mb-6">
-            <div class="bg-blue-100 text-blue-600 p-3 rounded-xl">
+    <div id="peta-budaya" class="scroll-mt-24 bg-white rounded-2xl md:rounded-3xl p-4 md:p-8 w-full shadow-sm overflow-hidden">
+        <div class="flex items-start gap-3 md:gap-4 mb-4 md:mb-6">
+            <div class="bg-blue-100 text-blue-600 p-2 md:p-3 rounded-xl shrink-0">
                 <i class="fas fa-map-marked-alt text-xl"></i>
             </div>
             <div>
-                <h2 class="text-2xl font-bold text-gray-800">🧭 Peta Budaya Nusantara</h2>
-                <p class="text-sm text-gray-500">Klik provinsi pada peta untuk melihat informasi budaya.</p>
+                <h2 class="text-lg md:text-2xl font-bold text-gray-800 break-words">🧭 Peta Budaya Nusantara</h2>
+                <p class="text-xs md:text-sm text-gray-500 break-words">Klik provinsi pada peta untuk melihat informasi budaya.</p>
             </div>
         </div>
 
         <!-- Wadah Peta -->
-        <div class="laut relative p-3 overflow-hidden" style="border-radius: 32px; background: radial-gradient(rgba(255,255,255,.07) 1px, transparent 1.5px) 0 0 / 26px 26px, radial-gradient(ellipse at 35% 45%, #1c5d73 0%, #0f3b4c 55%, #0a2a37 100%);">
+        <div class="laut relative p-2 md:p-3 overflow-hidden" style="border-radius: 16px; background: radial-gradient(rgba(255,255,255,.07) 1px, transparent 1.5px) 0 0 / 26px 26px, radial-gradient(ellipse at 35% 45%, #1c5d73 0%, #0f3b4c 55%, #0a2a37 100%);">
             
             <svg viewBox="0 0 1040 380" role="group" aria-label="Peta provinsi Indonesia, pilih provinsi" class="block w-full h-auto">
                 <defs>
@@ -297,7 +297,7 @@
         </div>
 
         <!-- Kotak Status -->
-        <p class="mt-4 p-4 bg-green-50 rounded-xl text-green-800 text-sm font-medium transition-all duration-300" id="status" aria-live="polite">
+        <p class="mt-3 md:mt-4 p-3 md:p-4 bg-green-50 rounded-xl text-green-800 text-xs md:text-sm font-medium transition-all duration-300 break-words">
             👋 Selamat datang! Pilih provinsi pada peta.
         </p>
     </div>
@@ -311,13 +311,18 @@
   .laut {
     position: relative;
     border-radius: 16px;
-    padding: 12px;
+    padding: 8px;
     background:
       radial-gradient(rgba(255,255,255,.07) 1px, transparent 1.5px) 0 0 / 26px 26px,
       radial-gradient(ellipse at 35% 45%, #1c5d73 0%, #0f3b4c 55%, #0a2a37 100%);
-  }
+    overflow: hidden;
+    max-width: 100%;
+}
   
-  svg { display: block; width: 100%; height: auto; }
+  .laut svg { display: block; width: 100%; height: auto; max-width: 100%; }
+
+/* Mencegah scroll horizontal di HP */
+html, body { overflow-x: hidden; max-width: 100vw; }
 
   .provinsi { cursor: pointer; outline: none; }
   
