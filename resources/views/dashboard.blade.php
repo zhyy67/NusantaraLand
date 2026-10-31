@@ -68,10 +68,10 @@
                     <div class="text-yellow-400 font-bold text-lg md:text-2xl">{{ $user->provinces_visited }}/{{ $user->total_provinces }}</div>
                     <div class="text-[10px] text-green-100 mt-1">Provinsi Dijelajahi</div>
                 </div>
-                <div cclass="bg-white/10 rounded-xl p-3 md:p-4 text-center w-28 md:w-32 border border-white/10">
-                    <div class="text-yellow-400 font-bold text-lg md:text-2xl">{{ $user->badges_collected }}/{{ $user->total_badges }}</div>
-                    <div class="text-[10px] text-green-100 mt-1">Lencana Terkumpul</div>
-                </div>
+                <div class="bg-white/10 rounded-xl p-4 text-center w-32 border border-white/10">
+                <div class="text-yellow-400 font-bold text-2xl">{{ $user->badges_collected }}/{{ $user->total_badges }}</div>
+                <div class="text-[10px] text-green-100 mt-1">Lencana Terkumpul</div>
+            </div>
             </div>
         </div>
     </div>
@@ -385,38 +385,46 @@ const dataBudaya = {
 
 const status = document.getElementById("status");
 
+// === BAGIAN YANG DIUBAH ===
 setTimeout(() => {
-    const provinsiElements = document.querySelectorAll(".provinsi");
+    const petaSvg = document.querySelector(".laut svg");
     
-    if (provinsiElements.length === 0) return;
+    if (!petaSvg) return;
 
-    provinsiElements.forEach(el => {
-        el.setAttribute("role", "button");
-
-        // KETIKA DIKLIK: Buka di tab yang sama
-        el.addEventListener("click", function() {
-            const idProvinsi = this.id;
-            const urlTujuan = `{{ url('/budaya') }}/${idProvinsi}`; 
-            
-            // PERHATIKAN BARIS INI: Menggunakan location.href, bukan window.open
-            window.location.href = urlTujuan; 
-        });
-
-        // KETIKA KURSOR DIARAHKAN (HOVER): Tampilkan nama provinsi
-        el.addEventListener("mouseenter", function() {
-            const data = dataBudaya[this.id];
+    // KETIKA KURSOR MASUK / HOVER (Menggunakan pointerover agar jalan di HP & Laptop)
+    petaSvg.addEventListener("pointerover", function(e) {
+        const provinsiEl = e.target.closest(".provinsi");
+        
+        if (provinsiEl) {
+            const data = dataBudaya[provinsiEl.id];
             if (data) {
                 status.innerHTML = "Klik untuk melihat budaya <b>" + data.nama + "</b>.";
                 status.classList.add("bg-green-100");
             }
-        });
+        }
+    });
 
-        // KETIKA KURSOR KELUAR: Kembalikan teks semula
-        el.addEventListener("mouseleave", function() {
+    // KETIKA KURSOR KELUAR
+    petaSvg.addEventListener("pointerout", function(e) {
+        const provinsiEl = e.target.closest(".provinsi");
+        
+        if (provinsiEl) {
             status.innerHTML = "👋 Selamat datang! Pilih provinsi pada peta.";
             status.classList.remove("bg-green-100");
-        });
+        }
     });
+
+    // KETIKA DIKLIK
+    petaSvg.addEventListener("click", function(e) {
+        const provinsiEl = e.target.closest(".provinsi");
+        
+        if (provinsiEl) {
+            const idProvinsi = provinsiEl.id;
+            const urlTujuan = `{{ url('/budaya') }}/${idProvinsi}`; 
+            window.location.href = urlTujuan; 
+        }
+    });
+
 }, 100);
 </script>
 @endpush
