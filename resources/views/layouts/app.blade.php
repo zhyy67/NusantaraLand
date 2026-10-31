@@ -38,7 +38,7 @@
             border: 1px solid #fbbf24;
         }
 
-        /* TAMBAHAN: Mencegah scroll horizontal di HP */
+        /* Mencegah scroll horizontal di HP */
         html, body {
             overflow-x: hidden;
             width: 100%;
@@ -90,21 +90,21 @@
             <!-- User Info & Tombol Hamburger -->
             <div class="flex items-center gap-1.5 md:gap-2 ml-auto">
                 @auth
-                    <!-- Poin -->
-                    <div class="bg-gray-800 rounded-full h-8 md:h-9 px-2.5 md:px-4 flex items-center gap-1 md:gap-2 border border-gray-600">
+                    <!-- Poin (Sembunyi di HP) -->
+                    <div class="hidden sm:flex bg-gray-800 rounded-full h-8 md:h-9 px-2.5 md:px-4 items-center gap-1 md:gap-2 border border-gray-600">
                         <i class="fas fa-star text-nusantara-gold text-[10px] md:text-xs"></i>
                         <span class="text-[11px] md:text-sm font-bold whitespace-nowrap">{{ $authUser->points ?? 0 }} poin</span>
                     </div>
 
-                    <!-- Level & Avatar -->
-                    <a href="{{ route('profile.edit') }}" class="bg-yellow-500 text-black rounded-full h-8 md:h-9 px-2.5 md:px-4 flex items-center gap-1 md:gap-2 font-bold hover:bg-yellow-400 transition shrink-0">
+                    <!-- Level & Avatar (Sembunyi di HP) -->
+                    <a href="{{ route('profile.edit') }}" class="hidden sm:flex bg-yellow-500 text-black rounded-full h-8 md:h-9 px-2.5 md:px-4 items-center gap-1 md:gap-2 font-bold hover:bg-yellow-400 transition shrink-0">
                         <span class="bg-black text-white rounded-full w-4 h-4 md:w-5 md:h-5 flex items-center justify-center text-[10px] md:text-xs">
                             {{ strtoupper(substr($authUser->name ?? 'U', 0, 1)) }}
                         </span>
                         <span class="text-[11px] md:text-sm whitespace-nowrap">Lv {{ $authUser->level ?? 1 }}</span>
                     </a>
 
-                    <!-- Logout -->
+                    <!-- Logout (Teks "Keluar" sembunyi di HP) -->
                     <form method="POST" action="{{ route('logout') }}" class="inline-flex m-0 shrink-0">
                         @csrf
                         <button type="submit" class="bg-red-500 hover:bg-red-600 text-white text-sm font-bold rounded-full h-8 md:h-9 px-2.5 md:px-4 flex items-center gap-1 md:gap-2 transition" title="Logout">
@@ -122,7 +122,7 @@
                 @endguest
 
                 <!-- TOMBOL HAMBURGER (Hanya Muncul di HP) -->
-                <button id="hamburger-btn" class="md:hidden text-white text-xl ml-2 focus:outline-none p-1">
+                <button id="hamburger-btn" class="md:hidden text-white text-2xl ml-1 focus:outline-none p-1">
                     <i class="fas fa-bars"></i>
                 </button>
             </div>
