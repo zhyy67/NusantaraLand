@@ -54,8 +54,8 @@
 @endphp
 
     <!-- Navbar -->
-    <nav class="bg-nusantara-dark text-white py-3 px-4 md:px-6 shadow-md w-full">
-        <div class="max-w-7xl mx-auto flex flex-wrap md:flex-nowrap justify-between items-center gap-2">
+    <nav class="bg-nusantara-dark text-white py-3 px-4 md:px-6 shadow-md w-full relative z-50">
+        <div class="max-w-7xl mx-auto flex justify-between items-center gap-2">
             
             <!-- Logo Baru -->
             <a href="{{ route('dashboard') }}" class="flex items-center gap-2 md:gap-3 shrink-0">
@@ -67,59 +67,66 @@
                 </div>
             </a>
 
-            <!-- Menu Navigasi (Desktop only) -->
-            <div class="hidden md:flex gap-8 font-medium text-sm items-center">
+            <!-- ============================================== -->
+            <!-- MENU NAVIGASI (Desktop: Tampil | HP: Dropdown) -->
+            <!-- ============================================== -->
+            <div id="nav-menu" class="hidden md:flex flex-col md:flex-row absolute md:relative top-full left-0 w-full md:w-auto bg-[#0a2a20] md:bg-transparent p-4 md:p-0 gap-4 md:gap-8 font-medium text-sm items-center shadow-lg md:shadow-none border-t border-gray-700 md:border-none transition-all duration-300">
                 <a href="{{ route('dashboard') }}"
-                   class="{{ request()->routeIs('dashboard') ? 'text-nusantara-gold' : 'hover:text-nusantara-gold' }} transition">
+                   class="{{ request()->routeIs('dashboard') ? 'text-nusantara-gold' : 'hover:text-nusantara-gold' }} transition w-full md:w-auto text-center md:text-left py-2 md:py-0">
                     Beranda
                 </a>
-                <a href="{{ route('kuis.index') }}#misi" class="hover:text-nusantara-gold transition">Misi</a>
+                <a href="{{ route('kuis.index') }}#misi" class="hover:text-nusantara-gold transition w-full md:w-auto text-center md:text-left py-2 md:py-0">Misi</a>
                 <a href="{{ route('kuis.index') }}"
-                   class="{{ request()->routeIs('kuis.*') ? 'text-nusantara-gold' : 'hover:text-nusantara-gold' }} transition">
+                   class="{{ request()->routeIs('kuis.*') ? 'text-nusantara-gold' : 'hover:text-nusantara-gold' }} transition w-full md:w-auto text-center md:text-left py-2 md:py-0">
                     Kuis
                 </a>
-                <a href="{{ route('kuis.index') }}#peringkat" class="hover:text-nusantara-gold transition">Peringkat</a>
+                <a href="{{ route('kuis.index') }}#peringkat" class="hover:text-nusantara-gold transition w-full md:w-auto text-center md:text-left py-2 md:py-0">Peringkat</a>
                 <a href="{{ route('avatar.index') }}"
-                   class="{{ request()->routeIs('avatar.*') ? 'text-nusantara-gold' : 'hover:text-nusantara-gold' }} transition">
+                   class="{{ request()->routeIs('avatar.*') ? 'text-nusantara-gold' : 'hover:text-nusantara-gold' }} transition w-full md:w-auto text-center md:text-left py-2 md:py-0">
                     Kostumisasi
                 </a>
             </div>
 
-            <!-- User Info -->
-            @auth
-            <div class="flex items-center gap-1.5 md:gap-2 ml-auto md:ml-0">
-                <!-- Poin -->
-                <div class="bg-gray-800 rounded-full h-8 md:h-9 px-2.5 md:px-4 flex items-center gap-1 md:gap-2 border border-gray-600">
-                    <i class="fas fa-star text-nusantara-gold text-[10px] md:text-xs"></i>
-                    <span class="text-[11px] md:text-sm font-bold whitespace-nowrap">{{ $authUser->points ?? 0 }} poin</span>
-                </div>
+            <!-- User Info & Tombol Hamburger -->
+            <div class="flex items-center gap-1.5 md:gap-2 ml-auto">
+                @auth
+                    <!-- Poin -->
+                    <div class="bg-gray-800 rounded-full h-8 md:h-9 px-2.5 md:px-4 flex items-center gap-1 md:gap-2 border border-gray-600">
+                        <i class="fas fa-star text-nusantara-gold text-[10px] md:text-xs"></i>
+                        <span class="text-[11px] md:text-sm font-bold whitespace-nowrap">{{ $authUser->points ?? 0 }} poin</span>
+                    </div>
 
-                <!-- Level & Avatar -->
-                <a href="{{ route('profile.edit') }}" class="bg-yellow-500 text-black rounded-full h-8 md:h-9 px-2.5 md:px-4 flex items-center gap-1 md:gap-2 font-bold hover:bg-yellow-400 transition shrink-0">
-                    <span class="bg-black text-white rounded-full w-4 h-4 md:w-5 md:h-5 flex items-center justify-center text-[10px] md:text-xs">
-                        {{ strtoupper(substr($authUser->name ?? 'U', 0, 1)) }}
-                    </span>
-                    <span class="text-[11px] md:text-sm whitespace-nowrap">Lv {{ $authUser->level ?? 1 }}</span>
-                </a>
+                    <!-- Level & Avatar -->
+                    <a href="{{ route('profile.edit') }}" class="bg-yellow-500 text-black rounded-full h-8 md:h-9 px-2.5 md:px-4 flex items-center gap-1 md:gap-2 font-bold hover:bg-yellow-400 transition shrink-0">
+                        <span class="bg-black text-white rounded-full w-4 h-4 md:w-5 md:h-5 flex items-center justify-center text-[10px] md:text-xs">
+                            {{ strtoupper(substr($authUser->name ?? 'U', 0, 1)) }}
+                        </span>
+                        <span class="text-[11px] md:text-sm whitespace-nowrap">Lv {{ $authUser->level ?? 1 }}</span>
+                    </a>
 
-                <!-- Logout (Di HP hanya icon, di Desktop ada teks) -->
-                <form method="POST" action="{{ route('logout') }}" class="inline-flex m-0 shrink-0">
-                    @csrf
-                    <button type="submit" class="bg-red-500 hover:bg-red-600 text-white text-sm font-bold rounded-full h-8 md:h-9 px-2.5 md:px-4 flex items-center gap-1 md:gap-2 transition" title="Logout">
-                        <i class="fas fa-sign-out-alt"></i> 
-                        <span class="hidden sm:inline">Keluar</span>
-                    </button>
-                </form>
+                    <!-- Logout -->
+                    <form method="POST" action="{{ route('logout') }}" class="inline-flex m-0 shrink-0">
+                        @csrf
+                        <button type="submit" class="bg-red-500 hover:bg-red-600 text-white text-sm font-bold rounded-full h-8 md:h-9 px-2.5 md:px-4 flex items-center gap-1 md:gap-2 transition" title="Logout">
+                            <i class="fas fa-sign-out-alt"></i> 
+                            <span class="hidden sm:inline">Keluar</span>
+                        </button>
+                    </form>
+                @endauth
+
+                @guest
+                    <div class="flex items-center gap-2 md:gap-3">
+                        <a href="{{ route('login') }}" class="text-xs md:text-sm font-semibold hover:text-nusantara-gold transition">Login</a>
+                        <a href="{{ route('register') }}" class="text-xs md:text-sm font-semibold bg-nusantara-gold text-black px-3 md:px-4 py-1.5 md:py-2 rounded-full hover:bg-yellow-500 transition">Register</a>
+                    </div>
+                @endguest
+
+                <!-- TOMBOL HAMBURGER (Hanya Muncul di HP) -->
+                <button id="hamburger-btn" class="md:hidden text-white text-xl ml-2 focus:outline-none p-1">
+                    <i class="fas fa-bars"></i>
+                </button>
             </div>
-            @endauth
 
-            <!-- Menu Login (Jika belum login) -->
-            @guest
-            <div class="flex items-center gap-2 md:gap-3 ml-auto">
-                <a href="{{ route('login') }}" class="text-xs md:text-sm font-semibold hover:text-nusantara-gold transition">Login</a>
-                <a href="{{ route('register') }}" class="text-xs md:text-sm font-semibold bg-nusantara-gold text-black px-3 md:px-4 py-1.5 md:py-2 rounded-full hover:bg-yellow-500 transition">Register</a>
-            </div>
-            @endguest
         </div>
     </nav>
 
@@ -129,6 +136,29 @@
     </main>
 
     @stack('scripts')
+
+    <!-- Script Toggle Menu Hamburger -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const btn = document.getElementById('hamburger-btn');
+            const menu = document.getElementById('nav-menu');
+            const icon = btn.querySelector('i');
+
+            btn.addEventListener('click', function() {
+                menu.classList.toggle('hidden');
+                menu.classList.toggle('flex');
+                
+                // Ubah ikon ☰ menjadi ❌ saat terbuka
+                if (menu.classList.contains('flex')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                } else {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+        });
+    </script>
 
 </body>
 </html>
